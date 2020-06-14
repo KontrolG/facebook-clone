@@ -1,0 +1,49 @@
+body {
+  font: 400 22px /1.5 Lato, "Helvetica Neue", sans-serif;
+  color: white;
+}
+
+h1 {
+  line-height: 2;
+  font-family: Pacifico;
+  font-size: 4rem;
+}
+
+input,
+button {
+  padding: 0.25em 0.5em;
+  font: inherit;
+  border: none;
+}
+
+main {
+  padding: 3rem 0;
+  text-align: center;
+}
+
+form {
+  --border-radius: 4px;
+  margin: 1rem 0 4rem;
+}
+
+form input {
+  border-radius: var(--border-radius) 0px 0px var(--border-radius);
+}
+
+form button {
+  border-radius: 0px var(--border-radius) var(--border-radius) 0px;
+}
+
+.people {
+  width: 60%;
+  margin: 0 auto;
+  text-align: left;
+  background: #777;
+  padding: 0.5rem 3rem;
+  border-radius: 4px;
+}
+
+.people li {
+  text-indent: 1em;
+  margin: 0.5em 0;
+}
