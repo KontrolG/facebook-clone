@@ -1,8 +1,13 @@
 import React from "react";
+import FileStack from "./FileStack";
+import FormOptions from "./FormOptions";
+import PostContentInput from "./PostContentInput";
 
 const PostContentForm = () => (
-  <form className="post-content">
-    <input placeholder="¿Qué estás pensando, Georgelyz?" />
+  <form className="post-content dragging-files">
+    <PostContentInput />
+    <FileStack />
+    <FormOptions />
   </form>
 );
 

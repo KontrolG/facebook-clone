@@ -1,14 +1,23 @@
 import React from "react";
+import ProfilePhotoMiniature from "./ProfilePhotoMiniature";
 
 const toListItem = (item, index) => (
-  <li key={index}>
+  <li key={index + 1}>
     <a href="#">{item}</a>
   </li>
 );
-const items = ["Georgelyz", "Inicio", "Crear"].map(toListItem);
+const items = ["Inicio", "Crear"].map(toListItem);
 const NavList = () => (
   <nav>
-    <ul>{items}</ul>
+    <ul>
+      <li key="0">
+        <a href="#" className="profile-link">
+          <ProfilePhotoMiniature />
+          <span>Georgelyz</span>
+        </a>
+      </li>
+      {items}
+    </ul>
   </nav>
 );
 

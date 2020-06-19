@@ -6,14 +6,21 @@ body {
 }
 
 input,
+textarea,
 button {
   border: none;
   outline: none;
   font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
 }
 
 .search {
   padding: 0 266px 0 96px;
+  padding: 0 20% 0 7%;
   height: 40px;
   background-color: var(--primary-color);
   display: flex;
@@ -48,6 +55,7 @@ button {
   font-size: 0.9em;
   font-weight: bolder;
   color: white;
+  align-items: center;
 }
 
 .search nav ul a {
@@ -59,14 +67,32 @@ button {
   border: none;
 }
 
+.search .profile-link {
+  border: none;
+  display: flex;
+  align-items: center;
+}
+
+.profile-link span {
+  padding-right: 1em;
+  border-right: 1px solid #555;
+}
+
+.profile-link img.profile-photo {
+  width: 1.75em;
+  height: 1.75em;
+  margin-right: 0.5em;
+}
+
 main {
   width: 500px;
   height: 100vh;
   margin: 0.9rem auto;
 }
 
-.gray-bg {
-  background-color: rgb(245, 245, 245);
+.gray-bg,
+.form-options button {
+  background-color: rgb(245, 245, 248);
   color: rgb(75, 75, 75);
 }
 
@@ -98,7 +124,7 @@ main > * {
 }
 
 .card > * {
-  border-bottom: 1px solid #ccc;
+  border-bottom: 2px solid #ccc;
 }
 
 .card header h4 {
@@ -112,9 +138,94 @@ main > * {
 }
 
 .post-content {
-  padding: 1rem 0.75rem;
+  padding: 1rem 0.75rem 0;
+  color: #333;
 }
 
-.post-content input {
+.post-content-wrapper {
+  display: flex;
+}
+
+img.profile-photo {
+  object-fit: cover;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+}
+
+.post-content-wrapper img {
+  margin-right: 0.75rem;
+  flex: 0 0 auto;
+}
+.post-content-wrapper figcaption {
+  flex: 1 0 auto;
+}
+
+.post-content-wrapper textarea {
+  margin-top: 10px;
   width: 100%;
+  resize: none;
+  height: auto;
+  /* padding-bottom: calc(60px - 1rem); */
+}
+
+.file-stack,
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  overflow: auto;
+  padding: 1rem 0;
+  border-top: 1px solid #ccc;
+}
+
+.post-content.dragging-files .file-stack {
+  border: 5px dashed rgb(208, 213, 221);
+  background-color: rgb(246, 248, 250);
+}
+
+.post-content.dragging-files .file-stack::after {
+  content: "Suelta para subir";
+  color: rgb(168, 181, 200);
+  font: inherit;
+  font-size: 1.25em;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  align-self: center;
+}
+
+.post-content.dragging-files .file-stack li {
+  visibility: hidden;
+}
+
+.post-content.dragging-files .form-options {
+  border-top: none;
+}
+
+.file-stack {
+  /* display: none; */
+}
+
+.file-stack li {
+  height: 114.5px;
+  width: calc(25% - 0.25rem);
+  background-color: rgb(208, 213, 221);
+}
+
+.form-options {
+  margin-bottom: 0;
+}
+.form-options li {
+  max-width: calc(33% - 0.25rem);
+  flex: 1 1 auto;
+}
+
+.form-options button {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 0.9rem;
+  text-align: left;
+  width: 100%;
+  border-radius: 20px;
+  padding: 0.3em 1em 0.3em 2em;
 }
