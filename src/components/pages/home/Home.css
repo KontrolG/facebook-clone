@@ -7,14 +7,16 @@ body {
 
 input,
 textarea,
-button {
+button,
+label[for="media-input"] {
   border: none;
   outline: none;
   font: inherit;
   color: inherit;
 }
 
-button {
+button,
+label[for="media-input"] {
   cursor: pointer;
 }
 
@@ -67,7 +69,7 @@ button {
   border: none;
 }
 
-.search .profile-link {
+.search .profile-link a {
   border: none;
   display: flex;
   align-items: center;
@@ -91,7 +93,8 @@ main {
 }
 
 .gray-bg,
-.form-options button {
+.form-options button,
+label[for="media-input"] {
   background-color: rgb(245, 245, 248);
   color: rgb(75, 75, 75);
 }
@@ -144,6 +147,7 @@ main > * {
 
 .post-content-wrapper {
   display: flex;
+  min-height: 60px;
 }
 
 img.profile-photo {
@@ -157,16 +161,22 @@ img.profile-photo {
   margin-right: 0.75rem;
   flex: 0 0 auto;
 }
+
 .post-content-wrapper figcaption {
-  flex: 1 0 auto;
+  flex: 1 0 calc(100% - 5rem);
+  max-height: 250px;
+  overflow-y: auto;
 }
 
-.post-content-wrapper textarea {
-  margin-top: 10px;
-  width: 100%;
-  resize: none;
-  height: auto;
-  /* padding-bottom: calc(60px - 1rem); */
+.textarea-with-line-breaks {
+  cursor: text;
+  margin: 0.7rem 0 1rem;
+  outline: none;
+}
+
+.textarea-with-line-breaks:empty::after {
+  content: attr(placeholder);
+  color: #aaa;
 }
 
 .file-stack,
@@ -203,7 +213,7 @@ img.profile-photo {
 }
 
 .file-stack {
-  /* display: none; */
+  display: none;
 }
 
 .file-stack li {
@@ -220,7 +230,16 @@ img.profile-photo {
   flex: 1 1 auto;
 }
 
-.form-options button {
+#media-input {
+  display: none;
+}
+
+label[for="media-input"] {
+  display: block;
+}
+
+.form-options button,
+label[for="media-input"] {
   text-overflow: ellipsis;
   overflow: hidden;
   font-size: 0.9rem;

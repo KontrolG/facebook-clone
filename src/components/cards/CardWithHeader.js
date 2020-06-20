@@ -2,9 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import Card from "./Card";
 
-const CardWithHeader = ({ header, children }) => (
+const CardWithHeader = ({ header: headerContent, children }) => (
   <Card>
-    <header>{header}</header>
+    <header>{headerContent}</header>
     {children}
   </Card>
 );

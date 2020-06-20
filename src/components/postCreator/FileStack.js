@@ -1,5 +1,5 @@
 import React from "react";
-
+/* multiple type="file" */
 const FileStack = () => {
   return (
     <ul className="file-stack">

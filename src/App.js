@@ -1,7 +1,13 @@
 import React from "react";
-import Home from "./components/home/Home";
+import SearchBar from "./components/searchBar/SearchBar";
+import Home from "./components/pages/home/Home";
 import "./App.css";
 
-const App = () => <Home />;
+const App = () => (
+  <>
+    <SearchBar />
+    <Home />
+  </>
+);
 
 export default App;

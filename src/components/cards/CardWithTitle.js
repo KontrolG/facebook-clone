@@ -4,6 +4,7 @@ import CardWithHeader from "./CardWithHeader";
 
 const CardWithTitle = ({ title, children }) => {
   const cardTitle = <h4 className="gray-bg">{title}</h4>;
+
   return <CardWithHeader header={cardTitle}>{children}</CardWithHeader>;
 };
 

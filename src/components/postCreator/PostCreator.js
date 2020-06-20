@@ -1,7 +1,7 @@
 import React from "react";
-import CardWithTitle from "./CardWithTitle";
+import CardWithTitle from "../cards/CardWithTitle";
 import PostContentForm from "./PostContentForm";
-import ButtonPrimary from "./ButtonPrimary";
+import ButtonPrimary from "../ButtonPrimary";
 
 const PostCreator = () => (
   <CardWithTitle title="Crear publicación">

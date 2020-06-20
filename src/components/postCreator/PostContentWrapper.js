@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
-import ProfilePhotoMiniature from "./ProfilePhotoMiniature";
+import React, { useState, useEffect, useMemo } from "react";
+import ProfilePhotoMiniature from "../ProfilePhotoMiniature";
+import TextareaWithLineBreaks from "./TextareaWithLineBreaks";
 
 const PostContentInput = () => {
   const [text, setText] = useState("");
@@ -7,22 +8,17 @@ const PostContentInput = () => {
 
   const changeText = event => {
     const { value } = event.target;
-    setText(value);
+    setText(value.join("\r\n"));
   };
 
-  const getRowsFromTextLength = rowLength =>
-    Math.round(text.length / rowLength);
-  console.log(getRowsFromTextLength(46));
   return (
     <figure className="post-content-wrapper">
       <ProfilePhotoMiniature />
       <figcaption>
-        <textarea
-          spellCheck
-          value={text}
-          onChange={changeText}
-          rows={getRowsFromTextLength(46)}
+        <TextareaWithLineBreaks
+          title="Escribir publicación"
           placeholder="¿Qué estás pensando, Georgelyz?"
+          onChange={changeText}
         />
       </figcaption>
     </figure>
