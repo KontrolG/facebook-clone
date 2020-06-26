@@ -155,6 +155,7 @@ img.profile-photo {
   border-radius: 50%;
   width: 45px;
   height: 45px;
+  border: 1px solid rgba(200, 200, 200, 0.25);
 }
 
 .post-content-wrapper img {
@@ -182,13 +183,16 @@ img.profile-photo {
 .file-stack,
 .form-options {
   display: flex;
-  justify-content: space-between;
-  overflow: auto;
   padding: 1rem 0;
   border-top: 1px solid #ccc;
 }
 
+.file-stack {
+  overflow-x: auto;
+}
+
 .post-content.dragging-files .file-stack {
+  display: flex;
   border: 5px dashed rgb(208, 213, 221);
   background-color: rgb(246, 248, 250);
 }
@@ -212,19 +216,54 @@ img.profile-photo {
   border-top: none;
 }
 
-.file-stack {
+.file-stack:empty {
   display: none;
 }
 
 .file-stack li {
+  --progress: 0;
+  position: relative;
   height: 114.5px;
   width: calc(25% - 0.25rem);
+  overflow: hidden;
+  flex: 0 0 auto;
   background-color: rgb(208, 213, 221);
 }
 
+.file-stack li[data-is-done="false"]::after {
+  position: absolute;
+  left: 0.5rem;
+  bottom: 0.5rem;
+  content: "";
+  background-color: white;
+  box-shadow: inset calc(1px * var(--progress)) 0 0 var(--primary-color);
+  width: calc(100% - 1rem);
+  height: 1rem;
+}
+
+.file-stack li img {
+  opacity: calc(var(--progress) / 100);
+  height: 100%;
+  object-fit: cover;
+}
+
+.file-stack li button {
+  position: absolute;
+  z-index: 9999;
+  top: 0.5rem;
+  right: 0.5rem;
+  border-radius: 50%;
+  padding: 0.005em 0.4em;
+  box-shadow: 0 0 1px #aaa;
+  /* width: 1.25rem; */
+  /* height: 1.25rem; */
+}
+
 .form-options {
+  justify-content: space-between;
   margin-bottom: 0;
 }
+
 .form-options li {
   max-width: calc(33% - 0.25rem);
   flex: 1 1 auto;

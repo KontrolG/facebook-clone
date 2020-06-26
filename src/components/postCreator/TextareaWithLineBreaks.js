@@ -4,19 +4,15 @@ import PropTypes from "prop-types";
 const TextareaWithLineBreaks = props => {
   const { className, onChange, ...restProps } = props;
 
-  const preventBlur = event => {
+  const preventBlurOnTab = event => {
     const hasPressedTab = event.key === "Tab";
-    if (hasPressedTab) insertIdentation(event);
-  };
-
-  const insertIdentation = event => {
-    event.preventDefault();
+    if (hasPressedTab) event.preventDefault();
   };
 
   const callOnChangeWithValue = event => {
     const { target } = event;
     target.value = getValueFromChildNodes(target);
-    if (typeof onChange === "function") onChange(event);
+    onChange(event);
   };
 
   const getValueFromChildNodes = element => {
@@ -31,9 +27,9 @@ const TextareaWithLineBreaks = props => {
       className={`textarea-with-line-breaks ${className}`}
       {...restProps}
       contentEditable
-      onKeyDown={preventBlur}
+      onKeyDown={preventBlurOnTab}
       onKeyUp={callOnChangeWithValue}
-    ></div>
+    />
   );
 };
 

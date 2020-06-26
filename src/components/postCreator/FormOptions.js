@@ -1,24 +1,10 @@
 import React, { createRef } from "react";
 
-const FormOptions = () => {
-  const mediaInputRef = createRef();
-  const acceptedFilesTypes =
-    "image/*,image/heif,image/heic,video/*,video/mp4,video/x-m4v,video/x-matroska";
-  const getFiles = event => {
-    console.dir(event.target.files);
-  };
+const FormOptions = ({ mediaFileInputId }) => {
   return (
     <ul className="form-options">
       <li>
-        <label htmlFor="media-input">Foto/vídeo</label>
-        <input
-          id="media-input"
-          multiple
-          type="file"
-          accept={acceptedFilesTypes}
-          ref={mediaInputRef}
-          onChange={getFiles}
-        />
+        <label htmlFor={mediaFileInputId}>Foto/vídeo</label>
       </li>
       <li>
         <button>Sentimiento/actividad</button>

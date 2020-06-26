@@ -1,6 +1,18 @@
 import React from "react";
+import { Consumer } from "../../context";
 import ProfilePhotoMiniature from "../ProfilePhotoMiniature";
 import NavLink from "./NavLink";
+
+const ProfileLink = () => (
+  <Consumer>{renderProfileLinkFromContextUser}</Consumer>
+);
+
+const renderProfileLinkFromContextUser = ({ user }) => (
+  <NavLink className="profile-link">
+    <ProfilePhotoMiniature userPhotoSrc={user.photo} />
+    <span>{user.name.first}</span>
+  </NavLink>
+);
 
 const toLinkItem = item => <NavLink>{item}</NavLink>;
 
@@ -10,10 +22,7 @@ const NavList = () => {
   return (
     <nav>
       <ul>
-        <NavLink className="profile-link">
-          <ProfilePhotoMiniature />
-          <span>Georgelyz</span>
-        </NavLink>
+        <ProfileLink />
         {items}
       </ul>
     </nav>

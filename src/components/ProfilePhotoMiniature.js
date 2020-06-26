@@ -1,7 +1,7 @@
 import React from "react";
 
-const ProfilePhotoMiniature = () => (
-  <img className="profile-photo" src="img/test.jpg" />
+const ProfilePhotoMiniature = ({ userPhotoSrc }) => (
+  <img className="profile-photo" src={userPhotoSrc} />
 );
 
 export default ProfilePhotoMiniature;
