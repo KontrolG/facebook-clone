@@ -9,15 +9,19 @@ const PostCreator = () => {
   const [mediaFiles, setMediaFiles] = useState([]);
   console.log(mediaFiles);
 
+  const formId = "postCreatorForm";
+
   const isNotDone = ({ uploadProgress }) => uploadProgress < 100;
   const isUploadingFiles = mediaFiles.length > 0 && mediaFiles.some(isNotDone);
   const canSendThePost = text !== "" && !isUploadingFiles;
 
   return (
     <CardWithTitle title="Crear publicación">
-      <PostContentForm {...{ text, setText, mediaFiles, setMediaFiles }} />
+      <PostContentForm {...{ formId, text, setText, mediaFiles, setMediaFiles }} />
       <footer>
-        <ButtonPrimary isDisabled={!canSendThePost}>Publicar</ButtonPrimary>
+        <ButtonPrimary formId={formId} isDisabled={!canSendThePost}>
+          Publicar
+        </ButtonPrimary>
       </footer>
     </CardWithTitle>
   );

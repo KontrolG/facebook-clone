@@ -11,7 +11,7 @@ const renderProfileMiniatureFromContextUser = ({ user }) => (
   <ProfilePhotoMiniature userPhotoSrc={user.photo} />
 );
 
-const PostContentInput = ({setText}) => {
+const PostContentInput = ({ inputRef, setText }) => {
   const changeText = event => {
     const { value } = event.target;
     setText(value.join("\r\n"));
@@ -25,6 +25,7 @@ const PostContentInput = ({setText}) => {
           title="Escribir publicación"
           placeholder="¿Qué estás pensando, Georgelyz?"
           onChange={changeText}
+          ref={inputRef}
         />
       </figcaption>
     </figure>

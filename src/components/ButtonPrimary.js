@@ -1,7 +1,7 @@
 import React from "react";
 
-const ButtonPrimary = ({ children, isDisabled }) => (
-  <button className="btn-primary full-width" disabled={isDisabled}>
+const ButtonPrimary = ({ children, isDisabled, formId }) => (
+  <button className="btn-primary full-width" disabled={isDisabled} form={formId}>
     {children}
   </button>
 );

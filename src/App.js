@@ -1,4 +1,4 @@
-import React, { useState, createContext, Fragment } from "react";
+import React, { useState } from "react";
 import { Provider } from "./context";
 import SearchBar from "./components/searchBar/SearchBar";
 import Home from "./components/pages/home/Home";
@@ -9,7 +9,16 @@ const App = () => {
     name: { first: "Georgelyz", last: "Martinez" },
     photo: "img/test.jpg"
   };
-  const postState = useState([]);
+  const testPost = {
+    _id: 1,
+    user: {
+      name: { first: "Georgelyz", last: "Martinez" },
+      photo: "img/test.jpg"
+    },
+    text: "testing",
+    createAt: new Date("2020-06-28")
+  };
+  const postState = useState([testPost]);
   const searchQueryState = useState("");
 
   return (
@@ -20,14 +29,4 @@ const App = () => {
   );
 };
 
-/* 
-{value => {
-          return (
-            <Fragment>
-              <SearchBar />
-              <Home />
-            </Fragment>
-          );
-        }}
-*/
 export default App;

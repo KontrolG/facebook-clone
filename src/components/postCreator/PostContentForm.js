@@ -1,16 +1,41 @@
-import React from "react";
+import React, { useContext } from "react";
+import context from "../../context";
 import FilesManager from "./FilesManager";
 import FormOptions from "./FormOptions";
 import PostContentInput from "./PostContentInput";
 
-const preventDefaultEvent = event => event.preventDefault();
-
-const PostContentForm = ({ text, setText, mediaFiles, setMediaFiles }) => {
+const PostContentForm = ({
+  formId,
+  text,
+  setText,
+  mediaFiles,
+  setMediaFiles
+}) => {
   const mediaFileInputId = "media-input";
+  const { user, postState } = useContext(context);
+  const inputRef = React.createRef();
+
+  const saveNewPost = event => {
+    event.preventDefault();
+    const newPost = { user, text, mediaFiles };
+    addNewPost(newPost);
+    clearForm();
+  };
+
+  const addNewPost = newPost => {
+    const [, setPost] = postState;
+    setPost(post => [...post, newPost]);
+  };
+
+  const clearForm = () => {
+    setText("");
+    inputRef.current.textContent = "";
+    setMediaFiles([]);
+  };
 
   return (
-    <form className="post-content" onSubmit={preventDefaultEvent}>
-      <PostContentInput {...{setText}}/>
+    <form id={formId} className="post-content" onSubmit={saveNewPost}>
+      <PostContentInput {...{ inputRef, text, setText }} />
       <FilesManager {...{ mediaFileInputId, mediaFiles, setMediaFiles }} />
       <FormOptions {...{ mediaFileInputId }} />
     </form>
