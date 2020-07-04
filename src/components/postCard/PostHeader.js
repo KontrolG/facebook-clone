@@ -1,15 +1,8 @@
 import React from "react";
 import ProfilePhotoMiniature from "../ProfilePhotoMiniature";
+import DateFormatted from "../DateFormatted";
 
-const getTimeLapsedFromDate = date => {
-  const timeLapsed = getTimeDifference(date);
-  console.log(timeLapsed / (60 * 60 * 24));
-};
-
-const getTimeDifference = date => Date.now() - date;
-
-const PostHeader = ({ user, createAt = Date.now() }) => {
-  const timeLapsed = getTimeLapsedFromDate(createAt);
+const PostHeader = ({ user, createAt }) => {
   return (
     <figure className="post-info">
       <ProfilePhotoMiniature userPhotoSrc={user.photo} />
@@ -17,7 +10,7 @@ const PostHeader = ({ user, createAt = Date.now() }) => {
         <h4>
           {user.name.first} {user.name.last}
         </h4>
-        <p>{createAt.toLocaleString()}</p>
+        <DateFormatted date={createAt} />
       </figcaption>
     </figure>
   );

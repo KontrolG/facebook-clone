@@ -4,7 +4,7 @@ const SearchForm = () => {
   return (
     <form>
       <input placeholder="Busca" />
-      <button className="gray-bg">O</button>
+      <button>O</button>
     </form>
   );
 };

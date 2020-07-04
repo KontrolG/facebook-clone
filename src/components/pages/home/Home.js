@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import { Consumer } from "../../../context";
+import withErrorBoundary from "../../withErrorBoundary";
 import PostCreator from "../../postCreator/PostCreator";
 import PostCard from "../../postCard/PostCard";
 import "./Home.css";
@@ -14,11 +15,15 @@ const renderCardsFromContextPost = ({ postState }) => {
 
 const toPostCards = post => <PostCard {...post} key={post._id} />;
 
+const errorMessage = <p style={{ textAlign: "center" }}>There was an error!</p>;
+
+const PostCardswithErrorBoundary = withErrorBoundary(PostCards, errorMessage);
+
 const Home = () => {
   return (
     <main>
       <PostCreator />
-      <PostCards />
+      <PostCardswithErrorBoundary />
     </main>
   );
 };

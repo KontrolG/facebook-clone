@@ -17,14 +17,14 @@ const PostContentForm = ({
 
   const saveNewPost = event => {
     event.preventDefault();
-    const newPost = { user, text, mediaFiles };
+    const newPost = { user, text, mediaFiles, createAt: new Date() };
     addNewPost(newPost);
     clearForm();
   };
 
   const addNewPost = newPost => {
     const [, setPost] = postState;
-    setPost(post => [...post, newPost]);
+    setPost(post => [newPost, ...post]);
   };
 
   const clearForm = () => {

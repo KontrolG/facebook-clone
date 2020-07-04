@@ -1,20 +1,21 @@
 import React, { Fragment } from "react";
+import MediaItems from "./MediaItems";
 
 const PostBody = ({ text }) => {
-  const mediaItems = (
-    <li>
-      <img src="img/test.jpg" />
-    </li>
-  );
+  const textParagraph = text !== "" ? <p>{text}</p> : null;
+
   return (
     <article className="post-body">
-      <p>{text}</p>
-      <ul>
-        {mediaItems}
-        {mediaItems}
-        {mediaItems}
-        {mediaItems}
-      </ul>
+      {textParagraph}
+      <MediaItems
+        items={[
+          "img/test.jpg",
+          "img/test.jpg",
+          "img/test.jpg",
+          "img/test.jpg",
+          "img/test.jpg"
+        ]}
+      />
     </article>
   );
 };

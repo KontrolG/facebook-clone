@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import CardWithTitle from "../cards/CardWithTitle";
 import PostContentForm from "./PostContentForm";
-import ButtonPrimary from "../ButtonPrimary";
+import Button from "../Button";
 
 const PostCreator = () => {
   const [text, setText] = useState("");
@@ -17,11 +17,13 @@ const PostCreator = () => {
 
   return (
     <CardWithTitle title="Crear publicación">
-      <PostContentForm {...{ formId, text, setText, mediaFiles, setMediaFiles }} />
+      <PostContentForm
+        {...{ formId, text, setText, mediaFiles, setMediaFiles }}
+      />
       <footer>
-        <ButtonPrimary formId={formId} isDisabled={!canSendThePost}>
+        <Button primary fullWidth formId={formId} isDisabled={!canSendThePost}>
           Publicar
-        </ButtonPrimary>
+        </Button>
       </footer>
     </CardWithTitle>
   );

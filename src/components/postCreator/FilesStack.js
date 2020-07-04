@@ -11,7 +11,7 @@ const FileItem = ({ file }) => {
       data-is-done={isDone}
       style={{ "--progress": uploadProgress }}
     >
-      <button className="gray-bg">⨯</button>
+      <button>⨯</button>
       <img src={URL.createObjectURL(file)} />
     </li>
   );
@@ -25,7 +25,7 @@ const FilesStack = ({ files }) => {
   return (
     <ul className="file-stack">
       {/* <li data-is-done="false" style={{ "--progress": 77 }}>
-        <button className="gray-bg">⨯</button>
+        <button>⨯</button>
         <img src="img/test.jpg" />
       </li> */}
       {filesItems}

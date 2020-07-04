@@ -15,7 +15,7 @@ const App = () => {
       name: { first: "Georgelyz", last: "Martinez" },
       photo: "img/test.jpg"
     },
-    text: "testing",
+    text: "¿Por que eres tan intenso tiee?",
     createAt: new Date("2020-06-28")
   };
   const postState = useState([testPost]);
