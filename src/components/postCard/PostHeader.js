@@ -1,6 +1,10 @@
 import React from "react";
 import ProfilePhotoMiniature from "../ProfilePhotoMiniature";
-import DateFormatted from "../DateFormatted";
+import DateFormatter from "../DateFormatter";
+
+const renderParagraphWithFormattedDate = (formattedDate, props) => (
+  <p {...props}>{formattedDate}</p>
+);
 
 const PostHeader = ({ user, createAt }) => {
   return (
@@ -10,7 +14,10 @@ const PostHeader = ({ user, createAt }) => {
         <h4>
           {user.name.first} {user.name.last}
         </h4>
-        <DateFormatted date={createAt} />
+        <DateFormatter
+          date={createAt}
+          children={renderParagraphWithFormattedDate}
+        />
       </figcaption>
     </figure>
   );

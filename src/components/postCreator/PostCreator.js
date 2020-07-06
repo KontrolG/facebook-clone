@@ -5,11 +5,9 @@ import Button from "../Button";
 
 const PostCreator = () => {
   const [text, setText] = useState("");
-  console.log(text);
   const [mediaFiles, setMediaFiles] = useState([]);
-  console.log(mediaFiles);
 
-  const formId = "postCreatorForm";
+  const formId = "post-creator-form";
 
   const isNotDone = ({ uploadProgress }) => uploadProgress < 100;
   const isUploadingFiles = mediaFiles.length > 0 && mediaFiles.some(isNotDone);

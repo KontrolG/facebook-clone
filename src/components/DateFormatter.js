@@ -1,4 +1,4 @@
-import React from "react";
+import PropTypes from "prop-types";
 
 const getFormattedDateString = date => {
   const timeLapsedInSeconds = getTimeLapsedInSeconds(date);
@@ -54,12 +54,16 @@ const getStringFromTimeUnit = ([unit, quantity]) => {
 
 const getFixedUnit = (quantityFloor, unit) => {
   const isPlural = quantityFloor > 1;
+  if (isPlural) return unit;
   const unitInSingular = unit.slice(0, -1);
-  return isPlural ? unit : unitInSingular;
+  return unitInSingular;
 };
 
-const DateFormatted = ({ children, date, ...restProps }) => (
-  <p {...restProps}>{getFormattedDateString(date)}</p>
-);
+const DateFormatter = ({ children, date, ...restProps }) =>
+  children(getFormattedDateString(date), restProps);
 
-export default DateFormatted;
+DateFormatter.propTypes = {
+  date: PropTypes.instanceOf(Date).isRequired,
+  children: PropTypes.func.isRequired
+};
+export default DateFormatter;

@@ -187,16 +187,18 @@ img.profile-photo {
 }
 
 .file-stack {
+  margin: 0 -0.125rem;
   overflow-x: auto;
 }
 
-.post-content.dragging-files .file-stack {
+.post-content.is-dragging .file-stack {
+  height: calc(125px + 2rem);
   display: flex;
   border: 5px dashed rgb(208, 213, 221);
   background-color: rgb(246, 248, 250);
 }
 
-.post-content.dragging-files .file-stack::after {
+.post-content.is-dragging .file-stack::after {
   content: "Suelta para subir";
   color: rgb(168, 181, 200);
   font: inherit;
@@ -207,11 +209,11 @@ img.profile-photo {
   align-self: center;
 }
 
-.post-content.dragging-files .file-stack li {
+.post-content.is-dragging .file-stack li {
   visibility: hidden;
 }
 
-.post-content.dragging-files .form-options {
+.post-content.is-dragging .form-options {
   border-top: none;
 }
 
@@ -221,8 +223,9 @@ img.profile-photo {
 
 .file-stack li {
   --progress: 0;
-  position: relative;
+  margin: 0 0.125rem;
   height: 114.5px;
+  position: relative;
   width: calc(25% - 0.25rem);
   overflow: hidden;
   flex: 0 0 auto;
@@ -272,12 +275,8 @@ img.profile-photo {
   display: none;
 }
 
-label[for="media-input"] {
+.form-options li > * {
   display: block;
-}
-
-.form-options button,
-label[for="media-input"] {
   text-overflow: ellipsis;
   overflow: hidden;
   font-size: 0.9rem;
@@ -294,7 +293,7 @@ label[for="media-input"] {
 }
 
 .post-info img {
-  margin-right: 0.35rem;
+  margin-right: 0.5rem;
 }
 
 .post-info figcaption {
@@ -330,8 +329,12 @@ label[for="media-input"] {
 }
 
 .post-body li {
-  margin: 0.0625rem 0.125rem -0.125rem;
+  background-color: #222;
+  margin: 0.0625rem 0.125rem 0;
   flex: 1 1 auto;
+  min-height: 165px;
+  display: flex;
+  align-items: center;
 }
 
 .post-body li img {

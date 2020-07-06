@@ -18,7 +18,7 @@ const App = () => {
     text: "¿Por que eres tan intenso tiee?",
     createAt: new Date("2020-06-28")
   };
-  const postState = useState([testPost]);
+  const postState = useState([]);
   const searchQueryState = useState("");
 
   return (

@@ -2,11 +2,11 @@ import React, {Fragment} from "react";
 import FilesStack from "./FilesStack";
 import FilesUploader from "./FilesUploader";
 
-const FilesManager = ({ mediaFileInputId, mediaFiles, setMediaFiles }) => {
+const FilesManager = ({ mediaFileInputId, mediaFiles, addMediaFiles }) => {
   return (
     <Fragment>
       <FilesStack files={mediaFiles}/>
-      <FilesUploader {...{mediaFileInputId, setMediaFiles}}/>
+      <FilesUploader {...{mediaFileInputId, addMediaFiles}}/>
     </Fragment>
   );
 };

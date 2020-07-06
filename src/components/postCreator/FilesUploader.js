@@ -1,16 +1,13 @@
 import React from "react";
 
-const FilesUploader = ({ mediaFileInputId, setMediaFiles }) => {
+const FilesUploader = ({ mediaFileInputId, addMediaFiles }) => {
   const acceptedFilesTypes =
     "image/*,image/heif,image/heic,video/*,video/mp4,video/x-m4v,video/x-matroska";
 
-  const addMediaFiles = event => {
+  const addInputMediaFiles = event => {
     const newFiles = event.target.files;
-    const newMediaFiles = Array.from(newFiles).map(toMediaFile);
-    setMediaFiles(mediaFiles => [...mediaFiles, ...newMediaFiles]);
+    addMediaFiles(newFiles);
   };
-
-  const toMediaFile = file => ({ uploadProgress: 0, file });
 
   return (
     <input
@@ -18,7 +15,7 @@ const FilesUploader = ({ mediaFileInputId, setMediaFiles }) => {
       multiple
       type="file"
       accept={acceptedFilesTypes}
-      onChange={addMediaFiles}
+      onChange={addInputMediaFiles}
     />
   );
 };
