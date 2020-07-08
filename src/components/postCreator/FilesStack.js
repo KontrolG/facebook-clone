@@ -1,33 +1,14 @@
 import React from "react";
 import { v4 as getRandomId } from "uuid";
+import FileItem from "./FileItem";
 
-const FileItem = ({ file }) => {
-  const [uploadProgress, setUploadProgress] = React.useState(0);
-
-  const isDone = uploadProgress === 100;
-  return (
-    <li
-      key={getRandomId()}
-      data-is-done={isDone}
-      style={{ "--progress": uploadProgress }}
-    >
-      <button>⨯</button>
-      <img src={URL.createObjectURL(file)} />
-    </li>
-  );
-};
+const toFileItem = ({ file }) => <FileItem file={file} key={getRandomId()} />;
 
 const FilesStack = ({ files }) => {
-  const toFileItem = ({ file }) => <FileItem file={file} />;
-
   const filesItems = files.map(toFileItem);
 
   return (
     <ul className="file-stack">
-      {/* <li data-is-done="false" style={{ "--progress": 77 }}>
-        <button>⨯</button>
-        <img src="img/test.jpg" />
-      </li> */}
       {filesItems}
     </ul>
   );

@@ -305,7 +305,7 @@ img.profile-photo {
 }
 
 .post-info p {
-  font-size: 0.85em;
+  font-size: 0.9em;
   color: #555;
 }
 
@@ -330,7 +330,7 @@ img.profile-photo {
 
 .post-body li {
   background-color: #222;
-  margin: 0.0625rem 0.125rem 0;
+  margin: 0.125rem;
   flex: 1 1 auto;
   min-height: 165px;
   display: flex;

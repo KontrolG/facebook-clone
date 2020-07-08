@@ -44,7 +44,6 @@ const useDragAndDrop = (
 
   const getDraggedFiles = event => {
     finishDrag(event);
-    console.log(event.dataTransfer.items[0]);
     return event.dataTransfer.files;
   };
 

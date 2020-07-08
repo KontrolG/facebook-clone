@@ -7,10 +7,10 @@ const FormOptions = ({ mediaFileInputId }) => {
         <label htmlFor={mediaFileInputId}>Foto/vídeo</label>
       </li>
       <li>
-        <button>Sentimiento/actividad</button>
+        <button type="button">Sentimiento/actividad</button>
       </li>
       <li>
-        <button>Etiquetar amigos</button>
+        <button type="button">Etiquetar amigos</button>
       </li>
     </ul>
   );

@@ -11,7 +11,7 @@ const getMediaItems = items => {
   const [visibleItems, hiddenItemsCount] = splitVisibleItems(items);
 
   const toMediaItem = (item, index, items) => {
-    const isLastItem = index === items.length - 1;
+    const isLastItem = index === (items.length - 1);
     const imgElement = <img src={item} />;
     return (
       <MediaItem {...{ isLastItem, hiddenItemsCount }}>{imgElement}</MediaItem>

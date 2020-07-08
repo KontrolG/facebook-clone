@@ -66,4 +66,5 @@ DateFormatter.propTypes = {
   date: PropTypes.instanceOf(Date).isRequired,
   children: PropTypes.func.isRequired
 };
+
 export default DateFormatter;

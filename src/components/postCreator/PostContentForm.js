@@ -1,9 +1,10 @@
-import React, { useState, useContext } from "react";
-import context from "../../context";
+import React, { useState } from "react";
+import { getContextValue } from "../../context";
 import FilesManager from "./FilesManager";
 import FormOptions from "./FormOptions";
 import PostContentInput from "./PostContentInput";
 import useDragAndDrop from "../../hooks/useDragAndDrop";
+import useClassNames from "../../hooks/useClassNames";
 
 const PostContentForm = ({
   formId,
@@ -12,15 +13,18 @@ const PostContentForm = ({
   mediaFiles,
   setMediaFiles
 }) => {
-  const mediaFileInputId = "media-input";
   const [
     isDragging,
     changeIsDragging,
     finishDrag,
     getDraggedFiles
   ] = useDragAndDrop(false, { allowedTypes: ["image", "video"] });
-  const { user, postState } = useContext(context);
+  const [getClassNames, addClassNameIf] = useClassNames(["post-content"]);
+  const { user, postState } = getContextValue();
   const inputRef = React.createRef();
+  const mediaFileInputId = "media-input";
+
+  addClassNameIf(isDragging, "is-dragging");
 
   const saveNewPost = event => {
     event.preventDefault();
@@ -52,9 +56,6 @@ const PostContentForm = ({
 
   const toMediaFile = file => ({ uploadProgress: 0, file });
 
-  const classNames = ["post-content"];
-  if (isDragging) classNames.push("is-dragging");
-
   const finishDragOnFormLeave = event => {
     const { target } = event;
     if (!isChildrenOf(formId, target)) finishDrag(event);
@@ -65,7 +66,7 @@ const PostContentForm = ({
   return (
     <form
       id={formId}
-      className={classNames.join(" ")}
+      className={getClassNames(" ")}
       onSubmit={saveNewPost}
       onDragOver={changeIsDragging}
       onDrop={addDroppedMediaFiles}
