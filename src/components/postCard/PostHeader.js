@@ -6,7 +6,7 @@ const renderParagraphWithFormattedDate = (formattedDate, props) => (
   <p {...props}>{formattedDate}</p>
 );
 
-const PostHeader = ({ user, createAt }) => {
+const PostHeader = ({ user, creationDate }) => {
   return (
     <figure className="post-info">
       <ProfilePhotoMiniature userPhotoSrc={user.photo} />
@@ -15,7 +15,7 @@ const PostHeader = ({ user, createAt }) => {
           {user.name.first} {user.name.last}
         </h4>
         <DateFormatter
-          date={createAt}
+          date={new Date(creationDate)}
           children={renderParagraphWithFormattedDate}
         />
       </figcaption>

@@ -7,13 +7,14 @@ import "./Home.css";
 
 const PostCards = () => <Consumer>{renderCardsFromContextPost}</Consumer>;
 
-const renderCardsFromContextPost = ({ postState }) => {
-  const [post] = postState;
-  const cards = post.map(toPostCards);
-  return <Fragment>{cards}</Fragment>;
+const renderCardsFromContextPost = ({ getPostsState }) => {
+  const [isLoading, posts] = getPostsState;
+  console.log(posts);
+  const cards = Object.entries(posts).map(toPostsCards);
+  return <Fragment>{isLoading ? "Loading..." : cards}</Fragment>;
 };
 
-const toPostCards = post => <PostCard {...post} key={post._id} />;
+const toPostsCards = ([id, post]) => <PostCard {...post} key={id} />;
 
 const errorMessage = <p style={{ textAlign: "center" }}>There was an error!</p>;
 

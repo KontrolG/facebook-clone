@@ -7,7 +7,7 @@ const PostBody = ({ text }) => {
   return (
     <article className="post-body">
       {textParagraph}
-      <MediaItems
+      {/* <MediaItems
         items={[
           "img/test.jpg",
           "img/test.jpg",
@@ -15,7 +15,7 @@ const PostBody = ({ text }) => {
           "img/test.jpg",
           "img/test.jpg"
         ]}
-      />
+      /> */}
     </article>
   );
 };

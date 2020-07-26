@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 
 const FileItem = ({ file }) => {
-  const [uploadProgress, setUploadProgress] = useState(0);
-  const isDone = uploadProgress === 100;
   return (
-    <li data-is-done={isDone} style={{ "--progress": uploadProgress }}>
+    <li>
       <button>⨯</button>
       <img src={URL.createObjectURL(file)} />
     </li>
