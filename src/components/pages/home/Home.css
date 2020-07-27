@@ -228,12 +228,15 @@ img.profile-photo {
   width: calc(25% - 0.25rem);
   overflow: hidden;
   flex: 0 0 auto;
-  background-color: rgb(208, 213, 221);
+  background-color: #222;
 }
 
 .file-stack li img {
-  height: 100%;
-  object-fit: cover;
+  width: 100%;
+  object-fit: contain;
+  position: relative;
+  transform: translateY(-50%);
+  top: 50%;
 }
 
 .file-stack li button {

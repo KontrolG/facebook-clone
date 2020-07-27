@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { getContextValue } from "../../context";
-import Post from "../../firebase-utils/PostModel";
+import postWithMediaFiles from "../../firebase-utils/postWithMediaFiles";
 import FilesManager from "./FilesManager";
 import FormOptions from "./FormOptions";
 import PostContentInput from "./PostContentInput";
@@ -32,11 +32,13 @@ const PostContentForm = ({
     const newPost = {
       user,
       text,
-      /* mediaFiles, */ creationDate: Post.getTimestamp()
+      mediaFiles,
+      creationDate: postWithMediaFiles.timestamp
     };
 
     clearForm();
-    const createdPost = await Post.create(newPost);
+    const createdPost = await postWithMediaFiles.createPost(newPost);
+    console.log(createdPost);
     addNewPost(createdPost);
   };
 
@@ -57,11 +59,8 @@ const PostContentForm = ({
   };
 
   const addMediaFiles = newFiles => {
-    const newMediaFiles = Array.from(newFiles).map(toMediaFile);
-    setMediaFiles(mediaFiles => [...mediaFiles, ...newMediaFiles]);
+    setMediaFiles(mediaFiles => [...mediaFiles, ...newFiles]);
   };
-
-  const toMediaFile = file => ({ uploadProgress: 0, file });
 
   const finishDragOnFormLeave = event => {
     const { target } = event;

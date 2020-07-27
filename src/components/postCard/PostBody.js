@@ -1,23 +1,25 @@
 import React, { Fragment } from "react";
 import MediaItems from "./MediaItems";
 
-const PostBody = ({ text }) => {
-  const textParagraph = text !== "" ? <p>{text}</p> : null;
+const PostBody = ({ text, mediaFiles }) => {
+  const hasText = text !== "";
+  const textParagraph = hasText ? <p>{text}</p> : null;
+  const mediaFilesEntries = Object.entries(mediaFiles);
+  const hasMediaFilesEntries = mediaFilesEntries.length > 0;
+  const mediaItems = hasMediaFilesEntries ? (
+    <MediaItems items={mediaFilesEntries} />
+  ) : null;
 
   return (
     <article className="post-body">
       {textParagraph}
-      {/* <MediaItems
-        items={[
-          "img/test.jpg",
-          "img/test.jpg",
-          "img/test.jpg",
-          "img/test.jpg",
-          "img/test.jpg"
-        ]}
-      /> */}
+      {mediaItems}
     </article>
   );
+};
+
+PostBody.defaultProps = {
+  mediaFiles: {}
 };
 
 export default PostBody;

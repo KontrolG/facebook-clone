@@ -1,20 +1,16 @@
 import React from "react";
-
-const MediaItem = ({ isLastItem, hiddenItemsCount, children }) => {
-  if (isLastItem) {
-    return <li data-hidden-items={`+${hiddenItemsCount}`}>{children}</li>;
-  }
-  return <li>{children}</li>;
-};
+import MediaItem from "./MediaItem";
 
 const getMediaItems = items => {
   const [visibleItems, hiddenItemsCount] = splitVisibleItems(items);
 
-  const toMediaItem = (item, index, items) => {
-    const isLastItem = index === (items.length - 1);
-    const imgElement = <img src={item} />;
+  const toMediaItem = ([id, item], index, items) => {
+    const isLastItem = index === items.length - 1;
     return (
-      <MediaItem {...{ isLastItem, hiddenItemsCount }}>{imgElement}</MediaItem>
+      <MediaItem
+        key={id}
+        {...{ item, isLastItem, hiddenItemsCount }}
+      ></MediaItem>
     );
   };
 

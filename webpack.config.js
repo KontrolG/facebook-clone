@@ -1,16 +1,14 @@
 const path = require("path");
-const webpack = require("webpack");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 
-// new webpack.WatchIgnorePlugin(paths); /!(.js||jsx)$/ que no terminen en js o jsx.
 module.exports = {
-  entry: [/* "@babel/polyfill", */ "./src/index.js"],
+  entry: ["@babel/polyfill", "./src/index.js"],
   output: {
-    path: path.resolve(__dirname, "build"),
+    path: path.resolve(__dirname, "docs"),
     filename: "js/main.js"
   },
   devServer: {
-    contentBase: path.join(__dirname, "public"),
+    contentBase: path.join(__dirname, "docs"),
     host: "0.0.0.0",
     port: 8080,
     openPage: "http://localhost:8080"
@@ -21,7 +19,7 @@ module.exports = {
   plugins: [
     new HTMLWebpackPlugin({
       filename: "index.html",
-      template: "./public/index.html"
+      template: "./src/index.html"
     })
   ],
   module: {

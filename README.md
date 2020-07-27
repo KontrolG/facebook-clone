@@ -10,8 +10,12 @@
 - Limpiar la entrada de texto anterior. -> Uso de **ref** para limpiar su contenido al enviar el formulario.
 - Manejar el estado de los componentes de forma optima. -> Uso de **Context API**.
 - Implementar **Arrastra y Suelta** para subir imagenes y videos y permitir el uso de su lógica en multiples componentes (reusabilidad). -> Uso de **Custom Hook** con la lógica que puede ser reutilizada.
+- Implementar **Firebase Realtime Database**. -> Se registró el proyecto y se añadió el SDK de Firebase para almacenar las publicaciones en la base de datos.
+- Implementar **Firebase Storage**. -> Metódos para interactuar con el SDK de Firebase para subir los archivos multimedia de las publicaciones.
 
 ### No Completadas
 
-- Subir los archivos multimedia de forma simultanea mientras se escribe la publicación, de uno en uno.
-- Utilizar **loader** en webpack para comprimir estaticos.
+- Implementar **Firebase Authentication**.
+- Completar **CRUD** de publicaciones.
+- Hacer Code Splitting para mejorar el tamaño de los estaticos.
+- Utilizar **loader** en webpack para manejar archivos de _CSS_.

@@ -1,25 +1,13 @@
 import React from "react";
 import { v4 as getRandomId } from "uuid";
-import { Consumer } from "../../context";
-import ProfilePhotoMiniature from "../ProfilePhotoMiniature";
-import NavLink from "./NavLink";
+import NavItem from "./NavItem";
+import ProfileLink from "./ProfileLink";
+import navLinks from "./navLinks";
 
-const ProfileLink = () => (
-  <Consumer>{renderProfileLinkFromContextUser}</Consumer>
-);
-
-const renderProfileLinkFromContextUser = ({ user }) => (
-  <NavLink className="profile-link">
-    <ProfilePhotoMiniature userPhotoSrc={user.photo} />
-    <span>{user.name.first}</span>
-  </NavLink>
-);
-
-const toLinkItem = item => <NavLink key={getRandomId()}>{item}</NavLink>;
+const toNavItem = item => <NavItem key={getRandomId()}>{item}</NavItem>;
+const items = navLinks.map(toNavItem);
 
 const NavList = () => {
-  const items = ["Inicio", "Crear"].map(toLinkItem);
-
   return (
     <nav>
       <ul>

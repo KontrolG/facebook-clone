@@ -2,29 +2,32 @@ import { database, TIMESTAMP } from "./init";
 
 const modelFor = referencePath => {
   const reference = database.ref(referencePath);
-
-  return class Model {
-    static async getSnapshotValueFromReference(reference) {
+  return {
+    reference,
+    async getSnapshotValueFromReference(reference) {
       const snapshot = await reference.once("value");
       return snapshot.val();
-    }
-
-    static async getAll() {
+    },
+    getAll() {
       return this.getSnapshotValueFromReference(reference);
-    }
-
-    static async create(item) {
-      const newPostReference = reference.push(item);
-      const newPostValue = await this.getSnapshotValueFromReference(
-        newPostReference
+    },
+    async create(item) {
+      const newItemReference = await this.getNewItemReference(item);
+      return this.getCreatedItem(newItemReference);
+    },
+    getNewItemReference(item) {
+      return reference.push(item);
+    },
+    async getCreatedItem(itemReference) {
+      const newItemValue = await this.getSnapshotValueFromReference(
+        itemReference
       );
-      const newPostKey = newPostReference.key;
-      return { [newPostKey]: newPostValue };
-    }
-
-    static getTimestamp() {
-      return TIMESTAMP;
-    }
+      return this.getCreatedItemFromSnapshotValue(itemReference, newItemValue);
+    },
+    getCreatedItemFromSnapshotValue({ key }, snapshotValue) {
+      return { [key]: snapshotValue };
+    },
+    timestamp: TIMESTAMP
   };
 };
 

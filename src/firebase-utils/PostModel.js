@@ -1,3 +1,5 @@
 import modelFor from "./modelFor";
 
-export default modelFor("posts");
+const postModel = modelFor("posts");
+
+export default postModel;

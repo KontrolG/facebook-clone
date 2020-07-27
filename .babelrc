@@ -1,3 +1,14 @@
 {
-  "presets": ["@babel/preset-react"]
+  "presets": [
+    /* NEEDS PACKAGE UPDATE 
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "browsers": ["last 5 versions", "ie >= 8"]
+        }
+      }
+    ], */
+    "@babel/preset-react"
+  ]
 }

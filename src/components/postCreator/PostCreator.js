@@ -9,9 +9,9 @@ const PostCreator = () => {
 
   const formId = "post-creator-form";
 
-  const isNotDone = ({ uploadProgress }) => uploadProgress < 100;
-  const isUploadingFiles = mediaFiles.length > 0 && mediaFiles.some(isNotDone);
-  const canSendThePost = text !== "" && !isUploadingFiles;
+  const textIsFilled = text !== "";
+  const hasMediaFiles = mediaFiles.length > 0;
+  const canSendThePost = textIsFilled || hasMediaFiles;
 
   return (
     <CardWithTitle title="Crear publicación">
