@@ -2,9 +2,11 @@ import * as firebase from "firebase/app";
 import "firebase/database";
 import "firebase/storage";
 
+import { databaseURL, storageBucket } from "./keys";
+
 const config = {
-  databaseURL: "https://fb-post-creator.firebaseio.com/",
-  storageBucket: "gs://fb-post-creator.appspot.com"
+  databaseURL,
+  storageBucket
 };
 
 firebase.initializeApp(config);
