@@ -12,9 +12,6 @@ module.exports = {
     host: "0.0.0.0",
     port: 8080,
     openPage: "http://localhost:8080"
-    // proxy: {
-    //   "/api": "http://localhost:7777"
-    // }
   },
   plugins: [
     new HTMLWebpackPlugin({

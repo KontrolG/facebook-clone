@@ -12,10 +12,10 @@
 - Implementar **Arrastra y Suelta** para subir imagenes y videos y permitir el uso de su lógica en multiples componentes (reusabilidad). -> Uso de **Custom Hook** con la lógica que puede ser reutilizada.
 - Implementar **Firebase Realtime Database**. -> Se registró el proyecto y se añadió el SDK de Firebase para almacenar las publicaciones en la base de datos.
 - Implementar **Firebase Storage**. -> Metódos para interactuar con el SDK de Firebase para subir los archivos multimedia de las publicaciones.
+- Utilizar **loader** en webpack para manejar archivos de _CSS_. -> Se añadió style-loader y css-loader para cargar los estilos en modo de desarrollo, para producción, se añadira MiniCSSExtractPlugin.
 
 ### No Completadas
 
 - Implementar **Firebase Authentication**.
 - Completar **CRUD** de publicaciones.
 - Hacer Code Splitting para mejorar el tamaño de los estaticos.
-- Utilizar **loader** en webpack para manejar archivos de _CSS_.
