@@ -1,6 +1,7 @@
 import React from "react";
 import ProfilePhotoMiniature from "../ProfilePhotoMiniature";
 import DateFormatter from "../DateFormatter";
+import PostHeaderDropdown from "./PostHeaderDropdown";
 
 const renderParagraphWithFormattedDate = (formattedDate, props) => (
   <p {...props}>{formattedDate}</p>
@@ -8,9 +9,9 @@ const renderParagraphWithFormattedDate = (formattedDate, props) => (
 
 const PostHeader = ({ user, creationDate }) => {
   return (
-    <figure className="post-info">
+    <div className="post-info">
       <ProfilePhotoMiniature userPhotoSrc={user.photo} />
-      <figcaption>
+      <div className="post-creation-info">
         <h4>
           {user.name.first} {user.name.last}
         </h4>
@@ -18,8 +19,9 @@ const PostHeader = ({ user, creationDate }) => {
           date={new Date(creationDate)}
           children={renderParagraphWithFormattedDate}
         />
-      </figcaption>
-    </figure>
+      </div>
+      <PostHeaderDropdown />
+    </div>
   );
 };
 
