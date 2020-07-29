@@ -1,13 +1,28 @@
 import React from "react";
 import useClassNames from "../hooks/useClassNames";
 
-const Button = ({ children, isDisabled, formId, primary, fullWidth }) => {
-  const [getClassNames, addClassNameIf] = useClassNames([]);
+const Button = ({
+  className,
+  children,
+  isDisabled,
+  formId,
+  primary,
+  fullWidth,
+  onClick,
+  onBlur
+}) => {
+  const [getClassNames, addClassNameIf] = useClassNames([className]);
   addClassNameIf(primary, "btn-primary");
   addClassNameIf(fullWidth, "full-width");
 
   return (
-    <button className={getClassNames()} disabled={isDisabled} form={formId}>
+    <button
+      className={getClassNames()}
+      disabled={isDisabled}
+      form={formId}
+      onClick={onClick}
+      onBlur={onBlur}
+    >
       {children}
     </button>
   );
