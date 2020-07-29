@@ -286,17 +286,60 @@ img.profile-photo {
   margin-right: 0.5rem;
 }
 
-.post-info figcaption {
+.post-info .post-creation-info {
   font-size: 0.85em;
 }
 
-.post-info h4 {
+.post-info .post-creation-info h4 {
   color: var(--primary-color);
 }
 
-.post-info p {
+.post-info .post-creation-info p {
   font-size: 0.9em;
   color: #555;
+}
+
+.post-options {
+  margin-left: auto;
+  position: relative;
+}
+
+.post-option-dropdown-button {
+  background: none;
+  border: none;
+  padding: 0.25em 0.5em;
+}
+
+.post-option-dropdown-button:focus {
+  background: rgb(232, 235, 238);
+}
+
+.post-option-dropdown-list {
+  background: white;
+  width: auto;
+  position: absolute;
+  left: 100%;
+  top: 100%;
+  transform: translateX(-100%);
+  display: none;
+}
+
+.post-option-dropdown-list.open {
+  display: block;
+}
+
+.post-option-dropdown-list > li {
+  cursor: pointer;
+  display: flex;
+  padding: 0.5rem 1rem;
+}
+
+.post-option-dropdown-list > li:hover {
+  background: rgb(230, 238, 250);
+}
+
+.post-option-dropdown-list i {
+  margin-right: 1rem;
 }
 
 .post-body p {
