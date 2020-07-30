@@ -12,7 +12,10 @@ html {
 
 /* GENERAL SELECTORS */
 body {
-  background-color: rgb(40, 40, 40);
+  --primary-color: rgb(65, 103, 178);
+  --border-radius: 2px;
+  font: 350 16px/1.5 Helvetica;
+  background-color: rgb(235, 235, 235) !important;
 }
 
 ul {
@@ -22,6 +25,27 @@ ul {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+input,
+textarea,
+button,
+label[for="media-input"] {
+  border: none;
+  outline: none;
+  font: inherit;
+  color: inherit;
+}
+
+button,
+label[for="media-input"] {
+  cursor: pointer;
+}
+
+.card {
+  background: white;
+  border-radius: var(--border-radius);
+  border: 1px solid #ccc;
 }
 
 .test,
