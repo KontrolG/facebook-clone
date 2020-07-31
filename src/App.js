@@ -1,23 +1,15 @@
-import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Provider } from "./context";
-import Home from "./components/pages/home/Home";
+import React, { StrictMode } from "react";
+import { UserProvider } from "./contexts/UserContext";
 import "./App.css";
+import MainRouter from "./components/MainRouter";
 
 const App = () => {
-  const user = {
-    name: { first: "Georgelyz", last: "Martinez" },
-    photo: "img/test.jpg"
-  };
-
   return (
-    <Provider value={{ user }}>
-      <Router>
-        <Switch>
-          <Route exac path="/" component={Home} />
-        </Switch>
-      </Router>
-    </Provider>
+    <StrictMode>
+      <UserProvider>
+        <MainRouter />
+      </UserProvider>
+    </StrictMode>
   );
 };
 
