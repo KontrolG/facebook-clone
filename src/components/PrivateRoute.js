@@ -15,11 +15,12 @@ const PrivateRoute = ({
 );
 
 PrivateRoute.defaultProps = {
-  exact: false
+  exact: false,
+  isAuthenticated: false
 };
 
 PrivateRoute.propTypes = {
-  isAuthenticated: PropTypes.bool.isRequired,
+  isAuthenticated: PropTypes.bool,
   onUnauthenticate: PropTypes.func.isRequired,
   exact: PropTypes.bool,
   path: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(RegExp)])
