@@ -7,6 +7,7 @@ module.exports = {
     path: path.resolve(__dirname, "docs"),
     filename: "js/main.js"
   },
+  devTools: "inline-source-map",
   devServer: {
     contentBase: path.join(__dirname, "docs"),
     host: "0.0.0.0",

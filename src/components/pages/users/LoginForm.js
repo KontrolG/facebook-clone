@@ -2,8 +2,12 @@ import React from "react";
 import Button from "../../Button";
 
 const LoginForm = props => {
+  const sendUser = event => {
+    event.preventDefault();
+  };
+
   return (
-    <form className="login-form">
+    <form className="login-form" onSubmit={sendUser}>
       <div className="wrapper">
         <label>Correo electronico</label>
         <input type="email" placeholder="Introduce tu correo electronico" />

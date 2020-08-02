@@ -8,15 +8,15 @@ import {
 import PrivateRoute from "./PrivateRoute";
 
 import Home from "./pages/home/Home";
-import Login from "./pages/login/Login";
+import Users from "./pages/users/Users";
 
 const MainRouter = () => {
   return (
     <Router>
       <Switch>
-        <Route exac path="/login" component={Login} />
+        <Route exac path="/user" component={Users} />
         <PrivateRoute
-          onUnauthenticate={() => <Redirect to="/login" />}
+          onUnauthenticate={() => <Redirect to="/user/login" />}
           exact
           path="/"
           component={Home}

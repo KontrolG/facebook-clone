@@ -1,3 +1,7 @@
+a[href] {
+  color: var(--primary-color);
+}
+
 .centered-container {
   display: flex;
   justify-content: center;
@@ -5,21 +9,21 @@
   flex-direction: column;
 }
 
-.login-main {
+.users-main {
   height: max-content;
 }
 
-.login-title {
+.users-title {
   text-align: center;
   margin-top: -5rem;
   margin-bottom: 1.25rem;
 }
 
-.login-title h2 {
+.users-title h2 {
   font-size: 2rem;
 }
 
-.login-box {
+.users-box {
   width: 450px;
   margin: 0 auto;
 }
@@ -45,6 +49,10 @@
   box-shadow: 0px 0px 1.5px #333;
   width: 100%;
   padding: 0.15em 0.5em;
+}
+
+.login-form .wrapper > input.is-invalid {
+  box-shadow: 0px 0px 5px darkred;
 }
 
 .login-form .wrapper > * {
