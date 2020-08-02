@@ -75,23 +75,6 @@ label[for="media-input"] {
   background-color: rgb(245, 245, 248);
   color: rgb(75, 75, 75);
 }
-
-.btn-primary {
-  background-color: var(--primary-color);
-  color: white;
-  border-radius: var(--border-radius);
-  padding: 0.4rem 0;
-  font-size: 0.85em;
-}
-
-.btn-primary[disabled] {
-  background-color: rgb(156, 180, 216);
-  cursor: not-allowed;
-}
-
-.full-width {
-  width: 100%;
-}
 /* CARD */
 main > * {
   margin-bottom: 0.75rem;

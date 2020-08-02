@@ -1,0 +1,52 @@
+.centered-container {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.login-main {
+  height: max-content;
+}
+
+.login-title {
+  text-align: center;
+  margin-top: -5rem;
+  margin-bottom: 1.25rem;
+}
+
+.login-title h2 {
+  font-size: 2rem;
+}
+
+.login-box {
+  width: 450px;
+  margin: 0 auto;
+}
+
+.login-box > * {
+  border-bottom: none;
+  text-align: center;
+}
+
+.login-form {
+  padding: 0.25rem 0.5rem;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.login-form .wrapper {
+  text-align: left;
+  margin-bottom: 0.75rem;
+}
+
+.login-form .wrapper > input {
+  margin-top: 0.25rem;
+  box-shadow: 0px 0px 1.5px #333;
+  width: 100%;
+  padding: 0.15em 0.5em;
+}
+
+.login-form .wrapper > * {
+  display: block;
+}
