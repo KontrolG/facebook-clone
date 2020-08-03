@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Switch,
   Route,
   Redirect
@@ -14,9 +14,9 @@ const MainRouter = () => {
   return (
     <Router>
       <Switch>
-        <Route exac path="/user" component={Users} />
+        <Route exac path="/users" component={Users} />
         <PrivateRoute
-          onUnauthenticate={() => <Redirect to="/user/login" />}
+          onUnauthenticate={() => <Redirect to="/users/login" />}
           exact
           path="/"
           component={Home}
