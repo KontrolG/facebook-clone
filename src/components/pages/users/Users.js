@@ -2,9 +2,12 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 import Card from "../../cards/Card";
 import Login from "./Login";
+import Register from "./Register";
 import "./Users.css";
 
-const Users = props => {
+const Users = ({ match }) => {
+  const { url } = match;
+
   return (
     <div className="centered-container">
       <header className="users-title">
@@ -13,7 +16,8 @@ const Users = props => {
       <main className="users-main">
         <Card className="users-box">
           <Switch>
-            <Route exact path="/users/login" component={Login} />
+            <Route exact path={`${url}/login`} component={Login} />
+            <Route exact path={`${url}/register`} component={Register} />
           </Switch>
         </Card>
       </main>
