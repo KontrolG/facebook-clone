@@ -7,7 +7,7 @@ const LoginForm = props => {
   };
 
   return (
-    <form className="login-form" onSubmit={sendUser}>
+    <form className="users-form" onSubmit={sendUser}>
       <div className="wrapper">
         <label>Correo electronico</label>
         <input type="email" placeholder="Introduce tu correo electronico" />

@@ -33,28 +33,33 @@ a[href] {
   text-align: center;
 }
 
-.login-form {
+.users-form {
   padding: 0.25rem 0.5rem;
   width: 80%;
   margin: 0 auto;
 }
 
-.login-form .wrapper {
+.users-form .wrapper {
   text-align: left;
   margin-bottom: 0.75rem;
 }
 
-.login-form input {
+.users-form input {
   margin-top: 0.25rem;
   box-shadow: 0px 0px 1.5px #333;
   width: 100%;
   padding: 0.15em 0.5em;
 }
 
-.login-form .wrapper > input.is-invalid {
+.users-form .wrapper > input.is-invalid {
   box-shadow: 0px 0px 5px darkred;
 }
 
-.login-form .wrapper > * {
-  display: block;
+.name-inputs {
+  display: flex;
+  justify-content: space-between;
+}
+
+.name-inputs input {
+  flex-basis: calc(50% - 0.5rem);
 }

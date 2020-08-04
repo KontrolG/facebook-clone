@@ -7,7 +7,7 @@ const RegisterForm = props => {
   };
 
   return (
-    <form className="login-form" onSubmit={sendUser}>
+    <form className="users-form" onSubmit={sendUser}>
       <div className="wrapper">
         <label>Nombre completo</label>
         <div className="name-inputs">
@@ -28,7 +28,7 @@ const RegisterForm = props => {
         <input type="password" placeholder="Confirma tu contraseña" />
       </div>
       <Button type="submit" primary className="login-submit-button">
-        Iniciar Sesión
+        Registrar
       </Button>
     </form>
   );
