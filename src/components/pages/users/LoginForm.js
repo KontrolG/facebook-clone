@@ -1,61 +1,29 @@
 import React from "react";
 import Button from "../../Button";
-
-const changeFieldValue = (previousState, actionPayload) => {
-  const { fieldName, value } = actionPayload;
-
-  if (fieldName in previousState) {
-    return {
-      ...previousState,
-      [fieldName]: value
-    };
-  }
-  throw new Error("Field name not in parent form");
-};
-
-const useForm = (...fields) => {
-  // for each field on fields, create a action creator.
-  const fieldsObjects = fields.map(field => ({ [field]: "" }));
-  const initialState = Object.assign({ errors: [] }, ...fieldsObjects);
-
-  const [state, dispatch] = React.useReducer((previousState, action) => {
-    switch (action.type) {
-      case "change_field":
-        return changeFieldValue(previousState, action.payload);
-      default:
-        return previousState;
-    }
-  }, initialState);
-
-  const changeFieldsValue = ({ target }) => {
-    const { name, value } = target;
-    const payload = { fieldName: name, value };
-    dispatch({ type: "change_field", payload });
-    console.log(state);
-  };
-
-  return [state, changeFieldsValue];
-};
+import useForm from "../../../hooks/useForm";
+import { useUserContext } from "../../../contexts/UserContext";
 
 const LoginForm = props => {
   const [formState, changeFieldsValue] = useForm("email", "password");
+  const { login } = useUserContext();
 
   const sendUser = event => {
     event.preventDefault();
+    const { email, password } = formState;
+    const formUser = { email, password };
+    login(formUser);
   };
 
   return (
-    <form
-      className="users-form"
-      onSubmit={sendUser}
-      onChange={changeFieldsValue}
-    >
+    <form className="users-form" onSubmit={sendUser}>
       <div className="wrapper">
         <label>Correo electronico</label>
         <input
           type="email"
           placeholder="Introduce tu correo electronico"
           name="email"
+          onChange={changeFieldsValue}
+          value={formState.email}
         />
       </div>
       <div className="wrapper">
@@ -64,6 +32,8 @@ const LoginForm = props => {
           type="password"
           placeholder="Introduce tu contraseña"
           name="password"
+          onChange={changeFieldsValue}
+          value={formState.password}
         />
       </div>
       <Button type="submit" primary>
