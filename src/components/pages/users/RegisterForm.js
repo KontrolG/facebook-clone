@@ -27,7 +27,7 @@ const RegisterForm = props => {
         <label>Confirmar contraseña</label>
         <input type="password" placeholder="Confirma tu contraseña" />
       </div>
-      <Button type="submit" primary className="login-submit-button">
+      <Button type="submit" primary>
         Registrar
       </Button>
     </form>

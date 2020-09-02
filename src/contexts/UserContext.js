@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useContext } from "react";
 
 const defaultUser = {
   uid: null,
@@ -10,6 +10,7 @@ const defaultUser = {
 const defaultState = {
   loading: false,
   user: defaultUser,
+  login: async () => {},
   loginWithGoogle: async () => {},
   logout: async () => {}
 };
@@ -19,7 +20,13 @@ const UserContext = createContext(defaultState);
 const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
-  const providerValue = { user, setUser };
+  const login = ({ email, password }) => {
+    // auth with firebase, then set user to firebase user.
+    setUser({ uid: 0, ...defaultUsers, email });
+  };
+
+  const providerValue = { user, login };
+
   return (
     <UserContext.Provider value={providerValue}>
       {children}
