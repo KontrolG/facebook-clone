@@ -1,14 +1,16 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Card from "../../cards/Card";
-import Login from "./Login";
-import Register from "./Register";
 import { useUserContext } from "../../../contexts/UserContext";
 import "./Users.css";
 
+import Login from "./Login";
+import Register from "./Register";
+
 const Users = ({ match }) => {
   const { user } = useUserContext();
-  const isAlreadyLoggedIn = user !== null && user.uid;
+  const isAlreadyLoggedIn = user !== null;
+
   if (isAlreadyLoggedIn) {
     return <Redirect to="/" />;
   }
