@@ -22,10 +22,14 @@ const UserProvider = ({ children }) => {
 
   const login = ({ email, password }) => {
     // auth with firebase, then set user to firebase user.
-    setUser({ uid: 0, ...defaultUsers, email });
+    setUser({ ...defaultUser, uid: 0, email });
   };
 
-  const providerValue = { user, login };
+  const logout = () => {
+    setUser(null);
+  };
+
+  const providerValue = { user, login, logout };
 
   return (
     <UserContext.Provider value={providerValue}>
