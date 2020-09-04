@@ -1,13 +1,13 @@
 import React from "react";
 
-const NavLink = ({ to, className, children }) => (
+const NavItem = ({ to, className, children }) => (
   <li className={className}>
     <a href={to}>{children}</a>
   </li>
 );
 
-NavLink.defaultProps = {
+NavItem.defaultProps = {
   to: "#"
 };
 
-export default NavLink;
+export default NavItem;
