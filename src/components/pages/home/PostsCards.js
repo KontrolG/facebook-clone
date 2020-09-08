@@ -1,5 +1,5 @@
-import React, { Fragment } from "react";
-import { getContextValue } from "../../../context";
+import React from "react";
+import { usePostsContext } from "../../../contexts/PostsContext";
 import PostCard from "../../postCard/PostCard";
 
 const byCreationDate = ([, lastPost], [, nextPost]) =>
@@ -13,13 +13,13 @@ const getCardsFromPosts = posts =>
     .map(toPostsCards);
 
 const PostsCards = () => {
-  const [isLoading, posts] = getContextValue().getPostsState;
+  const { isLoading, posts } = usePostsContext();
   console.log(posts);
   const cards = getCardsFromPosts(posts);
 
   const loadingMessage = <p>Loading...</p>;
 
-  return <Fragment>{isLoading ? loadingMessage : cards}</Fragment>;
+  return isLoading ? loadingMessage : cards;
 };
 
 export default PostsCards;
