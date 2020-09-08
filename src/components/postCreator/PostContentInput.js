@@ -1,15 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Consumer } from "../../context";
+import { useUserContext } from "../../contexts/UserContext";
 import ProfilePhotoMiniature from "../ProfilePhotoMiniature";
 import TextareaWithLineBreaks from "./TextareaWithLineBreaks";
-
-const ProfilePhoto = () => (
-  <Consumer>{renderProfileMiniatureFromContextUser}</Consumer>
-);
-
-const renderProfileMiniatureFromContextUser = ({ user }) => (
-  <ProfilePhotoMiniature userPhotoSrc={user.photo} />
-);
 
 const PostContentInput = ({ inputRef, setText }) => {
   const changeText = event => {
@@ -17,9 +9,11 @@ const PostContentInput = ({ inputRef, setText }) => {
     setText(value.join("\r\n"));
   };
 
+  const { user } = useUserContext();
+
   return (
     <figure className="post-content-wrapper">
-      <ProfilePhoto />
+      <ProfilePhotoMiniature userPhotoSrc={user.photo} />
       <figcaption>
         <TextareaWithLineBreaks
           title="Escribir publicación"

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { getContextValue } from "../../context";
+import { useUserContext } from "../../contexts/UserContext";
+import { usePostsContext } from "../../contexts/PostsContext";
 import postWithMediaFiles from "../../firebase-utils/postWithMediaFiles";
 import FilesManager from "./FilesManager";
 import FormOptions from "./FormOptions";
@@ -21,7 +22,8 @@ const PostContentForm = ({
     getDraggedFiles
   ] = useDragAndDrop(false, { allowedTypes: ["image", "video"] });
   const [getClassNames, addClassNameIf] = useClassNames(["post-content"]);
-  const { user, getPostsState } = getContextValue();
+  const { user } = useUserContext();
+  const { setPosts } = usePostsContext();
   const inputRef = React.createRef();
   const mediaFileInputId = "media-input";
 
@@ -43,8 +45,7 @@ const PostContentForm = ({
   };
 
   const addNewPost = newPost => {
-    const [, , setPosts] = getPostsState;
-    setPosts(post => ({ ...newPost, ...post }));
+    setPosts(posts => ({ ...newPost, ...posts }));
   };
 
   const clearForm = () => {
