@@ -1,18 +1,18 @@
 import React from "react";
 import { v4 as getRandomId } from "uuid";
-import NavItem from "./NavItem";
 import ProfileLink from "./ProfileLink";
-import navLinks from "./navLinks";
-
-const toNavItem = item => <NavItem key={getRandomId()}>{item}</NavItem>;
-const items = navLinks.map(toNavItem);
+import { useUserContext } from "../../contexts/UserContext";
 
 const NavList = () => {
+  const { user } = useUserContext();
+
   return (
     <nav>
       <ul>
-        <ProfileLink key={getRandomId()} />
-        {items}
+        <ProfileLink key={getRandomId()} user={user} />
+        <li key={getRandomId()}>
+          <a href="#">Salir</a>
+        </li>
       </ul>
     </nav>
   );
