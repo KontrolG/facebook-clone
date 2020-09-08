@@ -1,4 +1,5 @@
 import React, { createContext, useState, useContext } from "react";
+import PropTypes from "prop-types";
 
 const defaultUser = {
   uid: null,
@@ -36,6 +37,10 @@ const UserProvider = ({ children }) => {
       {children}
     </UserContext.Provider>
   );
+};
+
+UserContext.propTypes = {
+  children: PropTypes.node.isRequired
 };
 
 const useUserContext = () => {
