@@ -34,13 +34,13 @@
   display: flex;
   font-size: 0.9em;
   font-weight: bolder;
-  color: white;
   align-items: center;
 }
 
 .search nav ul a {
   padding: 0.25em 1em;
   border-right: 1px solid #555;
+  color: white !important;
 }
 
 .search nav ul li:last-of-type a {
