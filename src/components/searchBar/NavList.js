@@ -4,14 +4,16 @@ import ProfileLink from "./ProfileLink";
 import { useUserContext } from "../../contexts/UserContext";
 
 const NavList = () => {
-  const { user } = useUserContext();
+  const { user, logout } = useUserContext();
 
   return (
     <nav>
       <ul>
         <ProfileLink key={getRandomId()} user={user} />
         <li key={getRandomId()}>
-          <a href="#">Salir</a>
+          <a href="#" onClick={logout}>
+            Salir
+          </a>
         </li>
       </ul>
     </nav>

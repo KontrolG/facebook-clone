@@ -8,7 +8,7 @@ import Login from "./Login";
 import Register from "./Register";
 
 const Users = ({ match }) => {
-  const { user } = useUserContext();
+  const { user, loginWithGoogle } = useUserContext();
   const isAlreadyLoggedIn = user !== null;
 
   if (isAlreadyLoggedIn) {
@@ -28,6 +28,11 @@ const Users = ({ match }) => {
             <Route exact path={`${url}/login`} component={Login} />
             <Route exact path={`${url}/register`} component={Register} />
           </Switch>
+
+          <div className="auth-alternatives">
+            <p>O</p>
+            <button onClick={loginWithGoogle}>Inicia sesión con Google</button>
+          </div>
         </Card>
       </main>
     </div>
