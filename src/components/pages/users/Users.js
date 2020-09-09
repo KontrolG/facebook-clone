@@ -1,6 +1,7 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Card from "../../cards/Card";
+import Button from "../../Button";
 import { useUserContext } from "../../../contexts/UserContext";
 import "./Users.css";
 
@@ -30,8 +31,10 @@ const Users = ({ match }) => {
           </Switch>
 
           <div className="auth-alternatives">
-            <p>O</p>
-            <button onClick={loginWithGoogle}>Inicia sesión con Google</button>
+            <p>- O -</p>
+            <Button className="google-button" onClick={loginWithGoogle}>
+              Inicia sesión con Google
+            </Button>
           </div>
         </Card>
       </main>
