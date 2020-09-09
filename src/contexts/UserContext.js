@@ -1,5 +1,7 @@
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useState, useContext, useEffect } from "react";
+import firebase from "../firebase-utils/init";
 import PropTypes from "prop-types";
+import useAuthenticationState from "../hooks/useAuthenticationState";
 
 const defaultUser = {
   uid: null,
@@ -19,6 +21,7 @@ const defaultState = {
 const UserContext = createContext(defaultState);
 
 const UserProvider = ({ children }) => {
+  const firebaseUser = useAuthenticationState(firebase);
   const [user, setUser] = useState(null);
 
   const login = ({ email, password }) => {
@@ -26,11 +29,40 @@ const UserProvider = ({ children }) => {
     setUser({ ...defaultUser, uid: 0, email });
   };
 
+  const loginWithGoogle = async () => {
+    const GoogleProvider = new firebase.auth.GoogleAuthProvider();
+    GoogleProvider.addScope("profile");
+    try {
+      const results = await firebase.auth().signInWithPopup(GoogleProvider);
+      const { additionalUserInfo } = results;
+      const { given_name, family_name } = additionalUserInfo;
+      console.log(given_name + " " + family_name);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const logout = () => {
     setUser(null);
   };
 
-  const providerValue = { user, login, logout };
+  useEffect(() => {
+    if (!firebaseUser) return;
+
+    console.log(firebaseUser);
+    const [first, last] = firebaseUser.displayName.split(" ");
+
+    const signedUser = {
+      uid: firebaseUser.uid,
+      email: firebaseUser.email,
+      name: { first, last },
+      photo: firebaseUser.photoURL
+    };
+
+    setUser(signedUser);
+  }, [firebaseUser]);
+
+  const providerValue = { user, login, loginWithGoogle, logout };
 
   return (
     <UserContext.Provider value={providerValue}>
