@@ -40,7 +40,6 @@ const PostContentForm = ({
 
     clearForm();
     const createdPost = await postWithMediaFiles.createPost(newPost);
-    console.log(createdPost);
     addNewPost(createdPost);
   };
 

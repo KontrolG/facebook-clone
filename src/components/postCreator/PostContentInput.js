@@ -17,7 +17,7 @@ const PostContentInput = ({ inputRef, setText }) => {
       <figcaption>
         <TextareaWithLineBreaks
           title="Escribir publicación"
-          placeholder="¿Qué estás pensando, Georgelyz?"
+          placeholder={`¿Qué estás pensando, ${user.name.first}?`}
           onChange={changeText}
           ref={inputRef}
         />
