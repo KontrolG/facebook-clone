@@ -43,6 +43,8 @@ const UserProvider = ({ children }) => {
   };
 
   const logout = () => {
+    firebase.auth().signOut();
+    localStorage.removeItem("user");
     setUser(null);
   };
 

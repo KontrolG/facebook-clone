@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
+import Post from "../firebase-utils/postModel";
 import PropTypes from "prop-types";
 
 const defaultState = {
@@ -18,17 +19,17 @@ const PostsProvider = ({ children }) => {
 
   const fetchPost = async () => {
     setIsLoading(true);
-    // const newPosts = (await Post.getAll()) || {};
-    const newPosts = {
-      "-MGbuKmeEg5a7eQSR51s": {
-        creationDate: 1599471181316,
-        text: "Saludos!",
-        user: {
-          name: { first: "Georgelyz", last: "Martinez" },
-          photo: "img/test.jpg"
-        }
-      }
-    };
+    const newPosts = (await Post.getAll()) || {};
+    // const newPosts = {
+    //   "-MGbuKmeEg5a7eQSR51s": {
+    //     creationDate: 1599471181316,
+    //     text: "Saludos!",
+    //     user: {
+    //       name: { first: "Georgelyz", last: "Martinez" },
+    //       photo: "img/test.jpg"
+    //     }
+    //   }
+    // };
     setPosts(newPosts);
     setIsLoading(false);
   };

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { v4 as getRandomId } from "uuid";
 import ProfileLink from "./ProfileLink";
 import { useUserContext } from "../../contexts/UserContext";
@@ -11,9 +12,9 @@ const NavList = () => {
       <ul>
         <ProfileLink key={getRandomId()} user={user} />
         <li key={getRandomId()}>
-          <a href="#" onClick={logout}>
+          <Link to="/users/login" onClick={logout}>
             Salir
-          </a>
+          </Link>
         </li>
       </ul>
     </nav>
