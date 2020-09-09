@@ -6,8 +6,8 @@ import useAuthenticationState from "../hooks/useAuthenticationState";
 const defaultUser = {
   uid: null,
   email: null,
-  name: { first: "Georgelyz", last: "Martinez" },
-  photo: "img/test.jpg"
+  name: { first: null, last: null },
+  photo: null
 };
 
 const defaultState = {
