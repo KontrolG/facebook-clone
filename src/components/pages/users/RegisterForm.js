@@ -4,21 +4,30 @@ import useForm from "../../../hooks/useForm";
 import { useUserContext } from "../../../contexts/UserContext";
 import Button from "../../Button";
 
+const defaultProfilePictureURL =
+  "https://firebasestorage.googleapis.com/v0/b/fb-post-creator.appspot.com/o/profiles-pictures%2Fdefault-profile-picture.jpg?alt=media&token=f82f4d92-2d6e-4720-97d7-3e584dc527db";
+
 const RegisterForm = props => {
-  const [formState, changeFieldValue] = useForm("email", "password");
+  const [formState, changeFieldValue] = useForm(
+    "firstName",
+    "lastName",
+    "email",
+    "password",
+    "confirmPassword"
+  );
 
   const { signup } = useUserContext();
 
   const sendUser = event => {
     event.preventDefault();
-    const fakeNewUser = {
-      email: `random${getRandomId()}@test.com`,
-      password: getRandomId(),
-      displayName: "Jhonanderson Doe",
-      photoURL:
-        "https://scontent-mia3-1.xx.fbcdn.net/v/t1.0-9/86181588_10158315845017189_3531420598666264576_o.jpg?_nc_cat=106&_nc_sid=09cbfe&_nc_ohc=OXWaMYPzk2gAX_JCtya&_nc_ht=scontent-mia3-1.xx&oh=c51631121785f7c9a5d8e284c7432675&oe=5F7DCBC2"
+    const { firstName, lastName, email, password } = formState;
+    const newUser = {
+      email,
+      password,
+      displayName: `${firstName} ${lastName}`,
+      photoURL: defaultProfilePictureURL
     };
-    signup(fakeNewUser);
+    signup(newUser);
   };
 
   return (
@@ -26,8 +35,20 @@ const RegisterForm = props => {
       <div className="wrapper">
         <label>Nombre completo</label>
         <div className="name-inputs">
-          <input type="text" placeholder="Introduce tu nombre" />
-          <input type="text" placeholder="Introduce tu apellido" />
+          <input
+            type="text"
+            placeholder="Introduce tu nombre"
+            name="firstName"
+            value={formState.firstName}
+            onChange={changeFieldValue}
+          />
+          <input
+            type="text"
+            placeholder="Introduce tu apellido"
+            name="lastName"
+            value={formState.lastName}
+            onChange={changeFieldValue}
+          />
         </div>
       </div>
       <div className="wrapper">
@@ -35,6 +56,7 @@ const RegisterForm = props => {
         <input
           type="email"
           placeholder="Introduce tu correo electronico"
+          name="email"
           value={formState.email}
           onChange={changeFieldValue}
         />
@@ -44,13 +66,20 @@ const RegisterForm = props => {
         <input
           type="password"
           placeholder="Introduce tu contraseña"
+          name="password"
           value={formState.password}
           onChange={changeFieldValue}
         />
       </div>
       <div className="wrapper">
         <label>Confirmar contraseña</label>
-        <input type="password" placeholder="Confirma tu contraseña" />
+        <input
+          type="password"
+          placeholder="Confirma tu contraseña"
+          name="confirmPassword"
+          value={formState.confirmPassWord}
+          onChange={changeFieldValue}
+        />
       </div>
       <Button type="submit" primary>
         Registrar

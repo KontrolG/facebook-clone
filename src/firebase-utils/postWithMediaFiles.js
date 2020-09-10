@@ -33,7 +33,7 @@ const addPostMediaFile = mediaFilesReference => async mediaFile => {
 
 const getUploadedFile = ({ key }, mediaFile) => {
   const fileName = getFileNameFromKey(key, mediaFile);
-  return Storage.saveFile(fileName, mediaFile);
+  return Storage.saveFile(`posts-files/${fileName}`, mediaFile);
 };
 
 const getFileNameFromKey = (key, { name }) => {
