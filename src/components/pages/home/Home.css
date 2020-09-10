@@ -327,7 +327,8 @@ img.profile-photo {
 
 .post-body li img {
   width: 100%;
-  object-fit: contain;
+  object-fit: cover;
+  max-height: 500px;
 }
 
 .post-body li[data-hidden-items] {
