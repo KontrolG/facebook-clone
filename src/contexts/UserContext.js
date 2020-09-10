@@ -13,9 +13,21 @@ const defaultUser = {
 const defaultState = {
   loading: false,
   user: defaultUser,
+  signup: async () => {},
   login: async () => {},
   loginWithGoogle: async () => {},
   logout: async () => {}
+};
+
+const createFirebaseUser = async (
+  firebase,
+  { email, password, displayName, photoURL }
+) => {
+  const authenticator = firebase.auth();
+  await authenticator.createUserWithEmailAndPassword(email, password);
+  const newUser = authenticator.currentUser;
+  await newUser.updateProfile({ displayName, photoURL });
+  await authenticator.updateCurrentUser(newUser);
 };
 
 const UserContext = createContext(defaultState);
@@ -24,34 +36,41 @@ const UserProvider = ({ children }) => {
   const firebaseUser = useAuthenticationState(firebase);
   const [user, setUser] = useState(null);
 
-  const login = ({ email, password }) => {
-    // auth with firebase, then set user to firebase user.
-    setUser({ ...defaultUser, uid: 0, email });
+  const login = async ({ email, password }) => {
+    try {
+      await firebase.auth().signInWithEmailAndPassword(email, password);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  const signup = async user => {
+    try {
+      await createFirebaseUser(firebase, user);
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   const loginWithGoogle = async () => {
     const GoogleProvider = new firebase.auth.GoogleAuthProvider();
-    GoogleProvider.addScope("profile");
     try {
-      const results = await firebase.auth().signInWithPopup(GoogleProvider);
-      const { additionalUserInfo } = results;
-      const { given_name, family_name } = additionalUserInfo;
-      console.log(given_name + " " + family_name);
+      await firebase.auth().signInWithPopup(GoogleProvider);
     } catch (error) {
       console.log(error);
+      alert(error.message);
     }
   };
 
-  const logout = () => {
-    firebase.auth().signOut();
-    localStorage.removeItem("user");
+  const logout = async () => {
+    await firebase.auth().signOut();
+    // localStorage.removeItem("user");
     setUser(null);
   };
 
   useEffect(() => {
     if (!firebaseUser) return;
 
-    console.log(firebaseUser);
     const [first, last] = firebaseUser.displayName.split(" ");
 
     const signedUser = {
@@ -64,7 +83,7 @@ const UserProvider = ({ children }) => {
     setUser(signedUser);
   }, [firebaseUser]);
 
-  const providerValue = { user, login, loginWithGoogle, logout };
+  const providerValue = { user, signup, login, loginWithGoogle, logout };
 
   return (
     <UserContext.Provider value={providerValue}>
