@@ -4,13 +4,10 @@ const CHANGE_FIELD = "CHANGE_FIELD";
 
 const changeFieldValue = (previousState, actionPayload) => {
   const { fieldName, value } = actionPayload;
-  if (fieldName in previousState) {
-    return {
-      ...previousState,
-      [fieldName]: value
-    };
-  }
-  throw new Error("field not in parent form");
+  return {
+    ...previousState,
+    [fieldName]: value
+  };
 };
 
 const formReducer = (previousState, action) => {
@@ -22,15 +19,8 @@ const formReducer = (previousState, action) => {
   }
 };
 
-const toFieldObject = field => ({ [field]: "" });
-
-const getInitialFormState = fields => {
-  const fieldsObjects = fields.map(toFieldObject);
-  return Object.assign({ errors: [] }, ...fieldsObjects);
-};
-
-const useForm = (...fields) => {
-  const initialFormState = getInitialFormState(fields);
+const useForm = () => {
+  const initialFormState = { errors: [] };
   const [state, dispatch] = useReducer(formReducer, initialFormState);
 
   const changeFieldsValue = ({ target }) => {
