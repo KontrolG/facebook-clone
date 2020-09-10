@@ -13,9 +13,10 @@
 - Implementar **Firebase Realtime Database**. -> Se registró el proyecto y se añadió el SDK de Firebase para almacenar las publicaciones en la base de datos.
 - Implementar **Firebase Storage**. -> Metódos para interactuar con el SDK de Firebase para subir los archivos multimedia de las publicaciones.
 - Utilizar **loader** en webpack para manejar archivos de _CSS_. -> Se añadió style-loader y css-loader para cargar los estilos en modo de desarrollo, para producción, se añadira MiniCSSExtractPlugin.
+- Implementar **Firebase Authentication**. -> Primero, se añadió un router y rutas para dividir la aplicación en home, login y register. Luego se implementó autenticación a traves de Google, con email y contraseña y registro de usuarios.
 
 ### No Completadas
 
-- Implementar **Firebase Authentication**.
+- Diseñar e implementar componente Form con validaciónes usando el patrón de diseño "compound components".
 - Completar **CRUD** de publicaciones.
 - Hacer Code Splitting para mejorar el tamaño de los estaticos.
