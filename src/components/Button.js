@@ -2,6 +2,7 @@ import React from "react";
 import useClassNames from "../hooks/useClassNames";
 
 const Button = ({
+  type,
   className,
   children,
   isDisabled,
@@ -17,6 +18,7 @@ const Button = ({
 
   return (
     <button
+      type={type}
       className={getClassNames()}
       disabled={isDisabled}
       form={formId}
@@ -29,7 +31,8 @@ const Button = ({
 };
 
 Button.defaultProps = {
-  isDisabled: false
+  isDisabled: false,
+  type: "button"
 };
 
 export default Button;

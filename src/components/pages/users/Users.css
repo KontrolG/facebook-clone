@@ -77,3 +77,7 @@ a[href] {
   border-radius: var(--border-radius);
   border: 1px solid #ccc;
 }
+
+.profile-photo-uploader {
+  margin: 0.5rem auto;
+}

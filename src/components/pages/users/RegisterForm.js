@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useUserContext } from "../../../contexts/UserContext";
 import { Form, Input } from "../../form";
+import ProfilePhotoUploader from "./ProfilePhotoUploader";
 import Button from "../../Button";
 
 const defaultProfilePictureURL =
@@ -8,7 +9,9 @@ const defaultProfilePictureURL =
 
 const RegisterForm = props => {
   const [formState, setFormState] = useState();
+  const [profileImage, setProfileImage] = useState();
 
+  useEffect(() => console.log(formState), [formState]);
   const { signup } = useUserContext();
 
   const sendUser = event => {
@@ -43,6 +46,13 @@ const RegisterForm = props => {
             name="lastName"
           />
         </div>
+      </div>
+      <div className="wrapper">
+        <label>Foto de perfil</label>
+        <ProfilePhotoUploader
+          onImageUpload={setProfileImage}
+          className="profile-photo-uploader"
+        />
       </div>
       <div className="wrapper">
         <label>Correo electronico</label>

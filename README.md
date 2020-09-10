@@ -15,9 +15,10 @@
 - Utilizar **loader** en webpack para manejar archivos de _CSS_. -> Se añadió style-loader y css-loader para cargar los estilos en modo de desarrollo, para producción, se añadira MiniCSSExtractPlugin.
 - Implementar **Firebase Authentication**. -> Primero, se añadió un router y rutas para dividir la aplicación en home, login y register. Luego se implementó autenticación a traves de Google, con email y contraseña y registro de usuarios.
 - Diseñar e implementar componente Form con validaciónes usando el patrón de diseño **compound components**". -> Utilizando **Context API + Hooks** se implementaron los componentes Fomr y Input para crear formularios con su propio estado, eliminando redundancias.
+- Añadir input de foto de perfil con previsualizador. -> Se utilizó los patrones **compound component** y **render props** para crear un componente que renderiza la previsualización del input.
 
 ### No Completadas
 
-- Añadir input de foto de perfil con previsualizador.
+- Dividir el formulario de registro en 2 partes.
 - Completar **CRUD** de publicaciones.
 - Hacer Code Splitting para mejorar el tamaño de los estaticos.
