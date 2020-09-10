@@ -9,7 +9,7 @@ const useFormContext = () => {
   const context = useContext(FormContext);
   if (context.changeFieldValue === defaultState.changeFieldValue) {
     throw new Error(
-      "useFormContext can only be used within a FormContext.Provider, check if you placed this node on the right place!"
+      "useFormContext can only be used within a FormContextProvider, check if you placed this node on the right place!"
     );
   }
   return context;
