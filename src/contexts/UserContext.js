@@ -1,6 +1,7 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
 import firebase from "../firebase-utils/init";
 import Storage from "../firebase-utils/storageModel";
+import getFileExtension from "../firebase-utils/getFileExtension";
 import PropTypes from "prop-types";
 import useAuthenticationState from "../hooks/useAuthenticationState";
 
@@ -20,8 +21,14 @@ const defaultState = {
   logout: async () => {}
 };
 
+const defaultProfilePictureURL =
+  "https://firebasestorage.googleapis.com/v0/b/fb-post-creator.appspot.com/o/profiles-pictures%2Fdefault-profile-picture.jpg?alt=media&token=f82f4d92-2d6e-4720-97d7-3e584dc527db";
+
 const getProfilePhotoURL = async (userId, photoImage) => {
-  const [photoImageExtension] = photoImage.name.split(".").slice(-1);
+  if (!photoImage) {
+    return defaultProfilePictureURL;
+  }
+  const photoImageExtension = getFileExtension(photoImage.name);
   const { url } = await Storage.saveFile(
     `profile-photos/${userId}.${photoImageExtension}`,
     photoImage

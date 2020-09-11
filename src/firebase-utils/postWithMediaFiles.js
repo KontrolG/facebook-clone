@@ -1,5 +1,6 @@
 import Post from "./postModel";
 import Storage from "./storageModel";
+import getFileExtension from "./getFileExtension";
 
 const createPost = async ({ mediaFiles, ...restPostProperties }) => {
   const newPostReference = await Post.getNewItemReference({
@@ -37,7 +38,7 @@ const getUploadedFile = ({ key }, mediaFile) => {
 };
 
 const getFileNameFromKey = (key, { name }) => {
-  const fileExtension = name.split(".").pop();
+  const fileExtension = getFileExtension(name);
   return `${key}.${fileExtension}`;
 };
 
