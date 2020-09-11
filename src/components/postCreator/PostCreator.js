@@ -19,7 +19,13 @@ const PostCreator = () => {
         {...{ formId, text, setText, mediaFiles, setMediaFiles }}
       />
       <footer>
-        <Button primary fullWidth formId={formId} isDisabled={!canSendThePost}>
+        <Button
+          type="submit"
+          primary
+          fullWidth
+          formId={formId}
+          isDisabled={!canSendThePost}
+        >
           Publicar
         </Button>
       </footer>
