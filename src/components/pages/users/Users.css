@@ -71,13 +71,21 @@ a[href] {
   padding: 0.375em 0.75em;
 }
 
-.google-button {
-  margin-top: 0.5rem;
+.google-button,
+.restart-profile-photo {
   background: white;
   border-radius: var(--border-radius);
   border: 1px solid #ccc;
 }
 
+.google-button {
+  margin-top: 0.5rem;
+}
+
 .profile-photo-uploader {
   margin: 0.5rem auto;
+}
+
+.restart-profile-photo {
+  margin-top: 0.25rem;
 }

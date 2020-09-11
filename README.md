@@ -6,7 +6,7 @@
 - Crear un componente con **Render Prop**. -> DateFormatter que renderiza un elemento con una fecha formateada.
 - Implementar un **High-Order Component**. -> función withErrorBoundary para extender un componente con un limite de error y un elemento de respaldo.
 - Usar **StrictMode**. -> Añadido al componente de la Aplicación.
-- Procesar la entrada de texto en la creación de la publicación. -> Un elemento con el atributo content-editable para registrar saltos de linea y que cambiar el alto del elemento de forma dinamica.
+- Procesar la entrada de texto en la creación de la publicación. -> Un elemento con el atributo content-editable para registrar saltos de linea y que cambia el alto del elemento de forma dinamica.
 - Limpiar la entrada de texto anterior. -> Uso de **ref** para limpiar su contenido al enviar el formulario.
 - Manejar el estado de los componentes de forma optima. -> Uso de **Context API**.
 - Implementar **Arrastra y Suelta** para subir imagenes y videos y permitir el uso de su lógica en multiples componentes (reusabilidad). -> Uso de **Custom Hook** con la lógica que puede ser reutilizada.
@@ -19,6 +19,10 @@
 
 ### No Completadas
 
+- Añadir validaciónes a los formularios.
+- Realizar modificaciónes necesarias para desplegar la aplicación en Heroku.
 - Dividir el formulario de registro en 2 partes.
+- Añadir emojis.
 - Completar **CRUD** de publicaciones.
 - Hacer Code Splitting para mejorar el tamaño de los estaticos.
+- Implementar Firebase Function para procesar imagenes de perfil al ser subidas (Recortar a 1:1, reducir tamaño, calidad).

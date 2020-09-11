@@ -1,7 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { v4 as getRandomId } from "uuid";
 import ProfileLink from "./ProfileLink";
+import Button from "../Button";
 import { useUserContext } from "../../contexts/UserContext";
 
 const NavList = () => {
@@ -12,9 +12,9 @@ const NavList = () => {
       <ul>
         <ProfileLink key={getRandomId()} user={user} />
         <li key={getRandomId()}>
-          <Link to="/users/login" onClick={logout}>
+          <Button className="logout-button" onClick={logout}>
             Salir
-          </Link>
+          </Button>
         </li>
       </ul>
     </nav>

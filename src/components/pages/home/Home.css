@@ -64,6 +64,12 @@
   margin-right: 0.5em;
 }
 
+.logout-button {
+  background: none;
+  font: inherit;
+  color: white;
+}
+
 main {
   width: 500px;
   height: 100vh;

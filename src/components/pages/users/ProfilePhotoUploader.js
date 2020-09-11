@@ -14,7 +14,11 @@ const renderUploadButtonChildren = (clickInput, restartInput) => {
       <Button onClick={clickInput} fullWidth primary>
         Cambiar
       </Button>
-      <Button onClick={restartInput} fullWidth>
+      <Button
+        onClick={restartInput}
+        fullWidth
+        className="restart-profile-photo"
+      >
         Eliminar
       </Button>
     </>

@@ -4,14 +4,10 @@ import { Form, Input } from "../../form";
 import ProfilePhotoUploader from "./ProfilePhotoUploader";
 import Button from "../../Button";
 
-const defaultProfilePictureURL =
-  "https://firebasestorage.googleapis.com/v0/b/fb-post-creator.appspot.com/o/profiles-pictures%2Fdefault-profile-picture.jpg?alt=media&token=f82f4d92-2d6e-4720-97d7-3e584dc527db";
-
 const RegisterForm = props => {
   const [formState, setFormState] = useState();
   const [profileImage, setProfileImage] = useState();
 
-  // useEffect(() => console.log(formState), [formState]);
   const { signup } = useUserContext();
 
   const sendUser = event => {
@@ -23,6 +19,7 @@ const RegisterForm = props => {
       displayName: `${firstName} ${lastName}`,
       photoImage: profileImage
     };
+    console.log(newUser);
     signup(newUser);
   };
 
@@ -33,7 +30,7 @@ const RegisterForm = props => {
       onStateChange={setFormState}
     >
       <div className="wrapper">
-        <label>Nombre completo</label>
+        <label htmlFor="firstName">Nombre completo</label>
         <div className="name-inputs">
           <Input
             type="text"
@@ -55,7 +52,7 @@ const RegisterForm = props => {
         />
       </div>
       <div className="wrapper">
-        <label>Correo electronico</label>
+        <label htmlFor="email">Correo electronico</label>
         <Input
           type="email"
           placeholder="Introduce tu correo electronico"
@@ -63,7 +60,7 @@ const RegisterForm = props => {
         />
       </div>
       <div className="wrapper">
-        <label>Contraseña</label>
+        <label htmlFor="password">Contraseña</label>
         <Input
           type="password"
           placeholder="Introduce tu contraseña"
@@ -71,7 +68,7 @@ const RegisterForm = props => {
         />
       </div>
       <div className="wrapper">
-        <label>Confirmar contraseña</label>
+        <label htmlFor="confirmPassword">Confirmar contraseña</label>
         <Input
           type="password"
           placeholder="Confirma tu contraseña"

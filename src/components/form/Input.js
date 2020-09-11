@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { useFormContext } from "./context";
 
 const Input = forwardRef(
-  ({ type, name, className, placeholder, hidden, disabled }, ref) => {
+  ({ type, name, id, className, placeholder, hidden, disabled }, ref) => {
     const { state, changeFieldValue } = useFormContext();
     const inputValue = state[name] || "";
 
@@ -11,6 +11,7 @@ const Input = forwardRef(
       <input
         type={type}
         name={name}
+        id={id ? id : name}
         value={inputValue}
         ref={ref}
         className={className}
@@ -25,6 +26,7 @@ const Input = forwardRef(
 
 Input.defaultProps = {
   type: "text",
+  id: null,
   className: "",
   placeholder: "",
   hidden: false,
@@ -34,6 +36,7 @@ Input.defaultProps = {
 Input.propTypes = {
   type: PropTypes.string,
   name: PropTypes.string.isRequired,
+  id: PropTypes.string,
   className: PropTypes.string,
   placeholder: PropTypes.string,
   hidden: PropTypes.bool,

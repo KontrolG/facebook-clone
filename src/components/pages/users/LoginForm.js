@@ -21,7 +21,7 @@ const LoginForm = props => {
       onSubmit={sendUser}
     >
       <div className="wrapper">
-        <label>Correo electronico</label>
+        <label htmlFor="email">Correo electronico</label>
         <Input
           type="email"
           name="email"
@@ -29,7 +29,7 @@ const LoginForm = props => {
         />
       </div>
       <div className="wrapper">
-        <label>Contraseña</label>
+        <label htmlFor="password">Contraseña</label>
         <Input
           type="password"
           placeholder="Introduce tu contraseña"
