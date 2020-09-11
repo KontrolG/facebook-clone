@@ -6,6 +6,7 @@ const Input = forwardRef(
   ({ type, name, className, placeholder, hidden, disabled }, ref) => {
     const { state, changeFieldValue } = useFormContext();
     const inputValue = state[name] || "";
+
     return (
       <input
         type={type}

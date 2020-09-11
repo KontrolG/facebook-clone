@@ -11,7 +11,7 @@ const RegisterForm = props => {
   const [formState, setFormState] = useState();
   const [profileImage, setProfileImage] = useState();
 
-  useEffect(() => console.log(formState), [formState]);
+  // useEffect(() => console.log(formState), [formState]);
   const { signup } = useUserContext();
 
   const sendUser = event => {
@@ -21,7 +21,7 @@ const RegisterForm = props => {
       email,
       password,
       displayName: `${firstName} ${lastName}`,
-      photoURL: defaultProfilePictureURL
+      photoImage: profileImage
     };
     signup(newUser);
   };

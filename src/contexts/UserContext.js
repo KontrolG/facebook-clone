@@ -1,5 +1,6 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
 import firebase from "../firebase-utils/init";
+import Storage from "../firebase-utils/storageModel";
 import PropTypes from "prop-types";
 import useAuthenticationState from "../hooks/useAuthenticationState";
 
@@ -19,13 +20,23 @@ const defaultState = {
   logout: async () => {}
 };
 
+const getProfilePhotoURL = async (userId, photoImage) => {
+  const [photoImageExtension] = photoImage.name.split(".").slice(-1);
+  const { url } = await Storage.saveFile(
+    `profile-photos/${userId}.${photoImageExtension}`,
+    photoImage
+  );
+  return url;
+};
+
 const createFirebaseUser = async (
   firebase,
-  { email, password, displayName, photoURL }
+  { email, password, displayName, photoImage }
 ) => {
   const authenticator = firebase.auth();
   await authenticator.createUserWithEmailAndPassword(email, password);
   const newUser = authenticator.currentUser;
+  const photoURL = await getProfilePhotoURL(newUser.uid, photoImage);
   await newUser.updateProfile({ displayName, photoURL });
   await authenticator.updateCurrentUser(newUser);
 };
