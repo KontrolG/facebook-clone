@@ -4,22 +4,25 @@ import { useUserContext } from "../../../contexts/UserContext";
 import { Form, Input } from "../../form";
 
 const LoginForm = props => {
-  const [formState, setFormState] = useState();
   const { login } = useUserContext();
 
   const sendUser = event => {
-    event.preventDefault();
     const { email, password } = formState;
     const formUser = { email, password };
-    login(formUser);
+    // login(formUser);
+  };
+
+  const formValidations = {
+    email: {
+      isEmail: "Debes introducir un correo electrónico con el formato correcto"
+    },
+    password: {
+      isRequired: "Debes introducir una contraseña"
+    }
   };
 
   return (
-    <Form
-      className="users-form"
-      onStateChange={setFormState}
-      onSubmit={sendUser}
-    >
+    <Form className="users-form" onSubmit={sendUser} validate={formValidations}>
       <div className="wrapper">
         <label htmlFor="email">Correo electronico</label>
         <Input
