@@ -7,7 +7,12 @@ const Input = forwardRef(
     { type, name, id, className, placeholder, hidden, disabled, validate },
     ref
   ) => {
-    const { values, changeFieldValue, addFieldValidation } = useFormContext();
+    const {
+      values,
+      changeFieldValue,
+      addFieldValidation,
+      fieldHasErrors
+    } = useFormContext();
 
     useEffect(() => {
       if (validate) {
@@ -16,6 +21,9 @@ const Input = forwardRef(
     }, []);
 
     const inputValue = values[name] || "";
+    const inputClassName = `${className}${
+      fieldHasErrors(name) ? " has-errors" : ""
+    }`;
 
     return (
       <input
@@ -24,7 +32,7 @@ const Input = forwardRef(
         id={id ? id : name}
         value={inputValue}
         ref={ref}
-        className={className}
+        className={inputClassName}
         placeholder={placeholder}
         onChange={changeFieldValue}
         hidden={hidden}

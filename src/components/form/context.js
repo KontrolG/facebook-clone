@@ -52,13 +52,20 @@ const FormContextProvider = ({ children }) => {
     setErrors(errors);
   };
 
+  const fieldHasErrors = fieldName => {
+    if (!errors) return false;
+    const fieldErrors = errors[fieldName];
+    return fieldErrors.length > 0;
+  };
+
   const providerValue = {
     values,
     changeFieldValue,
     addFieldValidation,
     setFormValidations,
     validateFields,
-    errors
+    errors,
+    fieldHasErrors
   };
 
   return (
