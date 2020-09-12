@@ -4,7 +4,17 @@ import { useFormContext } from "./context";
 
 const Input = forwardRef(
   (
-    { type, name, id, className, placeholder, hidden, disabled, validate },
+    {
+      type,
+      name,
+      id,
+      className,
+      placeholder,
+      hidden,
+      disabled,
+      validate,
+      hasErrorsClass
+    },
     ref
   ) => {
     const {
@@ -21,8 +31,8 @@ const Input = forwardRef(
     }, []);
 
     const inputValue = values[name] || "";
-    const inputClassName = `${className}${
-      fieldHasErrors(name) ? " has-errors" : ""
+    const inputClassName = `${className} ${
+      fieldHasErrors(name) ? hasErrorsClass : ""
     }`;
 
     return (
@@ -46,6 +56,7 @@ Input.defaultProps = {
   type: "text",
   id: null,
   className: "",
+  hasErrorsClass: "has-errors",
   placeholder: "",
   hidden: false,
   disabled: false,
@@ -57,6 +68,7 @@ Input.propTypes = {
   name: PropTypes.string.isRequired,
   id: PropTypes.string,
   className: PropTypes.string,
+  hasErrorsClass: PropTypes.string,
   placeholder: PropTypes.string,
   hidden: PropTypes.bool,
   disabled: PropTypes.bool,

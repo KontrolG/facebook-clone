@@ -7,10 +7,12 @@ import FormErrorMessage from "./FormErrorMessage";
 const LoginForm = props => {
   const { login } = useUserContext();
 
-  const sendUser = event => {
-    const { email, password } = formState;
-    const formUser = { email, password };
-    // login(formUser);
+  const sendUser = formUser => {
+    try {
+      login(formUser);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const formValidations = {
