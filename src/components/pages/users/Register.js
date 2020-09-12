@@ -10,7 +10,9 @@ const Register = props => {
       </header>
       <RegisterForm />
       <footer>
-        <NavLink to="/users/login">Iniciar sesión</NavLink>
+        <NavLink to="/users/login">
+          ¿Ya tienes una cuenta? Inicia Sesión
+        </NavLink>
       </footer>
     </>
   );

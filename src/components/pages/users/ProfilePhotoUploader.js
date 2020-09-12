@@ -34,10 +34,7 @@ const ProfilePhotoUploader = ({ onImageUpload }) => {
         width="150px"
         className="profile-photo-uploader"
       >
-        <PhotoPreview
-          defaultImageURL={"img/test.jpg" /* defaultProfilePictureURL */}
-          rounded
-        />
+        <PhotoPreview defaultImageURL={defaultProfilePictureURL} rounded />
         <UploadButton
           children={renderUploadButtonChildren}
           overlapping

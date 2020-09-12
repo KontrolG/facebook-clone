@@ -10,7 +10,7 @@ const Login = props => {
       </header>
       <LoginForm />
       <footer>
-        <NavLink to="/users/register">Registrate</NavLink>
+        <NavLink to="/users/register">¿No tienes cuenta? Registrate</NavLink>
       </footer>
     </>
   );
