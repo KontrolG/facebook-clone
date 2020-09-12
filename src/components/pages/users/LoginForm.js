@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import Button from "../../Button";
 import { useUserContext } from "../../../contexts/UserContext";
-import { Form, Input } from "../../form";
-import FormErrorMessage from "./FormErrorMessage";
+import { Form } from "../../form";
+import FormField from "./FormField";
 
-const LoginForm = props => {
+const LoginForm = () => {
   const { login } = useUserContext();
 
   const sendUser = formUser => {
@@ -26,24 +26,18 @@ const LoginForm = props => {
 
   return (
     <Form className="users-form" onSubmit={sendUser} validate={formValidations}>
-      <div className="wrapper">
-        <label htmlFor="email">Correo electronico</label>
-        <Input
-          type="email"
-          name="email"
-          placeholder="Introduce tu correo electronico"
-        />
-        <FormErrorMessage fieldName="email" />
-      </div>
-      <div className="wrapper">
-        <label htmlFor="password">Contraseña</label>
-        <Input
-          type="password"
-          placeholder="Introduce tu contraseña"
-          name="password"
-        />
-        <FormErrorMessage fieldName="password" />
-      </div>
+      <FormField
+        labelText="Correo electrónico"
+        placeholder="Introduce tu correo electrónico"
+        type="email"
+        name="email"
+      />
+      <FormField
+        labelText="Contraseña"
+        placeholder="Introduce tu contraseña"
+        type="password"
+        name="password"
+      />
       <Button type="submit" primary>
         Iniciar Sesión
       </Button>
