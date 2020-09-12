@@ -50,7 +50,7 @@ a[href] {
   padding: 0.15em 0.5em;
 }
 
-.users-form .wrapper > input.is-invalid {
+.users-form .wrapper > input.has-errors {
   box-shadow: 0px 0px 5px darkred;
 }
 
@@ -88,4 +88,10 @@ a[href] {
 
 .restart-profile-photo {
   margin-top: 0.25rem;
+}
+
+.form-error-message {
+  color: darkred;
+  font-size: 0.85em;
+  height: 1em;
 }

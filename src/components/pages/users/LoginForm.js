@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Button from "../../Button";
 import { useUserContext } from "../../../contexts/UserContext";
 import { Form, Input } from "../../form";
+import FormErrorMessage from "./FormErrorMessage";
 
 const LoginForm = props => {
   const { login } = useUserContext();
@@ -14,7 +15,7 @@ const LoginForm = props => {
 
   const formValidations = {
     email: {
-      isEmail: "Debes introducir un correo electrónico con el formato correcto"
+      isEmail: "Debes introducir un correo electrónico"
     },
     password: {
       isRequired: "Debes introducir una contraseña"
@@ -30,6 +31,7 @@ const LoginForm = props => {
           name="email"
           placeholder="Introduce tu correo electronico"
         />
+        <FormErrorMessage fieldName="email" />
       </div>
       <div className="wrapper">
         <label htmlFor="password">Contraseña</label>
@@ -38,6 +40,7 @@ const LoginForm = props => {
           placeholder="Introduce tu contraseña"
           name="password"
         />
+        <FormErrorMessage fieldName="password" />
       </div>
       <Button type="submit" primary>
         Iniciar Sesión
