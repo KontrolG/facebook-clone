@@ -37,18 +37,16 @@ const FormWrapper = forwardRef(
     return (
       <FormContextProvider>
         <FormContextConsumer>
-          {context => {
-            return (
-              <Form
-                ref={ref}
-                onSubmit={onSubmit}
-                validate={validate}
-                className={className}
-                context={context}
-                children={children}
-              />
-            );
-          }}
+          {context => (
+            <Form
+              ref={ref}
+              onSubmit={onSubmit}
+              validate={validate}
+              className={className}
+              context={context}
+              children={children}
+            />
+          )}
         </FormContextConsumer>
       </FormContextProvider>
     );

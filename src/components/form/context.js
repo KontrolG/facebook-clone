@@ -52,8 +52,6 @@ const FormContextProvider = ({ children }) => {
     setErrors(errors);
   };
 
-  useEffect(() => console.log(errors), [errors]);
-
   const providerValue = {
     values,
     changeFieldValue,

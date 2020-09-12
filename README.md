@@ -17,10 +17,10 @@
 - Diseñar e implementar componente Form con validaciónes usando el patrón de diseño **compound components**". -> Utilizando **Context API + Hooks** se implementaron los componentes Fomr y Input para crear formularios con su propio estado, eliminando redundancias.
 - Añadir input de foto de perfil con previsualizador. -> Se utilizó los patrones **compound component** y **render props** para crear un componente que renderiza la previsualización del input.
 - Añadir validaciónes a los formularios. -> Se añdió la libreria validator.js y la logica necesaria para validar los formularios a traves de esquemas.
+- Crear componente ErrorMessage para mostrar error en un campo de formulario. -> Se creó el componente el cual recibe el nombre del campo al cual esta asociado y muestra sus errores.
 
 ### No Completadas
 
-- Crear componente ErrorMessage para mostrar error en un campo de formulario.
 - Realizar modificaciónes necesarias para desplegar la aplicación en Heroku.
 - Dividir el formulario de registro en 2 partes.
 - Añadir emojis.
