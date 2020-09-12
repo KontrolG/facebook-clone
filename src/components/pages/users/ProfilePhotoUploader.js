@@ -25,23 +25,26 @@ const renderUploadButtonChildren = (clickInput, restartInput) => {
   );
 };
 
-const ProfilePhotoUploader = ({ onImageUpload, className }) => {
+const ProfilePhotoUploader = ({ onImageUpload }) => {
   return (
-    <PhotoUploader
-      onImageUpload={onImageUpload}
-      width="150px"
-      className={className}
-    >
-      <PhotoPreview
-        defaultImageURL={"img/test.jpg" /* defaultProfilePictureURL */}
-        rounded
-      />
-      <UploadButton
-        children={renderUploadButtonChildren}
-        overlapping
-        imageFileTypes={imageFileTypes}
-      />
-    </PhotoUploader>
+    <div className="wrapper">
+      <label>Foto de perfil</label>
+      <PhotoUploader
+        onImageUpload={onImageUpload}
+        width="150px"
+        className="profile-photo-uploader"
+      >
+        <PhotoPreview
+          defaultImageURL={"img/test.jpg" /* defaultProfilePictureURL */}
+          rounded
+        />
+        <UploadButton
+          children={renderUploadButtonChildren}
+          overlapping
+          imageFileTypes={imageFileTypes}
+        />
+      </PhotoUploader>
+    </div>
   );
 };
 
