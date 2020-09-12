@@ -1,8 +1,18 @@
-import React, { createContext, useContext } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import useForm from "../../hooks/useForm";
+import validate from "./validate";
 
-const defaultState = { state: { errors: [] }, changeFieldValue: () => {} };
+const defaultState = {
+  values: {},
+  changeFieldValue: () => {},
+  validations: null,
+  addFieldValidation: () => {},
+  setFormValidations: () => {},
+  errors: null,
+  setErrors: () => {}
+};
+
 const FormContext = createContext(defaultState);
 
 const useFormContext = () => {
@@ -15,12 +25,43 @@ const useFormContext = () => {
   return context;
 };
 
-const FormContextProvider = ({ children, onStateChange }) => {
-  const [state, changeFieldValue] = useForm();
+const FormContextProvider = ({ children }) => {
+  const [values, changeFieldValue] = useForm();
+  const [validations, setValidations] = useState(null);
+  const [errors, setErrors] = useState(null);
 
-  const providerValue = { state, changeFieldValue };
+  const addFieldValidation = (validation, fieldName) =>
+    setValidations(validations => {
+      return {
+        ...validations,
+        [fieldName]: validation
+      };
+    });
 
-  React.useEffect(() => onStateChange(state), [state]);
+  const setFormValidations = formValidations =>
+    setValidations(validations => {
+      return {
+        ...formValidations,
+        ...validations
+      };
+    });
+
+  const validateFields = () => {
+    const errors = validate(values, validations);
+    if (!errors) return true;
+    setErrors(errors);
+  };
+
+  useEffect(() => console.log(errors), [errors]);
+
+  const providerValue = {
+    values,
+    changeFieldValue,
+    addFieldValidation,
+    setFormValidations,
+    validateFields,
+    errors
+  };
 
   return (
     <FormContext.Provider value={providerValue}>
@@ -29,13 +70,10 @@ const FormContextProvider = ({ children, onStateChange }) => {
   );
 };
 
-FormContextProvider.defaultProps = {
-  onStateChange: () => {}
-};
-
 FormContextProvider.propTypes = {
-  children: PropTypes.node.isRequired,
-  onStateChange: PropTypes.func
+  children: PropTypes.node.isRequired
 };
 
-export { FormContextProvider, useFormContext };
+const FormContextConsumer = FormContext.Consumer;
+
+export { FormContextProvider, useFormContext, FormContextConsumer };

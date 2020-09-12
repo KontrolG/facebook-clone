@@ -1,11 +1,21 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import { useFormContext } from "./context";
 
 const Input = forwardRef(
-  ({ type, name, id, className, placeholder, hidden, disabled }, ref) => {
-    const { state, changeFieldValue } = useFormContext();
-    const inputValue = state[name] || "";
+  (
+    { type, name, id, className, placeholder, hidden, disabled, validate },
+    ref
+  ) => {
+    const { values, changeFieldValue, addFieldValidation } = useFormContext();
+
+    useEffect(() => {
+      if (validate) {
+        addFieldValidation(validate, name);
+      }
+    }, []);
+
+    const inputValue = values[name] || "";
 
     return (
       <input
@@ -30,7 +40,8 @@ Input.defaultProps = {
   className: "",
   placeholder: "",
   hidden: false,
-  disabled: false
+  disabled: false,
+  validate: null
 };
 
 Input.propTypes = {
@@ -40,7 +51,8 @@ Input.propTypes = {
   className: PropTypes.string,
   placeholder: PropTypes.string,
   hidden: PropTypes.bool,
-  disabled: PropTypes.bool
+  disabled: PropTypes.bool,
+  validate: PropTypes.object
 };
 
 export default Input;

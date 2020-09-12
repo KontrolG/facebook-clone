@@ -16,13 +16,19 @@
 - Implementar **Firebase Authentication**. -> Primero, se añadió un router y rutas para dividir la aplicación en home, login y register. Luego se implementó autenticación a traves de Google, con email y contraseña y registro de usuarios.
 - Diseñar e implementar componente Form con validaciónes usando el patrón de diseño **compound components**". -> Utilizando **Context API + Hooks** se implementaron los componentes Fomr y Input para crear formularios con su propio estado, eliminando redundancias.
 - Añadir input de foto de perfil con previsualizador. -> Se utilizó los patrones **compound component** y **render props** para crear un componente que renderiza la previsualización del input.
+- Añadir validaciónes a los formularios. -> Se añdió la libreria validator.js y la logica necesaria para validar los formularios a traves de esquemas.
 
 ### No Completadas
 
-- Añadir validaciónes a los formularios.
+- Crear componente ErrorMessage para mostrar error en un campo de formulario.
 - Realizar modificaciónes necesarias para desplegar la aplicación en Heroku.
 - Dividir el formulario de registro en 2 partes.
 - Añadir emojis.
+- Permitir al desarrollador añadir las validaciones que desee para reducir el tamaño del paquete y mejorarla usabilidad: {fieldName: {
+  validator: () => {}, // should return bool
+  message: "Message", // when is false
+  type: "isEmail" // identifier for error component
+  }}
 - Completar **CRUD** de publicaciones.
 - Hacer Code Splitting para mejorar el tamaño de los estaticos.
 - Implementar Firebase Function para procesar imagenes de perfil al ser subidas (Recortar a 1:1, reducir tamaño, calidad).
