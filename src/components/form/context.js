@@ -55,7 +55,7 @@ const FormContextProvider = ({ children }) => {
   const fieldHasErrors = fieldName => {
     if (!errors) return false;
     const fieldErrors = errors[fieldName];
-    return fieldErrors.length > 0;
+    return fieldErrors ? fieldErrors.length > 0 : false;
   };
 
   const providerValue = {
