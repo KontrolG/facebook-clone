@@ -58,7 +58,7 @@ const UserProvider = ({ children }) => {
     try {
       await firebase.auth().signInWithEmailAndPassword(email, password);
     } catch (error) {
-      console.log(error.message);
+      throw error;
     }
   };
 
@@ -66,7 +66,7 @@ const UserProvider = ({ children }) => {
     try {
       await createFirebaseUser(firebase, user);
     } catch (error) {
-      console.log(error.message);
+      throw error;
     }
   };
 
@@ -75,8 +75,7 @@ const UserProvider = ({ children }) => {
     try {
       await firebase.auth().signInWithPopup(GoogleProvider);
     } catch (error) {
-      console.log(error);
-      alert(error.message);
+      throw error;
     }
   };
 

@@ -7,17 +7,39 @@ import Button from "../../Button";
 import DisplayNameField from "./DisplayNameField";
 
 const RegisterForm = () => {
-  const [, setProfileImage] = useState();
+  const [profileImage, setProfileImage] = useState(null);
+  const [registerError, setRegisterError] = useState(null);
+  const { signup } = useUserContext();
 
-  const sendUser = newUser => {
-    // const newUser = {
-    //   email,
-    //   password,
-    //   displayName: `${firstName} ${lastName}`,
-    //   photoImage: profileImage
-    // };
-    console.log(newUser);
-    // signup(newUser);
+  const validatePassword = (password, confirmPassword) => {
+    setRegisterError(null);
+    if (password !== confirmPassword) {
+      return setRegisterError("Las contraseñas no coinciden");
+    }
+    return true;
+  };
+
+  const registerUser = async ({
+    email,
+    password,
+    confirmPassword,
+    firstName,
+    lastName
+  }) => {
+    if (!validatePassword(password, confirmPassword)) return;
+
+    const newUser = {
+      email,
+      password,
+      displayName: `${firstName} ${lastName}`,
+      photoImage: profileImage
+    };
+
+    try {
+      await signup(newUser);
+    } catch (error) {
+      setRegisterError(error);
+    }
   };
 
   const formValidation = {
@@ -43,7 +65,11 @@ const RegisterForm = () => {
   };
 
   return (
-    <Form className="users-form" onSubmit={sendUser} validate={formValidation}>
+    <Form
+      className="users-form"
+      onSubmit={registerUser}
+      validate={formValidation}
+    >
       <DisplayNameField />
       <ProfilePhotoUploader onImageUpload={setProfileImage} />
       <FormField
@@ -64,6 +90,9 @@ const RegisterForm = () => {
         placeholder="Confirma tu contraseña"
         name="confirmPassword"
       />
+      <p className="form-error-message users-error">
+        {registerError ? registerError.message : null}
+      </p>
       <Button type="submit" primary>
         Registrar
       </Button>

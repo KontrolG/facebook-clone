@@ -48,8 +48,8 @@ const FormContextProvider = ({ children }) => {
 
   const validateFields = () => {
     const errors = validate(values, validations);
-    if (!errors) return true;
     setErrors(errors);
+    if (!errors) return true;
   };
 
   const fieldHasErrors = fieldName => {

@@ -1,17 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "../../Button";
 import { useUserContext } from "../../../contexts/UserContext";
 import { Form } from "../../form";
 import FormField from "./FormField";
 
 const LoginForm = () => {
+  const [loginError, setLoginError] = useState(null);
   const { login } = useUserContext();
 
-  const sendUser = formUser => {
+  const loginUser = async formUser => {
+    setLoginError(null);
     try {
-      login(formUser);
+      await login(formUser);
     } catch (error) {
-      console.log(error);
+      setLoginError(error);
     }
   };
 
@@ -25,7 +27,11 @@ const LoginForm = () => {
   };
 
   return (
-    <Form className="users-form" onSubmit={sendUser} validate={formValidations}>
+    <Form
+      className="users-form"
+      onSubmit={loginUser}
+      validate={formValidations}
+    >
       <FormField
         labelText="Correo electrónico"
         placeholder="Introduce tu correo electrónico"
@@ -38,6 +44,9 @@ const LoginForm = () => {
         type="password"
         name="password"
       />
+      <p className="form-error-message users-error">
+        {loginError ? loginError.message : null}
+      </p>
       <Button type="submit" primary>
         Iniciar Sesión
       </Button>

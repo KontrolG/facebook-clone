@@ -96,3 +96,7 @@ input.has-errors {
   min-height: 1em;
   height: auto;
 }
+
+.users-error {
+  margin-bottom: 0.25rem;
+}
