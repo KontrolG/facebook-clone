@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import getUniqueId from "uuid/v4";
 import { useUserContext } from "../../contexts/UserContext";
 import { usePostsContext } from "../../contexts/PostsContext";
-import postWithMediaFiles from "../../firebase-utils/postWithMediaFiles";
+// import postWithMediaFiles from "../../firebase-utils/postWithMediaFiles";
 import FilesManager from "./FilesManager";
 import FormOptions from "./FormOptions";
 import PostContentInput from "./PostContentInput";
