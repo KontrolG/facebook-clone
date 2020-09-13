@@ -4,9 +4,9 @@ import ErrorMessage from "../../form/ErrorMessage";
 
 const FormErrorMessage = ({ fieldName }) => {
   return (
-    <p className="form-error-message">
+    <div className="form-error-message">
       <ErrorMessage fieldName={fieldName} />
-    </p>
+    </div>
   );
 };
 
