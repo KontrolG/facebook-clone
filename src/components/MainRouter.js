@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import PrivateRoute from "./PrivateRoute";
 
-import Home from "./pages/home/Home";
+// import Home from "./pages/home/Home";
 import Users from "./pages/users/Users";
 import { useUserContext } from "../contexts/UserContext";
 
@@ -20,13 +20,13 @@ const MainRouter = () => {
     <Router>
       <Switch>
         <Route exac path="/users" component={Users} />
-        <PrivateRoute
+        {/* <PrivateRoute
           isAuthenticated={isLoggedIn}
           onUnauthenticate={() => <Redirect to="/users/login" />}
           exact
           path="/"
           component={Home}
-        />
+        /> */}
       </Switch>
     </Router>
   );
