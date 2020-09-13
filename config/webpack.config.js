@@ -17,8 +17,7 @@ const isEnvStaging = enviroment === "staging";
 const isEnvProduction = enviroment === "production";
 
 const buildPath = path.resolve(process.cwd(), "build");
-console.log("process.cwd():", path.resolve(process.cwd(), "src"));
-console.log("__dirname", path.resolve(__dirname, "../src"));
+
 module.exports = {
   mode: isEnvDevelopment ? "development" : "production",
   devtool: isEnvDevelopment
@@ -66,6 +65,7 @@ module.exports = {
         })
       : false
   ].filter(Boolean),
+  resolve: { extensions: ["js", "jsx"] },
   module: {
     rules: [
       {
