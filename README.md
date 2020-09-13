@@ -32,3 +32,7 @@
 - Completar **CRUD** de publicaciones.
 - Hacer Code Splitting para mejorar el tamaño de los estaticos.
 - Implementar Firebase Function para procesar imagenes de perfil al ser subidas (Recortar a 1:1, reducir tamaño, calidad).
+
+## Notas
+
+- Usar uuid/v4 para generar keys aleatorios en los componentes que son mapeados a partir de un Array provoca que cada vez que se recalcula el arbol del DOM, estos tengan keys diferentes, por lo tanto, se remueven del DOM y se colocan nuevamente (algo para nada deseado).

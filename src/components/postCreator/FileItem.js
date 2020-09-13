@@ -1,10 +1,11 @@
 import React from "react";
 
 const FileItem = ({ file }) => {
+  const urlFromFile = URL.createObjectURL(file);
   return (
     <li>
       <button>⨯</button>
-      <img src={URL.createObjectURL(file)} />
+      <img src={urlFromFile} />
     </li>
   );
 };

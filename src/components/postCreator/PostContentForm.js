@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import getUniqueId from "uuid/v4";
 import { useUserContext } from "../../contexts/UserContext";
 import { usePostsContext } from "../../contexts/PostsContext";
 import postWithMediaFiles from "../../firebase-utils/postWithMediaFiles";
@@ -7,6 +8,8 @@ import FormOptions from "./FormOptions";
 import PostContentInput from "./PostContentInput";
 import useDragAndDrop from "../../hooks/useDragAndDrop";
 import useClassNames from "../../hooks/useClassNames";
+
+const toFilesWithId = file => Object.assign(file, { id: getUniqueId() });
 
 const PostContentForm = ({
   formId,
@@ -59,7 +62,8 @@ const PostContentForm = ({
   };
 
   const addMediaFiles = newFiles => {
-    setMediaFiles(mediaFiles => [...mediaFiles, ...newFiles]);
+    const newFilesWithId = Array.from(newFiles).map(toFilesWithId);
+    setMediaFiles(mediaFiles => [...mediaFiles, ...newFilesWithId]);
   };
 
   const finishDragOnFormLeave = event => {

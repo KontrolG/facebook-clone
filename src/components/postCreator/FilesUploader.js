@@ -4,8 +4,8 @@ const FilesUploader = ({ mediaFileInputId, addMediaFiles }) => {
   const acceptedFilesTypes =
     "image/*,image/heif,image/heic,video/*,video/mp4,video/x-m4v,video/x-matroska";
 
-  const addInputMediaFiles = event => {
-    const newFiles = event.target.files;
+  const addInputMediaFiles = ({ target }) => {
+    const newFiles = target.files;
     addMediaFiles(newFiles);
   };
 
