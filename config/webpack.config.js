@@ -21,7 +21,7 @@ const buildPath = path.resolve(process.cwd(), "build");
 module.exports = {
   mode: isEnvDevelopment ? "development" : "production",
   devtool: isEnvDevelopment
-    ? "cheap-module-source-map"
+    ? "cheap-module-eval-source-map"
     : isEnvStaging
     ? "source-map"
     : false,
@@ -31,7 +31,8 @@ module.exports = {
   },
   output: {
     path: buildPath,
-    filename: `js/[name]${isEnvProduction ? ".[hash]" : ""}.js`
+    filename: `js/[name]${isEnvProduction ? ".[hash]" : ""}.js`,
+    chunkFilename: `js/[name]${isEnvProduction ? ".[hash]" : ""}.js`
   },
   devServer: {
     contentBase: buildPath,
@@ -42,7 +43,12 @@ module.exports = {
   },
   optimization: {
     minimize: isEnvProduction,
-    minimizer: [new TerserPlugin(), new OptimizeCssAssetsPlugin()]
+    minimizer: [new TerserPlugin(), new OptimizeCssAssetsPlugin()],
+    splitChunks: {
+      chunks: "all",
+      minSize: 30000,
+      maxSize: 244000
+    }
   },
   plugins: [
     new CleanWebpackPlugin(),
@@ -63,7 +69,7 @@ module.exports = {
     rules: [
       {
         test: /\.(sa|sc|c)ss$/i,
-        exclude: /node_modules/,
+        include: path.resolve(process.cwd(), "src"),
         use: [
           isEnvDevelopment ? "style-loader" : MiniCssExtractPlugin.loader,
           "css-loader"
@@ -71,7 +77,7 @@ module.exports = {
       },
       {
         test: /\.(js|jsx)$/i,
-        exclude: /node_modules/,
+        include: path.resolve(process.cwd(), "src"),
         use: ["babel-loader"]
       }
     ]
