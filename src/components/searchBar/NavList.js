@@ -1,5 +1,4 @@
 import React from "react";
-import { v4 as getRandomId } from "uuid";
 import ProfileLink from "./ProfileLink";
 import Button from "../Button";
 import { useUserContext } from "../../contexts/UserContext";
@@ -10,8 +9,8 @@ const NavList = () => {
   return (
     <nav>
       <ul>
-        <ProfileLink key={getRandomId()} user={user} />
-        <li key={getRandomId()}>
+        <ProfileLink key="user-profile-link-list-item" user={user} />
+        <li key="logout-button-list-item">
           <Button className="logout-button" onClick={logout}>
             Salir
           </Button>

@@ -1,9 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import getRandomKey from "uuid/v4";
 import { useFormContext } from "./context";
 
-const toErrorParagraph = ({ message }) => <p key={getRandomKey()}>{message}</p>;
+const toErrorParagraph = ({ message }, index) => <p key={index}>{message}</p>;
 
 const ErrorMessage = ({ fieldName, showAll, children }) => {
   const { errors } = useFormContext();
