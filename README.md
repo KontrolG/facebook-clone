@@ -1,4 +1,34 @@
-## Tareas
+# Facebook Clone
+
+Clon de Facebook creado con ReactJS y Firebase aplicando todos los conceptos principales de la librería mas usada en la creación de interfaces de usuario.
+
+[Demostración en vivo
+](https://facebook-clone-reactjs.herokuapp.com/)
+
+## Instalación
+
+Clona este repositorio:
+
+    $ git clone https://github.com/KontrolG/facebook-clone.git
+    $ cd facebook-clone
+
+Instala las dependencias:
+
+    $ npm install
+
+## Configuración
+
+Crea un archivo con el nombre “.env” en el directorio raíz y añade tus llaves de la configuración de [Firebase](https://firebase.google.com) de la siguiente manera:
+
+    REACT_APP_FIREBASE_PROJECT_ID=<TU  ID DE PROYECTO>
+    REACT_APP_FIREBASE_API_KEY=<TU  LLAVE DE LA API>
+    REACT_APP_FIREBASE_APP_ID=<TU  ID DE LA APP>
+
+Ahora puedes correr la aplicación ejecutando:
+
+    npm start
+
+## Tareas de desarrollo
 
 ### Completadas
 
