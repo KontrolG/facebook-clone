@@ -3,16 +3,7 @@ import "firebase/database";
 import "firebase/storage";
 import "firebase/auth";
 
-import { projectId, apiKey, appId } from "./keys";
-
-const config = {
-  apiKey,
-  projectId,
-  appId,
-  authDomain: `${projectId}.firebaseapp.com`,
-  databaseURL: `https://${projectId}.firebaseio.com/`,
-  storageBucket: `gs://${projectId}.appspot.com`
-};
+import config from "./config";
 
 firebase.initializeApp(config);
 
