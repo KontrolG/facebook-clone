@@ -48,10 +48,11 @@ Ahora puedes correr la aplicación ejecutando:
 - Añadir input de foto de perfil con previsualizador. -> Se utilizó los patrones **compound component** y **render props** para crear un componente que renderiza la previsualización del input.
 - Añadir validaciónes a los formularios. -> Se añdió la libreria validator.js y la logica necesaria para validar los formularios a traves de esquemas.
 - Crear componente ErrorMessage para mostrar error en un campo de formulario. -> Se creó el componente el cual recibe el nombre del campo al cual esta asociado y muestra sus errores.
+- Realizar modificaciónes necesarias para desplegar la aplicación en Heroku. -> Se instalaron los paquetes necesarios y se configuró Webpack adecuadamente, ademas se creo un servidor con Express para servir los estaticos.
+- Hacer Code Splitting para mejorar el tamaño de los estaticos. -> la aplicación fue optimizada para lograr tiempos de descarga optimos (peso total 244kb).
 
 ### No Completadas
 
-- Realizar modificaciónes necesarias para desplegar la aplicación en Heroku.
 - Dividir el formulario de registro en 2 partes.
 - Añadir emojis.
 - Permitir al desarrollador añadir las validaciones que desee para reducir el tamaño del paquete y mejorarla usabilidad: {fieldName: {
@@ -60,7 +61,6 @@ Ahora puedes correr la aplicación ejecutando:
   type: "isEmail" // identifier for error component
   }}
 - Completar **CRUD** de publicaciones.
-- Hacer Code Splitting para mejorar el tamaño de los estaticos.
 - Implementar Firebase Function para procesar imagenes de perfil al ser subidas (Recortar a 1:1, reducir tamaño, calidad).
 
 ## Notas

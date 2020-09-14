@@ -82,17 +82,12 @@ label[for="media-input"] {
   color: rgb(75, 75, 75);
 }
 /* CARD */
-main > * {
+.posts-main > * {
   margin-bottom: 0.75rem;
 }
 
-.card > * {
+.posts-main .card > * {
   border-bottom: 1px solid #ccc;
-}
-
-.card footer {
-  padding: 0.5rem 0.75rem;
-  border-bottom: none;
 }
 
 .post-content {
