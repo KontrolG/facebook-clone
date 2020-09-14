@@ -11,6 +11,7 @@ a[href] {
 
 .users-main {
   height: max-content;
+  padding: 1rem 0;
 }
 
 .users-title {
