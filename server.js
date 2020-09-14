@@ -2,8 +2,11 @@
 
 const express = require("express");
 const path = require("path");
+const compression = require("compression");
 
 const app = express();
+
+app.use(compression({ level: 9, memLevel: 9 }));
 
 app.use(express.static(path.join(__dirname, "build")));
 
