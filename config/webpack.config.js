@@ -17,6 +17,7 @@ const isEnvStaging = enviroment === "staging";
 const isEnvProduction = enviroment === "production";
 
 const buildPath = path.resolve(process.cwd(), "build");
+const devServerPort = process.env.PORT || 8080;
 
 module.exports = {
   mode: isEnvDevelopment ? "development" : "production",
@@ -37,8 +38,8 @@ module.exports = {
   devServer: {
     contentBase: buildPath,
     host: "0.0.0.0",
-    port: 8080,
-    openPage: "http://localhost:8080",
+    port: devServerPort,
+    openPage: `http://localhost:${devServerPort}`,
     historyApiFallback: true
   },
   optimization: {
@@ -54,8 +55,8 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HTMLWebpackPlugin({
       filename: "index.html",
-      template: "./src/index.html",
-      favicon: "./src/favicon.ico"
+      template: "./src/assets/index.html",
+      favicon: "./src/assets/favicon.ico"
     }),
     new webpack.DefinePlugin(clientEnviromentVariables.stringified),
     !isEnvDevelopment
