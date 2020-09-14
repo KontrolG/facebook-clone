@@ -1,5 +1,6 @@
-import React, { StrictMode, lazy, Suspense } from "react";
+import React, { StrictMode, lazy } from "react";
 import "./App.css";
+import LazyLoadingWrapper from "./components/LazyLoadingWrapper";
 
 const UserProvider = lazy(() => import("./contexts/UserProvider"));
 const MainRouter = lazy(() => import("./components/MainRouter"));
@@ -7,11 +8,11 @@ const MainRouter = lazy(() => import("./components/MainRouter"));
 const App = () => {
   return (
     <StrictMode>
-      <Suspense fallback="Loading">
+      <LazyLoadingWrapper>
         <UserProvider>
           <MainRouter />
         </UserProvider>
-      </Suspense>
+      </LazyLoadingWrapper>
     </StrictMode>
   );
 };

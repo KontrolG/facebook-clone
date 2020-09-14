@@ -5,6 +5,7 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
+import LazyLoadingWrapper from "./LazyLoadingWrapper";
 import PrivateRoute from "./PrivateRoute";
 import { useUserContext } from "../contexts/UserContext";
 
@@ -19,7 +20,7 @@ const MainRouter = () => {
   return (
     <Router>
       <Switch>
-        <Suspense fallback="Loading Page">
+        <LazyLoadingWrapper>
           <Route exac path="/users" component={Users} />
           <PrivateRoute
             isAuthenticated={isLoggedIn}
@@ -28,7 +29,7 @@ const MainRouter = () => {
             path="/"
             component={Home}
           />
-        </Suspense>
+        </LazyLoadingWrapper>
       </Switch>
     </Router>
   );
