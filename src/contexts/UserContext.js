@@ -55,7 +55,12 @@ const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const localUser = JSON.parse(localStorage.getItem("user"));
+    const localUser = JSON.parse(localStorage.getItem("user")) || {
+      uid: 0,
+      email: "test@gmail.com",
+      name: { first: "Test", last: "User" },
+      photo: defaultProfilePictureURL
+    };
     setUser(localUser);
   }, []);
 
