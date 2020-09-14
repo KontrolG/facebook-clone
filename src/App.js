@@ -1,14 +1,17 @@
-import React, { StrictMode } from "react";
-import { UserProvider } from "./contexts/UserContext";
-import MainRouter from "./components/MainRouter";
+import React, { StrictMode, lazy, Suspense } from "react";
 import "./App.css";
+
+const UserProvider = lazy(() => import("./contexts/UserProvider"));
+const MainRouter = lazy(() => import("./components/MainRouter"));
 
 const App = () => {
   return (
     <StrictMode>
-      <UserProvider>
-        <MainRouter />
-      </UserProvider>
+      <Suspense fallback="Loading">
+        <UserProvider>
+          <MainRouter />
+        </UserProvider>
+      </Suspense>
     </StrictMode>
   );
 };
