@@ -1,4 +1,4 @@
-import Post from "./postModel";
+import Post from "./PostModel";
 import Storage from "./storageModel";
 import getFileExtension from "./getFileExtension";
 
