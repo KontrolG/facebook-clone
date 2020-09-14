@@ -1,6 +1,6 @@
 import Post from "./PostModel";
 import Storage from "./storageModel";
-import getFileExtension from "./getFileExtension";
+import getFileExtension from "../utils/getFileExtension";
 
 const createPost = async ({ mediaFiles, ...restPostProperties }) => {
   const newPostReference = await Post.getNewItemReference({

@@ -1,7 +1,7 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
 import firebase from "../firebase-utils/init";
 import Storage from "../firebase-utils/storageModel";
-import getFileExtension from "../firebase-utils/getFileExtension";
+import getFileExtension from "../utils/getFileExtension";
 import PropTypes from "prop-types";
 import useAuthenticationState from "../hooks/useAuthenticationState";
 
