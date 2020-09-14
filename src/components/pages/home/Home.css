@@ -182,12 +182,10 @@ img.profile-photo {
   background-color: #222;
 }
 
-.file-stack li img {
+.file-stack li .file-preview {
   width: 100%;
-  object-fit: contain;
-  position: relative;
-  transform: translateY(-50%);
-  top: 50%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .file-stack li button {

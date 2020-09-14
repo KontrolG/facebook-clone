@@ -1,16 +1,11 @@
 import React from "react";
-const acceptedFilesTypes = [
-  "image/*",
-  "image/heif",
-  "image/heic",
-  "video/*",
-  "video/mp4",
-  "video/x-m4v",
-  "video/x-matroska"
-];
+import getFileType from "../../utils/getFileType";
 
-const hasAllowedType = ({ type }) => {
-  const fileType = type.split("/").shift();
+const acceptedFilesTypes =
+  "image/*, image/heif, image/heic, video/*, video/mp4, video/x-m4v, video/x-matroska";
+
+const hasAllowedType = file => {
+  const fileType = getFileType(file);
   const allowedTypes = ["image", "video"];
   return allowedTypes.includes(fileType);
 };
@@ -26,7 +21,7 @@ const FilesUploader = ({ mediaFileInputId, addMediaFiles }) => {
       id={mediaFileInputId}
       multiple
       type="file"
-      accept={acceptedFilesTypes.join(",")}
+      accept={acceptedFilesTypes}
       onChange={addInputMediaFiles}
     />
   );
