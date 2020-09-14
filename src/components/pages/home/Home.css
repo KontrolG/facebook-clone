@@ -90,11 +90,6 @@ main > * {
   border-bottom: 1px solid #ccc;
 }
 
-.card header > * {
-  padding: 0.25rem 0.5rem;
-  font-size: 0.9rem;
-}
-
 .card footer {
   padding: 0.5rem 0.75rem;
   border-bottom: none;
