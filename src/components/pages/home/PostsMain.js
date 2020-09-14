@@ -4,7 +4,7 @@ import PostsCardsWithErrorBoundary from "./PostsCardsWithErrorBoundary";
 
 const PostsMain = () => {
   return (
-    <main>
+    <main className="posts-main">
       <PostCreator />
       <PostsCardsWithErrorBoundary />
     </main>

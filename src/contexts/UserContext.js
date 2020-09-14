@@ -54,6 +54,11 @@ const UserProvider = ({ children }) => {
   const firebaseUser = useAuthenticationState(firebase);
   const [user, setUser] = useState(null);
 
+  useEffect(() => {
+    const localUser = JSON.parse(localStorage.getItem("user"));
+    setUser(localUser);
+  }, []);
+
   const login = async ({ email, password }) => {
     try {
       await firebase.auth().signInWithEmailAndPassword(email, password);
@@ -75,13 +80,13 @@ const UserProvider = ({ children }) => {
     try {
       await firebase.auth().signInWithPopup(GoogleProvider);
     } catch (error) {
-      throw error;
+      alert(error);
     }
   };
 
   const logout = async () => {
     await firebase.auth().signOut();
-    // localStorage.removeItem("user");
+    localStorage.removeItem("user");
     setUser(null);
   };
 
@@ -97,6 +102,7 @@ const UserProvider = ({ children }) => {
       photo: firebaseUser.photoURL
     };
 
+    localStorage.setItem("user", JSON.stringify(signedUser));
     setUser(signedUser);
   }, [firebaseUser]);
 
