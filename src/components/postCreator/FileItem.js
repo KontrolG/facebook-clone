@@ -4,7 +4,7 @@ const FileItem = ({ file }) => {
   const urlFromFile = URL.createObjectURL(file);
   return (
     <li>
-      <button>⨯</button>
+      <button type="button">⨯</button>
       <img src={urlFromFile} />
     </li>
   );

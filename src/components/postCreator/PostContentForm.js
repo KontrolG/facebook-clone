@@ -16,7 +16,8 @@ const PostContentForm = ({
   text,
   setText,
   mediaFiles,
-  setMediaFiles
+  setMediaFiles,
+  canSendThePost
 }) => {
   const [
     isDragging,
@@ -34,6 +35,8 @@ const PostContentForm = ({
 
   const saveNewPost = async event => {
     event.preventDefault();
+    if (!canSendThePost) return;
+
     const newPost = {
       user,
       text,
