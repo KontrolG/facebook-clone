@@ -14,7 +14,6 @@ const getCardsFromPosts = posts =>
 
 const PostsCards = () => {
   const { isLoading, posts } = usePostsContext();
-  console.log(posts);
   const cards = getCardsFromPosts(posts);
 
   const loadingMessage = <p>Loading...</p>;

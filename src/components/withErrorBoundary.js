@@ -13,7 +13,10 @@ const withErrorBoundary = (WrapperComponent, fallbackElement) => {
     }
 
     componentDidCatch(error, errorInfo) {
-      console.error(error, errorInfo);
+      const enviroment = process.env.NODE_ENV || "development";
+      if (enviroment === "development") {
+        console.error(error, errorInfo);
+      }
     }
 
     render() {
