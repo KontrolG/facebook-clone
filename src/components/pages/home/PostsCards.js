@@ -16,7 +16,9 @@ const PostsCards = () => {
   const { isLoading, posts } = usePostsContext();
   const cards = getCardsFromPosts(posts);
 
-  const loadingMessage = <p style={{textAlign: "center", marginTop: "1rem"}}>Loading...</p>;
+  const loadingMessage = (
+    <p style={{ textAlign: "center", marginTop: "1rem" }}>Cargando...</p>
+  );
 
   return isLoading ? loadingMessage : cards;
 };

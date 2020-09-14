@@ -4,7 +4,7 @@ import withErrorBoundary from "../../withErrorBoundary";
 
 const errorMessage = (
   <p style={{ textAlign: "center", color: "darkred" }}>
-    Something when really wrong!
+    ¡Algo ha salido mal! Intenta nuevamente.
   </p>
 );
 

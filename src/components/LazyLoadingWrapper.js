@@ -9,7 +9,7 @@ const LoadingMessage = () => (
       justifyContent: "center"
     }}
   >
-    <p>Loading...</p>
+    <p>Cargando...</p>
   </div>
 );
 
