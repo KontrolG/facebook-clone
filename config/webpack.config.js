@@ -54,8 +54,8 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HTMLWebpackPlugin({
       filename: "index.html",
-      template: "./src/index.html"
-      // favicon: "./src/favicon.ico"
+      template: "./src/index.html",
+      favicon: "./src/favicon.ico"
     }),
     new webpack.DefinePlugin(clientEnviromentVariables.stringified),
     !isEnvDevelopment
