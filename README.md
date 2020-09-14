@@ -1,9 +1,32 @@
 # Facebook Clone
 
-Clon de Facebook creado con ReactJS y Firebase aplicando todos los conceptos principales de la librería mas usada en la creación de interfaces de usuario.
+Clon de Facebook creado con ReactJS y Firebase aplicando todos los conceptos principales de la librería más usada en la creación de interfaces de usuario.
 
 [Demostración en vivo
 ](https://facebook-clone-reactjs.herokuapp.com/)
+
+## Funcionalidades
+
+Así como otras aplicaciónes de redes sociales, este clon de Facebook te permite:
+
+- Registrarte e iniciar sesión con tu correo electronico y una contraseña.
+- Ingresar con tu cuenta de Google.
+- Crear publicaciones con texto y/o archivos multimedia (imagenes y videos).
+- Ver las publicaciones de los demás usuarios.
+
+Ademas, pronto tendrás la capacidad de:
+
+- Reaccionar a las publicaciones y comentarlas.
+- Usar emojis.
+
+## Tecnológias
+
+- ReactJS
+- Firebase
+- Heroku
+- Webpack
+- Babel
+- Express
 
 ## Instalación
 
@@ -18,7 +41,7 @@ Instala las dependencias:
 
 ## Configuración
 
-Crea un archivo con el nombre “.env” en el directorio raíz y añade tus llaves de la configuración de [Firebase](https://firebase.google.com) de la siguiente manera:
+Luego de crear el proyecto en Firebase, añade un archivo con el nombre “.env” en el directorio raíz de la aplicación y añade las llaves de tu proyecto de [Firebase](https://firebase.google.com) (disponibles en la sección de configuracion en la Consola de Firebase) de la siguiente manera:
 
     REACT_APP_FIREBASE_PROJECT_ID=<TU  ID DE PROYECTO>
     REACT_APP_FIREBASE_API_KEY=<TU  LLAVE DE LA API>
