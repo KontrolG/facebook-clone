@@ -1,9 +1,9 @@
 import React, { StrictMode, lazy } from "react";
 import "./App.css";
-import LazyLoadingWrapper from "./components/LazyLoadingWrapper";
+import LazyLoadingWrapper from "./LazyLoadingWrapper";
 
-const UserProvider = lazy(() => import("./contexts/UserProvider"));
-const MainRouter = lazy(() => import("./components/MainRouter"));
+const UserProvider = lazy(() => import("../contexts/UserProvider"));
+const MainRouter = lazy(() => import("./MainRouter"));
 
 const App = () => {
   return (
