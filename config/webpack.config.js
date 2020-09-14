@@ -45,9 +45,9 @@ module.exports = {
     minimize: isEnvProduction,
     minimizer: [new TerserPlugin(), new OptimizeCssAssetsPlugin()],
     splitChunks: {
-      chunks: "all",
+      chunks: isEnvProduction ? "all" : "async",
       minSize: 30000,
-      maxSize: 244000
+      maxSize: isEnvProduction ? 244000 : 0
     }
   },
   plugins: [
@@ -65,7 +65,6 @@ module.exports = {
         })
       : false
   ].filter(Boolean),
-  resolve: { extensions: [".js", ".jsx"] },
   module: {
     rules: [
       {
