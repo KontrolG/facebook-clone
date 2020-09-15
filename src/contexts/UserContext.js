@@ -50,17 +50,19 @@ const createFirebaseUser = async (
 
 const UserContext = createContext(defaultState);
 
+const testUser = {
+  uid: 0,
+  email: "test@gmail.com",
+  name: { first: "Test", last: "User" },
+  photo: defaultProfilePictureURL
+};
+
 const UserProvider = ({ children }) => {
   const firebaseUser = useAuthenticationState(firebase);
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const localUser = JSON.parse(localStorage.getItem("user")) || {
-      uid: 0,
-      email: "test@gmail.com",
-      name: { first: "Test", last: "User" },
-      photo: defaultProfilePictureURL
-    };
+    const localUser = JSON.parse(localStorage.getItem("user"));
     setUser(localUser);
   }, []);
 

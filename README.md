@@ -34,24 +34,32 @@ Ademas, pronto tendrás la capacidad de:
 
 Clona este repositorio:
 
-    $ git clone https://github.com/KontrolG/facebook-clone.git
-    $ cd facebook-clone
+```bash
+$ git clone https://github.com/KontrolG/facebook-clone.git
+$ cd facebook-clone
+```
 
 Instala las dependencias:
 
-    $ npm install
+```bash
+$ npm install
+```
 
 ## Configuración
 
 Luego de crear el proyecto en Firebase, añade un archivo con el nombre “.env” en el directorio raíz de la aplicación y añade las llaves de tu proyecto de [Firebase](https://firebase.google.com) (disponibles en la sección de configuracion en la Consola de Firebase) de la siguiente manera:
 
-    REACT_APP_FIREBASE_PROJECT_ID=<TU  ID DE PROYECTO>
-    REACT_APP_FIREBASE_API_KEY=<TU  LLAVE DE LA API>
-    REACT_APP_FIREBASE_APP_ID=<TU  ID DE LA APP>
+```env
+REACT_APP_FIREBASE_PROJECT_ID=<TU  ID DE PROYECTO>
+REACT_APP_FIREBASE_API_KEY=<TU  LLAVE DE LA API>
+REACT_APP_FIREBASE_APP_ID=<TU  ID DE LA APP>
+```
 
 Ahora puedes correr la aplicación ejecutando:
 
-    npm start
+```bash
+npm start
+```
 
 ## Tareas de desarrollo
 
