@@ -9,7 +9,7 @@ const PostCreator = () => {
 
   const formId = "post-creator-form";
 
-  const textIsFilled = text !== "";
+  const textIsFilled = text.trim() !== "";
   const hasMediaFiles = mediaFiles.length > 0;
   const canSendThePost = textIsFilled || hasMediaFiles;
 
