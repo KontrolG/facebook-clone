@@ -36,7 +36,7 @@ const getTimeInUnits = seconds => {
   const minutes = seconds / 60;
   const hours = minutes / 60;
   const days = hours / 24;
-  return { dias: days, horas: hours, minutos: minutes };
+  return { días: days, horas: hours, minutos: minutes };
 };
 
 const getGreaterTimeUnit = timeInUnits => {
