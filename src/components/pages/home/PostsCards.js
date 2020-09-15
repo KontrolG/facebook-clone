@@ -5,7 +5,7 @@ import PostCard from "../../postCard/PostCard";
 const byCreationDate = ([, lastPost], [, nextPost]) =>
   nextPost.creationDate - lastPost.creationDate;
 
-const toPostsCards = ([id, post]) => <PostCard {...post} key={id} />;
+const toPostsCards = ([id, post]) => <PostCard {...post} key={id} id={id} />;
 
 const getCardsFromPosts = posts =>
   Object.entries(posts)

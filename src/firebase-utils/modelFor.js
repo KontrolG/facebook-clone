@@ -27,6 +27,9 @@ const modelFor = referencePath => {
     getCreatedItemFromSnapshotValue({ key }, snapshotValue) {
       return { [key]: snapshotValue };
     },
+    deleteItem(postId) {
+      return reference.child(postId).remove();
+    },
     timestamp: TIMESTAMP
   };
 };

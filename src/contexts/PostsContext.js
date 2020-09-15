@@ -1,6 +1,5 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
 import Post from "../firebase-utils/PostModel";
-import Postwit from "../firebase-utils/postWithMediaFiles";
 import PropTypes from "prop-types";
 
 const defaultState = {
@@ -26,8 +25,11 @@ const PostsProvider = ({ children }) => {
     //     creationDate: 1599471181316,
     //     text: "Saludos!",
     //     user: {
-    //       name: { first: "Georgelyz", last: "Martinez" },
-    //       photo: "img/test.jpg"
+    //       uid: "jJAnG0375XR5YTJjfh9XkY7tACf2",
+    //       email: "test@gmail.com",
+    //       name: { first: "Test", last: "User" },
+    //       photo:
+    //         "https://firebasestorage.googleapis.com/v0/b/fb-post-creator.appspot.com/o/profiles-pictures%2Fdefault-profile-picture.jpg?alt=media&token=f82f4d92-2d6e-4720-97d7-3e584dc527db"
     //     }
     //   }
     // };
@@ -39,7 +41,14 @@ const PostsProvider = ({ children }) => {
     fetchPost();
   }, []);
 
-  const providerValue = { isLoading, posts, setPosts };
+  const deletePost = async postId => {
+    await Post.deleteItem(postId);
+    const newPosts = { ...posts };
+    delete newPosts[postId];
+    setPosts(newPosts);
+  };
+
+  const providerValue = { isLoading, posts, setPosts, deletePost };
 
   return (
     <PostsContext.Provider value={providerValue}>

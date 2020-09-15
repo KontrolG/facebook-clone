@@ -1,4 +1,5 @@
 import React from "react";
+import { useUserContext } from "../../contexts/UserContext";
 import ProfilePhotoMiniature from "../ProfilePhotoMiniature";
 import DateFormatter from "../DateFormatter";
 import PostHeaderDropdown from "./PostHeaderDropdown";
@@ -7,7 +8,10 @@ const renderParagraphWithFormattedDate = (formattedDate, props) => (
   <p {...props}>{formattedDate}</p>
 );
 
-const PostHeader = ({ user, creationDate }) => {
+const PostHeader = ({ id, user, creationDate }) => {
+  const loggedUserId = useUserContext().user.uid;
+  const loggedUserIsThePostOwner = loggedUserId === user.uid;
+
   return (
     <div className="post-info">
       <ProfilePhotoMiniature userPhotoSrc={user.photo} />
@@ -20,7 +24,7 @@ const PostHeader = ({ user, creationDate }) => {
           children={renderParagraphWithFormattedDate}
         />
       </div>
-      <PostHeaderDropdown />
+      {loggedUserIsThePostOwner ? <PostHeaderDropdown postId={id} /> : null}
     </div>
   );
 };

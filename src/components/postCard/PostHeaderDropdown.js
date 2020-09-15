@@ -1,30 +1,24 @@
-import React from "react";
+import React, { useCallback } from "react";
 import useToggle from "../../hooks/useToggle";
 import Button from "../Button";
+import { usePostsContext } from "../../contexts/PostsContext";
 
-const PostHeaderDropdown = props => {
+const PostHeaderDropdown = ({ postId }) => {
+  const { deletePost } = usePostsContext();
   const [isOpen, toggleIsOpen] = useToggle(false);
 
-  const closeDropDown = event => {
-    if (isOpen) {
-      toggleIsOpen();
-    }
-  };
+  const removePost = useCallback(event => deletePost(postId), [postId]);
 
   return (
     <div className="post-options">
-      <Button
-        className="post-option-dropdown-button"
-        onClick={toggleIsOpen}
-        onBlur={closeDropDown}
-      >
+      <Button className="post-option-dropdown-button" onClick={toggleIsOpen}>
         v
       </Button>
       <ul className={`post-option-dropdown-list card ${isOpen ? "open" : ""}`}>
-        <li onClick={event => alert("funciona")}>
+        {/* <li >
           <i>e</i> <span>Editar</span>
-        </li>
-        <li>
+        </li> */}
+        <li onClick={removePost}>
           <i>x</i> <span>Eliminar</span>
         </li>
       </ul>
