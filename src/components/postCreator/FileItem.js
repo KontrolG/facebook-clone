@@ -1,24 +1,19 @@
 import React from "react";
+import Multimedia from "../Multimedia";
 import getFileType from "../../utils/getFileType";
 
 const FileItem = ({ file }) => {
-  const fileTypeIsVideo = getFileType(file) === "video";
+  const fileType = getFileType(file);
   const urlFromFile = URL.createObjectURL(file);
-
-  const filePreviewClassName = "file-preview";
-
-  const filePreview = fileTypeIsVideo ? (
-    <video controls className={filePreviewClassName}>
-      <source src={urlFromFile} type={file.type} />
-    </video>
-  ) : (
-    <img src={urlFromFile} className={filePreviewClassName} />
-  );
 
   return (
     <li>
       <button type="button">⨯</button>
-      {filePreview}
+      <Multimedia
+        fileType={fileType}
+        sourceUrl={urlFromFile}
+        className="file-preview"
+      />
     </li>
   );
 };
