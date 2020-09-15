@@ -29,7 +29,7 @@ const addPostMediaFile = mediaFilesReference => async mediaFile => {
   const fileReference = mediaFilesReference.push();
   const uploadedFile = await getUploadedFile(fileReference, mediaFile);
   const { url } = uploadedFile;
-  return fileReference.set({ url });
+  return fileReference.set({ url, type: mediaFile.type });
 };
 
 const getUploadedFile = ({ key }, mediaFile) => {
