@@ -69,6 +69,13 @@ const PostContentForm = ({
     setMediaFiles(mediaFiles => [...mediaFiles, ...newFilesWithId]);
   };
 
+  const removeMediaFile = mediaFileId => {
+    const newMediaFiles = mediaFiles.filter(
+      mediaFile => mediaFile.id !== mediaFileId
+    );
+    setMediaFiles(newMediaFiles);
+  };
+
   const finishDragOnFormLeave = event => {
     const { target } = event;
     if (!isChildrenOf(formId, target)) finishDrag(event);
@@ -86,7 +93,9 @@ const PostContentForm = ({
       onDragLeave={finishDragOnFormLeave}
     >
       <PostContentInput {...{ inputRef, text, setText }} />
-      <FilesManager {...{ mediaFileInputId, mediaFiles, addMediaFiles }} />
+      <FilesManager
+        {...{ mediaFileInputId, mediaFiles, addMediaFiles, removeMediaFile }}
+      />
       <FormOptions {...{ mediaFileInputId }} />
     </form>
   );

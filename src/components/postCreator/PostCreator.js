@@ -13,8 +13,6 @@ const PostCreator = () => {
   const hasMediaFiles = mediaFiles.length > 0;
   const canSendThePost = textIsFilled || hasMediaFiles;
 
-  useEffect(() => console.log(mediaFiles), [mediaFiles]);
-
   return (
     <CardWithTitle title="Crear publicación">
       <PostContentForm
