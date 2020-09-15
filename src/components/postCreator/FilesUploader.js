@@ -1,11 +1,11 @@
 import React from "react";
-import getFileType from "../../utils/getFileMediaType";
+import getFileMediaType from "../../utils/getFileMediaType";
 
 const acceptedFilesTypes =
   "image/*, image/heif, image/heic, video/*, video/mp4, video/x-m4v, video/x-matroska";
 
 const hasAllowedType = file => {
-  const fileType = getFileType(file);
+  const fileType = getFileMediaType(file.type);
   const allowedTypes = ["image", "video"];
   return allowedTypes.includes(fileType);
 };
