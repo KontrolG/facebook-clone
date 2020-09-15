@@ -43,9 +43,11 @@ const PostsProvider = ({ children }) => {
 
   const deletePost = async postId => {
     await Post.deleteItem(postId);
-    const newPosts = { ...posts };
-    delete newPosts[postId];
-    setPosts(newPosts);
+    setPosts(posts => {
+      const newPosts = { ...posts };
+      delete newPosts[postId];
+      return newPosts;
+    });
   };
 
   const providerValue = { isLoading, posts, setPosts, deletePost };
