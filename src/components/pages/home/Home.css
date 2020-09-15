@@ -319,7 +319,7 @@ img.profile-photo {
   align-items: center;
 }
 
-.post-body li img {
+.post-body li .media-item {
   width: 100%;
   object-fit: cover;
   max-height: 500px;

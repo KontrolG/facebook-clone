@@ -1,16 +1,16 @@
 import React from "react";
 import Multimedia from "../Multimedia";
-import getFileType from "../../utils/getFileType";
+import getFileMediaType from "../../utils/getFileMediaType";
 
 const FileItem = ({ file }) => {
-  const fileType = getFileType(file);
+  const fileMediaType = getFileMediaType(file.type);
   const urlFromFile = URL.createObjectURL(file);
 
   return (
     <li>
       <button type="button">⨯</button>
       <Multimedia
-        fileType={fileType}
+        fileMediaType={fileMediaType}
         sourceUrl={urlFromFile}
         className="file-preview"
       />

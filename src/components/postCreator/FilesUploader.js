@@ -1,5 +1,5 @@
 import React from "react";
-import getFileType from "../../utils/getFileType";
+import getFileType from "../../utils/getFileMediaType";
 
 const acceptedFilesTypes =
   "image/*, image/heif, image/heic, video/*, video/mp4, video/x-m4v, video/x-matroska";
