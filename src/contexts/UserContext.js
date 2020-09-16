@@ -1,7 +1,6 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
 import firebase from "../firebase-utils/init";
-import Storage from "../firebase-utils/storageModel";
-import getFileExtension from "../utils/getFileExtension";
+import "firebase/auth";
 import PropTypes from "prop-types";
 import useAuthenticationState from "../hooks/useAuthenticationState";
 
@@ -24,32 +23,6 @@ const defaultState = {
 const defaultProfilePictureURL =
   "https://firebasestorage.googleapis.com/v0/b/fb-post-creator.appspot.com/o/profiles-pictures%2Fdefault-profile-picture.jpg?alt=media&token=f82f4d92-2d6e-4720-97d7-3e584dc527db";
 
-const getProfilePhotoURL = async (userId, photoImage) => {
-  if (!photoImage) {
-    return defaultProfilePictureURL;
-  }
-  const photoImageExtension = getFileExtension(photoImage.name);
-  const { url } = await Storage.saveFile(
-    `profile-photos/${userId}.${photoImageExtension}`,
-    photoImage
-  );
-  return url;
-};
-
-const createFirebaseUser = async (
-  firebase,
-  { email, password, displayName, photoImage }
-) => {
-  const authenticator = firebase.auth();
-  await authenticator.createUserWithEmailAndPassword(email, password);
-  const newUser = authenticator.currentUser;
-  const photoURL = await getProfilePhotoURL(newUser.uid, photoImage);
-  await newUser.updateProfile({ displayName, photoURL });
-  await authenticator.updateCurrentUser(newUser);
-};
-
-const UserContext = createContext(defaultState);
-
 const testUser = {
   uid: 0,
   email: "test@gmail.com",
@@ -57,12 +30,14 @@ const testUser = {
   photo: defaultProfilePictureURL
 };
 
+const UserContext = createContext(defaultState);
+
 const UserProvider = ({ children }) => {
   const firebaseUser = useAuthenticationState(firebase);
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const localUser = JSON.parse(localStorage.getItem("user"));
+    const localUser = JSON.parse(localStorage.getItem("user")); /* testUser */
     setUser(localUser);
   }, []);
 
@@ -74,12 +49,26 @@ const UserProvider = ({ children }) => {
     }
   };
 
-  const signup = async user => {
+  const createUser = async (email, password) => {
+    const authenticator = firebase.auth();
     try {
-      await createFirebaseUser(firebase, user);
+      await authenticator.createUserWithEmailAndPassword(email, password);
     } catch (error) {
       throw error;
     }
+
+    return authenticator.currentUser;
+  };
+
+  const updateCurrentUserProfile = async userProfile => {
+    const authenticator = firebase.auth();
+    const { currentUser } = authenticator;
+    try {
+      await currentUser.updateProfile(userProfile);
+    } catch (error) {
+      throw error;
+    }
+    return authenticator.updateCurrentUser(currentUser);
   };
 
   const loginWithGoogle = async () => {
@@ -113,7 +102,14 @@ const UserProvider = ({ children }) => {
     setUser(signedUser);
   }, [firebaseUser]);
 
-  const providerValue = { user, signup, login, loginWithGoogle, logout };
+  const providerValue = {
+    user,
+    createUser,
+    updateCurrentUserProfile,
+    login,
+    loginWithGoogle,
+    logout
+  };
 
   return (
     <UserContext.Provider value={providerValue}>

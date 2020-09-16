@@ -1,15 +1,32 @@
 import React, { useState } from "react";
 import { useUserContext } from "../../../contexts/UserContext";
+import Storage from "../../../firebase-utils/storageModel";
+import getFileExtension from "../../../utils/getFileExtension";
 import { Form } from "../../form";
 import FormField from "./FormField";
 import ProfilePhotoUploader from "./ProfilePhotoUploader";
 import Button from "../../Button";
 import DisplayNameField from "./DisplayNameField";
 
+const defaultProfilePictureURL =
+  "https://firebasestorage.googleapis.com/v0/b/fb-post-creator.appspot.com/o/profiles-pictures%2Fdefault-profile-picture.jpg?alt=media&token=f82f4d92-2d6e-4720-97d7-3e584dc527db";
+
+const getProfilePhotoURL = async (userId, photoImage) => {
+  if (!photoImage) {
+    return defaultProfilePictureURL;
+  }
+  const photoImageExtension = getFileExtension(photoImage.name);
+  const { url } = await Storage.saveFile(
+    `profile-photos/${userId}.${photoImageExtension}`,
+    photoImage
+  );
+  return url;
+};
+
 const RegisterForm = () => {
   const [profileImage, setProfileImage] = useState(null);
   const [registerError, setRegisterError] = useState(null);
-  const { signup } = useUserContext();
+  const { createUser, updateCurrentUserProfile } = useUserContext();
 
   const validatePassword = (password, confirmPassword) => {
     setRegisterError(null);
@@ -19,21 +36,19 @@ const RegisterForm = () => {
     return true;
   };
 
-  const registerUser = async ({
-    email,
-    password,
-    confirmPassword,
-    firstName,
-    lastName
-  }) => {
-    if (!validatePassword(password, confirmPassword)) return;
+  const signup = async ({ email, password, firstName, lastName }) => {
+    const { uid } = await createUser(email, password);
+    const photoURL = await getProfilePhotoURL(uid, profileImage);
 
-    const newUser = {
-      email,
-      password,
+    return updateCurrentUserProfile({
       displayName: `${firstName} ${lastName}`,
-      photoImage: profileImage
-    };
+      photoURL
+    });
+  };
+
+  const registerUser = async newUser => {
+    const { password, confirmPassword } = newUser;
+    if (!validatePassword(password, confirmPassword)) return;
 
     try {
       await signup(newUser);
@@ -71,7 +86,10 @@ const RegisterForm = () => {
       validate={formValidation}
     >
       <DisplayNameField />
-      <ProfilePhotoUploader onImageUpload={setProfileImage} />
+      <ProfilePhotoUploader
+        defaultProfilePictureURL={defaultProfilePictureURL}
+        onImageUpload={setProfileImage}
+      />
       <FormField
         labelText="Correo electrónico"
         type="email"

@@ -1,9 +1,10 @@
 import React, { Suspense } from "react";
+import PropTypes from "prop-types";
 
-const LoadingMessage = () => (
+const LoadingMessage = ({ height }) => (
   <div
     style={{
-      height: "100vh",
+      height,
       display: "flex",
       alignItems: "center",
       justifyContent: "center"
@@ -13,8 +14,21 @@ const LoadingMessage = () => (
   </div>
 );
 
-const LazyLoadingWrapper = ({ children }) => {
-  return <Suspense fallback={<LoadingMessage />}>{children}</Suspense>;
+const LazyLoadingWrapper = ({ children, height }) => {
+  return (
+    <Suspense fallback={<LoadingMessage height={height} />}>
+      {children}
+    </Suspense>
+  );
+};
+
+LazyLoadingWrapper.defaultProps = {
+  height: "100vh"
+};
+
+LazyLoadingWrapper.propTypes = {
+  children: PropTypes.node.isRequired,
+  height: PropTypes.string
 };
 
 export default LazyLoadingWrapper;

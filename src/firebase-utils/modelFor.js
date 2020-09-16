@@ -1,4 +1,7 @@
-import { database, TIMESTAMP } from "./init";
+import firebase from "./init";
+import "firebase/database";
+const database = firebase.database();
+const { TIMESTAMP } = firebase.database.ServerValue;
 
 const modelFor = referencePath => {
   const reference = database.ref(referencePath);

@@ -1,12 +1,13 @@
-import React from "react";
+import React, { lazy } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Card from "../../cards/Card";
 import Button from "../../Button";
+import LazyLoadingWrapper from "../../LazyLoadingWrapper";
 import { useUserContext } from "../../../contexts/UserContext";
 import "./Users.css";
 
 import Login from "./Login";
-import Register from "./Register";
+const Register = lazy(() => import("./Register"));
 
 const Users = ({ match }) => {
   const { user, loginWithGoogle } = useUserContext();
@@ -27,7 +28,9 @@ const Users = ({ match }) => {
         <Card className="users-box">
           <Switch>
             <Route exact path={`${url}/login`} component={Login} />
-            <Route exact path={`${url}/register`} component={Register} />
+            <LazyLoadingWrapper height="200px">
+              <Route exact path={`${url}/register`} component={Register} />
+            </LazyLoadingWrapper>
           </Switch>
 
           <div className="auth-alternatives">

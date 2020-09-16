@@ -1,5 +1,7 @@
-import { storage } from "./init";
+import firebase from "./init";
+import "firebase/storage";
 
+const storage = firebase.storage();
 const storageReference = storage.ref();
 
 const storageModel = {
