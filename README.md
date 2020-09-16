@@ -108,4 +108,4 @@ const formValidations = {
 
 ## Notas
 
-- Usar uuid/v4 para generar keys aleatorios en los componentes que son mapeados a partir de un Array provoca que cada vez que se recalcula el arbol del DOM, estos tengan keys diferentes, por lo tanto, se remueven del DOM y se colocan nuevamente (algo para nada deseado).
+- Usar **uuid/v4** para generar keys aleatorios en los componentes que son mapeados a partir de un Array provoca que cada vez que se recalcula el arbol del DOM, estos tengan keys diferentes, por lo tanto, se remueven del DOM y se colocan nuevamente (algo para nada deseado). Al usar el metódo de esta librería, se estaría ejecutando una función impura, lo cual no es recomendable en los High-Order Methods de Arrays.
