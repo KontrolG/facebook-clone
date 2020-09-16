@@ -13,6 +13,7 @@
   border-radius: var(--border-radius);
   overflow: hidden;
   max-width: 445px;
+  width: 100%;
   font-size: 0.9rem;
   display: flex;
 }
@@ -23,7 +24,8 @@
 }
 
 .search form input {
-  width: 400px;
+  max-width: 400px;
+  width: 100%;
 }
 
 .search form button {
@@ -45,6 +47,16 @@
 
 .search nav ul li:last-of-type a {
   border: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .profile-link {
+    display: none;
+  }
+
+  .logout-button {
+    margin-left: 2rem;
+  }
 }
 
 .search .profile-link a {
