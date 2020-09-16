@@ -26,9 +26,16 @@ const splitVisibleItems = items => {
 const MediaItems = ({ items }) => {
   const mediaItems = getMediaItems(items);
   const hasMultipleItems = items.length >= 3;
-  return (
-    <ul className={hasMultipleItems ? "multiple-items" : ""}>{mediaItems}</ul>
-  );
+  const hasTwoItems = items.length === 2;
+
+  const classNames = [
+    hasTwoItems ? "splitted-mediafiles" : false,
+    hasMultipleItems ? "multiple-items" : false
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  return <ul className={classNames}>{mediaItems}</ul>;
 };
 
 export default MediaItems;

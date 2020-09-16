@@ -331,6 +331,10 @@ img.profile-photo {
   align-items: center;
 }
 
+.splitted-mediafiles li {
+  flex: 0 0 49.2%;
+}
+
 .post-body li .media-item {
   width: 100%;
   object-fit: cover;
