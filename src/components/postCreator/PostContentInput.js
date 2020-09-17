@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useUserContext } from "../../contexts/UserContext";
 import ProfilePhotoMiniature from "../ProfilePhotoMiniature";
 import TextareaWithLineBreaks from "./TextareaWithLineBreaks";
+import { usePostCreatorContext } from "./context";
 
-const PostContentInput = ({ inputRef, setText }) => {
+const PostContentInput = ({ inputRef }) => {
+  const { setText } = usePostCreatorContext();
+
   const changeText = event => {
     const { value } = event.target;
     setText(value.join("\r\n"));

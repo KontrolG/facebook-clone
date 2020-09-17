@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import getUniqueId from "uuid/v4";
+import React from "react";
 import { useUserContext } from "../../contexts/UserContext";
 import { usePostsContext } from "../../contexts/PostsContext";
 import postWithMediaFiles from "../../firebase-utils/postWithMediaFiles";
@@ -8,17 +7,9 @@ import FormOptions from "./FormOptions";
 import PostContentInput from "./PostContentInput";
 import useDragAndDrop from "../../hooks/useDragAndDrop";
 import useClassNames from "../../hooks/useClassNames";
+import { usePostCreatorContext } from "./context";
 
-const toFilesWithId = file => Object.assign(file, { id: getUniqueId() });
-
-const PostContentForm = ({
-  formId,
-  text,
-  setText,
-  mediaFiles,
-  setMediaFiles,
-  canSendThePost
-}) => {
+const PostContentForm = ({ formId, canSendThePost }) => {
   const [
     isDragging,
     changeIsDragging,
@@ -30,6 +21,12 @@ const PostContentForm = ({
   const { setPosts } = usePostsContext();
   const inputRef = React.createRef();
   const mediaFileInputId = "media-input";
+  const {
+    text,
+    mediaFiles,
+    clearPostCreator,
+    addMediaFiles
+  } = usePostCreatorContext();
 
   addClassNameIf(isDragging, "is-dragging");
 
@@ -54,26 +51,13 @@ const PostContentForm = ({
   };
 
   const clearForm = () => {
-    setText("");
+    clearPostCreator();
     inputRef.current.textContent = "";
-    setMediaFiles([]);
   };
 
   const addDroppedMediaFiles = event => {
     const newFiles = getDraggedFiles(event);
     addMediaFiles(newFiles);
-  };
-
-  const addMediaFiles = newFiles => {
-    const newFilesWithId = Array.from(newFiles).map(toFilesWithId);
-    setMediaFiles(mediaFiles => [...mediaFiles, ...newFilesWithId]);
-  };
-
-  const removeMediaFile = mediaFileId => {
-    const newMediaFiles = mediaFiles.filter(
-      mediaFile => mediaFile.id !== mediaFileId
-    );
-    setMediaFiles(newMediaFiles);
   };
 
   const finishDragOnFormLeave = event => {
@@ -92,11 +76,9 @@ const PostContentForm = ({
       onDrop={addDroppedMediaFiles}
       onDragLeave={finishDragOnFormLeave}
     >
-      <PostContentInput {...{ inputRef, text, setText }} />
-      <FilesManager
-        {...{ mediaFileInputId, mediaFiles, addMediaFiles, removeMediaFile }}
-      />
-      <FormOptions {...{ mediaFileInputId }} />
+      <PostContentInput inputRef={inputRef} />
+      <FilesManager mediaFileInputId={mediaFileInputId} />
+      <FormOptions mediaFileInputId={mediaFileInputId} />
     </form>
   );
 };
