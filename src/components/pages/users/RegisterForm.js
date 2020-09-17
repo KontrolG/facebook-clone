@@ -23,6 +23,28 @@ const getProfilePhotoURL = async (userId, photoImage) => {
   return url;
 };
 
+const formValidation = {
+  firstName: {
+    isRequired: "Debes introducir tu nombre"
+  },
+  lastName: {
+    isRequired: "Debes introducir tu apellido"
+  },
+  email: {
+    isEmail: "Debes introducir un correo electrónico"
+  },
+  password: {
+    isLength: {
+      min: 6,
+      max: 20,
+      message: "Debes introducir una contraseña con entre 6 a 20 caracteres"
+    }
+  },
+  confirmPassword: {
+    isRequired: "Debes confirmar tu contraseña"
+  }
+};
+
 const RegisterForm = () => {
   const [profileImage, setProfileImage] = useState(null);
   const [registerError, setRegisterError] = useState(null);
@@ -54,28 +76,6 @@ const RegisterForm = () => {
       await signup(newUser);
     } catch (error) {
       setRegisterError(error);
-    }
-  };
-
-  const formValidation = {
-    firstName: {
-      isRequired: "Debes introducir tu nombre"
-    },
-    lastName: {
-      isRequired: "Debes introducir tu apellido"
-    },
-    email: {
-      isEmail: "Debes introducir un correo electrónico"
-    },
-    password: {
-      isLength: {
-        min: 6,
-        max: 20,
-        message: "Debes introducir una contraseña con entre 6 a 20 caracteres"
-      }
-    },
-    confirmPassword: {
-      isRequired: "Debes confirmar tu contraseña"
     }
   };
 

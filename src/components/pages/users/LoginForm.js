@@ -4,6 +4,15 @@ import { useUserContext } from "../../../contexts/UserContext";
 import { Form } from "../../form";
 import FormField from "./FormField";
 
+const formValidations = {
+  email: {
+    isEmail: "Debes introducir un correo electrónico"
+  },
+  password: {
+    isRequired: "Debes introducir una contraseña"
+  }
+};
+
 const LoginForm = () => {
   const [loginError, setLoginError] = useState(null);
   const { login } = useUserContext();
@@ -14,15 +23,6 @@ const LoginForm = () => {
       await login(formUser);
     } catch (error) {
       setLoginError(error);
-    }
-  };
-
-  const formValidations = {
-    email: {
-      isEmail: "Debes introducir un correo electrónico"
-    },
-    password: {
-      isRequired: "Debes introducir una contraseña"
     }
   };
 
