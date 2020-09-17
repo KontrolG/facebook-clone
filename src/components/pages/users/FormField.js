@@ -11,6 +11,7 @@ const popoverStyles = {
 
 const FormField = ({ labelText, type, name, placeholder }) => {
   const [error, setError] = useState(null);
+  const [popoverPosition, setPopoverPosition] = useState("right");
 
   const setErrorMessage = useCallback(errors => {
     const ErrorMessage = errors?.[0]?.message;
@@ -18,18 +19,24 @@ const FormField = ({ labelText, type, name, placeholder }) => {
     return null;
   }, []);
 
-  const renderArrowContainer = ({ childRect, popoverRect, position }) => (
-    <ArrowContainer
-      childRect={childRect}
-      popoverRect={popoverRect}
-      position={position}
-      arrowSize={8}
-      arrowColor={popoverStyles.backgroundColor}
-      className={`popover-arrow-${position}`}
-    >
-      {error}
-    </ArrowContainer>
-  );
+  const renderArrowContainer = ({ childRect, popoverRect, position }) => {
+    setPopoverPosition(position);
+    return (
+      <ArrowContainer
+        childRect={childRect}
+        popoverRect={popoverRect}
+        position={position}
+        arrowSize={8}
+        arrowColor={popoverStyles.backgroundColor}
+        className={`popover-arrow-${position}`}
+      >
+        {error}
+      </ArrowContainer>
+    );
+  };
+
+  const inputClassName =
+    popoverPosition === "bottom" ? "popover-at-bottom" : undefined;
 
   return (
     <div className="wrapper">
@@ -42,7 +49,12 @@ const FormField = ({ labelText, type, name, placeholder }) => {
         containerClassName="form-error-message"
         content={renderArrowContainer}
       >
-        <Input type={type} name={name} placeholder={placeholder} />
+        <Input
+          type={type}
+          name={name}
+          placeholder={placeholder}
+          className={inputClassName}
+        />
       </Popover>
       <ErrorMessage fieldName={name}>{setErrorMessage}</ErrorMessage>
     </div>

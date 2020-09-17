@@ -54,7 +54,6 @@ a[href] {
 
 input.has-errors {
   box-shadow: 0px 0px 5px darkred;
-  margin-bottom: 3rem;
 }
 
 .name-inputs {
@@ -118,8 +117,6 @@ input.has-errors {
   top: 8.5px !important;
 }
 
-@media only screen and (min-width: 800px) {
-  input.has-errors {
-    margin-bottom: 0.25rem;
-  }
+.popover-at-bottom.has-errors {
+  margin-bottom: 3rem;
 }
