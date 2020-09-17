@@ -2,16 +2,11 @@ import React from "react";
 import FilesStack from "./FilesStack";
 import FilesUploader from "./FilesUploader";
 
-const FilesManager = ({
-  mediaFileInputId,
-  mediaFiles,
-  addMediaFiles,
-  removeMediaFile
-}) => {
+const FilesManager = ({ mediaFileInputId }) => {
   return (
     <>
-      <FilesStack files={mediaFiles} removeMediaFile={removeMediaFile} />
-      <FilesUploader {...{ mediaFileInputId, addMediaFiles }} />
+      <FilesStack />
+      <FilesUploader mediaFileInputId={mediaFileInputId} />
     </>
   );
 };

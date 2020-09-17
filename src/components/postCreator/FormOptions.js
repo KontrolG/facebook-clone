@@ -1,4 +1,4 @@
-import React, { createRef } from "react";
+import React from "react";
 
 const FormOptions = ({ mediaFileInputId }) => {
   return (

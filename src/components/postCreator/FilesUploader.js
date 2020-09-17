@@ -1,5 +1,6 @@
 import React from "react";
 import getFileMediaType from "../../utils/getFileMediaType";
+import { usePostCreatorContext } from "./context";
 
 const acceptedFilesTypes =
   "image/*, image/heif, image/heic, video/*, video/mp4, video/x-m4v, video/x-matroska";
@@ -10,7 +11,9 @@ const hasAllowedType = file => {
   return allowedTypes.includes(fileType);
 };
 
-const FilesUploader = ({ mediaFileInputId, addMediaFiles }) => {
+const FilesUploader = ({ mediaFileInputId }) => {
+  const { addMediaFiles } = usePostCreatorContext();
+
   const addInputMediaFiles = ({ target }) => {
     const newFiles = Array.from(target.files).filter(hasAllowedType);
     addMediaFiles(newFiles);

@@ -1,13 +1,14 @@
-import React, { useCallback } from "react";
+import React from "react";
 import Multimedia from "../Multimedia";
 import getFileMediaType from "../../utils/getFileMediaType";
+import { usePostCreatorContext } from "./context";
 
-const FileItem = ({ file, removeMediaFile }) => {
+const FileItem = ({ file }) => {
+  const { removeMediaFile } = usePostCreatorContext();
   const fileMediaType = getFileMediaType(file.type);
   const urlFromFile = URL.createObjectURL(file);
 
-  const { id } = file;
-  const removeItem = useCallback(() => removeMediaFile(id), [id]);
+  const removeItem = () => removeMediaFile(file.id);
 
   return (
     <li>

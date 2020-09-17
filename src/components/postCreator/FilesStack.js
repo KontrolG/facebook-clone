@@ -1,12 +1,13 @@
 import React from "react";
 import FileItem from "./FileItem";
+import { usePostCreatorContext } from "./context";
 
-const toFileItem = removeMediaFile => file => (
-  <FileItem file={file} key={file.id} removeMediaFile={removeMediaFile} />
-);
+const toFileItem = file => <FileItem file={file} key={file.id} />;
 
-const FilesStack = ({ files, removeMediaFile }) => {
-  const filesItems = files.map(toFileItem(removeMediaFile));
+const FilesStack = () => {
+  const { mediaFiles } = usePostCreatorContext();
+
+  const filesItems = mediaFiles.map(toFileItem);
 
   return <ul className="file-stack">{filesItems}</ul>;
 };
