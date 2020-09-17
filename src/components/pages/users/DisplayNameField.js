@@ -1,7 +1,12 @@
 import React from "react";
-import { Input, ErrorMessage } from "../../form";
+import { Input, useFormErrors } from "../../form";
 
 const DisplayNameField = props => {
+  const { errors } = useFormErrors();
+
+  const firstNameError = errors?.firstName?.[0]?.message;
+  const lastNameError = errors?.lastName?.[0]?.message;
+
   return (
     <div className="wrapper">
       <label htmlFor="firstName">Nombre completo</label>
@@ -14,9 +19,7 @@ const DisplayNameField = props => {
         />
       </div>
       <p className="form-error-message">
-        {<ErrorMessage fieldName="lastName" /> || (
-          <ErrorMessage fieldName="firstName" />
-        )}
+        {firstNameError || lastNameError || null}
       </p>
     </div>
   );
