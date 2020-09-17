@@ -54,6 +54,7 @@ a[href] {
 
 input.has-errors {
   box-shadow: 0px 0px 5px darkred;
+  margin-bottom: 3rem;
 }
 
 .name-inputs {
@@ -101,4 +102,24 @@ input.has-errors {
 
 .users-error {
   margin-bottom: 0.25rem;
+}
+
+[class^="popover-arrow"] {
+  padding: 0.5em !important;
+}
+
+.popover-arrow-bottom div:first-child {
+  background-color: inherit;
+  top: -7.5px !important;
+}
+
+.popover-arrow-right div:first-child {
+  left: -7.5px !important;
+  top: 8.5px !important;
+}
+
+@media only screen and (min-width: 800px) {
+  input.has-errors {
+    margin-bottom: 0.25rem;
+  }
 }
