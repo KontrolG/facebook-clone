@@ -7,17 +7,23 @@ const toErrorParagraph = ({ message }, index) => <p key={index}>{message}</p>;
 const ErrorMessage = ({ fieldName, showAll, children }) => {
   const { errors } = useFormContext();
 
-  if (!errors) return null;
+  const fieldErrors = errors?.[fieldName];
 
-  const fieldErrors = errors[fieldName];
-
-  if (showAll) {
-    return children ? children(fieldErrors) : fieldErrors.map(toErrorParagraph);
+  if (children && typeof children === "function") {
+    return children(fieldErrors);
   }
 
-  const [error] = fieldErrors;
+  if (showAll) {
+    return fieldErrors.map(toErrorParagraph);
+  }
 
-  return error ? error.message : null;
+  const error = fieldErrors?.[0];
+
+  if (error) {
+    return error.message;
+  }
+
+  return null;
 };
 
 ErrorMessage.defaultProps = {
