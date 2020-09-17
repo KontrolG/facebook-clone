@@ -25,6 +25,11 @@ const useFormContext = () => {
   return context;
 };
 
+const useFormErrors = () => {
+  const { errors, fieldHasErrors, setErrors } = useFormContext();
+  return { errors, fieldHasErrors, setErrors };
+};
+
 const FormContextProvider = ({ children }) => {
   const [values, changeFieldValue] = useForm();
   const [validations, setValidations] = useState(null);
@@ -65,6 +70,7 @@ const FormContextProvider = ({ children }) => {
     setFormValidations,
     validateFields,
     errors,
+    setErrors,
     fieldHasErrors
   };
 
@@ -81,4 +87,9 @@ FormContextProvider.propTypes = {
 
 const FormContextConsumer = FormContext.Consumer;
 
-export { FormContextProvider, useFormContext, FormContextConsumer };
+export {
+  FormContextProvider,
+  useFormContext,
+  FormContextConsumer,
+  useFormErrors
+};
