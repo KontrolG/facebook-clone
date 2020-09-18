@@ -47,13 +47,14 @@ a[href] {
 
 .users-form input {
   margin: 0.25rem 0;
-  box-shadow: 0px 0px 1.5px #333;
+  border: 1px solid #ccd0d5;
+  border-radius: 5px;
   width: 100%;
-  padding: 0.15em 0.5em;
+  padding: 0.75em;
 }
 
 input.has-errors {
-  box-shadow: 0px 0px 5px darkred;
+  border-color: red;
 }
 
 .name-inputs {
@@ -93,7 +94,7 @@ input.has-errors {
 }
 
 .form-error-message {
-  color: darkred;
+  color: red;
   font-size: 0.85em;
   min-height: 1em;
   height: auto;
@@ -104,7 +105,7 @@ input.has-errors {
 }
 
 [class^="popover-arrow"] {
-  padding: 0.5em !important;
+  padding: 0.75em !important;
 }
 
 .popover-arrow-bottom div:first-child {
@@ -114,7 +115,7 @@ input.has-errors {
 
 .popover-arrow-right div:first-child {
   left: -7.5px !important;
-  top: 8.5px !important;
+  top: 10.5px !important;
 }
 
 .popover-at-bottom.has-errors {

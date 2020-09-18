@@ -4,9 +4,10 @@ import { Input, ErrorMessage } from "../../form";
 import { Popover, ArrowContainer } from "react-tiny-popover";
 
 const popoverStyles = {
-  backgroundColor: "darkred",
+  backgroundColor: "#be4b49",
   color: "white",
-  borderRadius: "2px"
+  borderRadius: "2px",
+  boxShadow: "2px 2px 5px 0px #aaa";
 };
 
 const FormField = ({ labelText, type, name, placeholder }) => {
