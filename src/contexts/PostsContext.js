@@ -2,20 +2,20 @@ import React, { createContext, useState, useEffect, useContext } from "react";
 import Post from "../firebase-utils/PostModel";
 import PropTypes from "prop-types";
 
-const defaultState = {
-  searchQuery: "",
-  setSearchQuery: () => {},
-  isLoading: false,
-  posts: {},
-  setPosts: () => {}
+const PostsContext = createContext();
+
+const usePostsContext = () => {
+  const context = useContext(PostsContext);
+  if (!context) {
+    throw new Error("usePosts can only be used within a PostsProvider");
+  }
+  return context;
 };
 
-const PostsContext = createContext(defaultState);
-
 const PostsProvider = ({ children }) => {
-  const [isLoading, setIsLoading] = useState(defaultState.isLoading);
-  const [searchQuery, setSearchQuery] = useState(defaultState.searchQuery);
-  const [posts, setPosts] = useState(defaultState.posts);
+  const [isLoading, setIsLoading] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [posts, setPosts] = useState({});
 
   const fetchPost = async () => {
     setIsLoading(true);
@@ -59,18 +59,8 @@ const PostsProvider = ({ children }) => {
   );
 };
 
-PostsContext.propTypes = {
+PostsProvider.propTypes = {
   children: PropTypes.node.isRequired
 };
-
-const usePostsContext = () => {
-  const context = useContext(PostsContext);
-  if (!context) {
-    throw new Error("usePostsContext can only be used within a PostsProvider");
-  }
-  return context;
-};
-
-export default PostsContext;
 
 export { PostsProvider, usePostsContext };

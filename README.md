@@ -108,4 +108,10 @@ const formValidations = {
 
 ## Notas
 
+- El valor por defecto de un Context es para cuando un Consumer no se encuentra debajo de un Provider, algo que se evita utilizando la función personalizada para obtener el context.
+
+- Se usa un Custom Provider Component como Provider (lifting-up state) para mantener el value con variables de useState para evitar renders innecesarios (al usar inline object en un provider value, este se calcula cada vez y rerenderiza todos sus hijos).
+
+- Desde Facebook se recomienda utilizar dos Providers, uno para el estado y otro para los setters. Así se evitan rerenderizados debido a que cada setters es redefinido al actualizar el estado.
+
 - Usar **uuid/v4** para generar keys aleatorios en los componentes que son mapeados a partir de un Array provoca que cada vez que se recalcula el arbol del DOM, estos tengan keys diferentes, por lo tanto, se remueven del DOM y se colocan nuevamente (algo para nada deseado). Al usar el metódo de esta librería, se estaría ejecutando una función impura, lo cual no es recomendable en los High-Order Methods de Arrays.

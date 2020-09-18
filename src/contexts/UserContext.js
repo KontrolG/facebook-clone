@@ -4,22 +4,6 @@ import "firebase/auth";
 import PropTypes from "prop-types";
 import useAuthenticationState from "../hooks/useAuthenticationState";
 
-const defaultUser = {
-  uid: null,
-  email: null,
-  name: { first: null, last: null },
-  photo: null
-};
-
-const defaultState = {
-  loading: false,
-  user: defaultUser,
-  signup: async () => {},
-  login: async () => {},
-  loginWithGoogle: async () => {},
-  logout: async () => {}
-};
-
 const defaultProfilePictureURL =
   "https://firebasestorage.googleapis.com/v0/b/fb-post-creator.appspot.com/o/profiles-pictures%2Fdefault-profile-picture.jpg?alt=media&token=f82f4d92-2d6e-4720-97d7-3e584dc527db";
 
@@ -30,7 +14,15 @@ const testUser = {
   photo: defaultProfilePictureURL
 };
 
-const UserContext = createContext(defaultState);
+const UserContext = createContext();
+
+const useUserContext = () => {
+  const context = useContext(UserContext);
+  if (!context) {
+    throw new Error("useUserContext can only be used within a UserProvider");
+  }
+  return context;
+};
 
 const UserProvider = ({ children }) => {
   const firebaseUser = useAuthenticationState(firebase);
@@ -118,18 +110,8 @@ const UserProvider = ({ children }) => {
   );
 };
 
-UserContext.propTypes = {
+UserProvider.propTypes = {
   children: PropTypes.node.isRequired
 };
-
-const useUserContext = () => {
-  const context = useContext(UserContext);
-  if (!context) {
-    throw new Error("UserContext can only be used within a UserProvider");
-  }
-  return context;
-};
-
-export default UserContext;
 
 export { useUserContext, UserProvider };
