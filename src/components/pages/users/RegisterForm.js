@@ -47,13 +47,13 @@ const formValidation = {
 
 const RegisterForm = () => {
   const [profileImage, setProfileImage] = useState(null);
-  const [registerError, setRegisterError] = useState(null);
+  const [registerErrorMessage, setRegisterErrorMessage] = useState(null);
   const { createUser, updateCurrentUserProfile } = useUserContext();
 
   const validatePassword = (password, confirmPassword) => {
-    setRegisterError(null);
+    setRegisterErrorMessage(null);
     if (password !== confirmPassword) {
-      return setRegisterError("Las contraseñas no coinciden");
+      return setRegisterErrorMessage("Las contraseñas deben coincidir");
     }
     return true;
   };
@@ -75,7 +75,7 @@ const RegisterForm = () => {
     try {
       await signup(newUser);
     } catch (error) {
-      setRegisterError(error);
+      setRegisterErrorMessage(error.message);
     }
   };
 
@@ -108,9 +108,7 @@ const RegisterForm = () => {
         placeholder="Confirma tu contraseña"
         name="confirmPassword"
       />
-      <p className="form-error-message users-error">
-        {registerError ? registerError.message : null}
-      </p>
+      <p className="form-error-message users-error">{registerErrorMessage}</p>
       <Button type="submit" primary>
         Registrar
       </Button>

@@ -14,15 +14,15 @@ const formValidations = {
 };
 
 const LoginForm = () => {
-  const [loginError, setLoginError] = useState(null);
+  const [loginErrorMessage, setLoginErrorMessage] = useState(null);
   const { login } = useUserContext();
 
   const loginUser = async formUser => {
-    setLoginError(null);
+    setLoginErrorMessage(null);
     try {
       await login(formUser);
     } catch (error) {
-      setLoginError(error);
+      setLoginErrorMessage(error.message);
     }
   };
 
@@ -44,9 +44,7 @@ const LoginForm = () => {
         type="password"
         name="password"
       />
-      <p className="form-error-message users-error">
-        {loginError ? loginError.message : null}
-      </p>
+      <p className="form-error-message users-error">{loginErrorMessage}</p>
       <Button type="submit" primary>
         Iniciar Sesión
       </Button>
