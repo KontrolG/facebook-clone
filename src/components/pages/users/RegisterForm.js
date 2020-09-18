@@ -90,26 +90,19 @@ const RegisterForm = () => {
         defaultProfilePictureURL={defaultProfilePictureURL}
         onImageUpload={setProfileImage}
       />
+      <FormField type="email" placeholder="Correo electrónico" name="email" />
       <FormField
-        labelText="Correo electrónico"
-        type="email"
-        placeholder="Introduce tu correo electrónico"
-        name="email"
-      />
-      <FormField
-        labelText="Contraseña"
         type="password"
-        placeholder="Introduce tu contraseña"
+        placeholder="Contraseña nueva"
         name="password"
       />
       <FormField
-        labelText="Confirmar contraseña"
         type="password"
         placeholder="Confirma tu contraseña"
         name="confirmPassword"
       />
       <p className="form-error-message users-error">{registerErrorMessage}</p>
-      <Button type="submit" primary>
+      <Button type="submit" primary fullWidth>
         Registrar
       </Button>
     </Form>

@@ -32,20 +32,10 @@ const LoginForm = () => {
       onSubmit={loginUser}
       validate={formValidations}
     >
-      <FormField
-        labelText="Correo electrónico"
-        placeholder="Introduce tu correo electrónico"
-        type="email"
-        name="email"
-      />
-      <FormField
-        labelText="Contraseña"
-        placeholder="Introduce tu contraseña"
-        type="password"
-        name="password"
-      />
+      <FormField placeholder="Correo electrónico" type="email" name="email" />
+      <FormField placeholder="Contraseña" type="password" name="password" />
       <p className="form-error-message users-error">{loginErrorMessage}</p>
-      <Button type="submit" primary>
+      <Button type="submit" primary fullWidth>
         Iniciar Sesión
       </Button>
     </Form>

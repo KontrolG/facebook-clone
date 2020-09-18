@@ -9,14 +9,9 @@ const DisplayNameField = props => {
 
   return (
     <div className="wrapper">
-      <label htmlFor="firstName">Nombre completo</label>
       <div className="name-inputs">
-        <Input type="text" placeholder="Introduce tu nombre" name="firstName" />
-        <Input
-          type="text"
-          placeholder="Introduce tu apellido"
-          name="lastName"
-        />
+        <Input type="text" placeholder="Nombre" name="firstName" />
+        <Input type="text" placeholder="Apellido" name="lastName" />
       </div>
       <p className="form-error-message">
         {firstNameError || lastNameError || null}

@@ -7,10 +7,10 @@ const popoverStyles = {
   backgroundColor: "#be4b49",
   color: "white",
   borderRadius: "2px",
-  boxShadow: "2px 2px 5px 0px #aaa";
+  boxShadow: "0 2px 4px 0px #ccc"
 };
 
-const FormField = ({ labelText, type, name, placeholder }) => {
+const FormField = ({ type, name, placeholder }) => {
   const [error, setError] = useState(null);
   const [popoverPosition, setPopoverPosition] = useState("right");
 
@@ -41,7 +41,6 @@ const FormField = ({ labelText, type, name, placeholder }) => {
 
   return (
     <div className="wrapper">
-      <label htmlFor={name}>{labelText}</label>
       <Popover
         isOpen={Boolean(error)}
         positions={["right", "bottom"]}
@@ -54,6 +53,7 @@ const FormField = ({ labelText, type, name, placeholder }) => {
           type={type}
           name={name}
           placeholder={placeholder}
+          title={placeholder}
           className={inputClassName}
         />
       </Popover>

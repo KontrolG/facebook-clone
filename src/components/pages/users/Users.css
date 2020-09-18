@@ -45,8 +45,11 @@ a[href] {
   margin-bottom: 0.75rem;
 }
 
+.users-form button[type="submit"] {
+  padding: 0.75em;
+}
+
 .users-form input {
-  margin: 0.25rem 0;
   border: 1px solid #ccd0d5;
   border-radius: 5px;
   width: 100%;
@@ -60,6 +63,7 @@ input.has-errors {
 .name-inputs {
   display: flex;
   justify-content: space-between;
+  margin-top: 0.25rem;
 }
 
 .name-inputs input {
@@ -115,9 +119,9 @@ input.has-errors {
 
 .popover-arrow-right div:first-child {
   left: -7.5px !important;
-  top: 10.5px !important;
+  top: 11.5px !important;
 }
 
 .popover-at-bottom.has-errors {
-  margin-bottom: 3rem;
+  margin-bottom: 3.25rem;
 }
