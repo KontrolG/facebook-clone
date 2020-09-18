@@ -1,18 +1,11 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
 import PropTypes from "prop-types";
 
-const defaultState = {
-  image: null,
-  setImage: () => {},
-  photoPreviewHeight: "100px",
-  setPhotoPreviewHeight: () => {}
-};
-
-const PhotoUploaderContext = createContext(defaultState);
+const PhotoUploaderContext = createContext();
 
 const usePhotoUploaderContext = () => {
   const context = useContext(PhotoUploaderContext);
-  if (context.setImage === defaultState.setImage) {
+  if (!context) {
     throw new Error(
       "usePhotoUploaderContext can only be used within a PhotoUploaderProvider, check if you placed this node on the right place!"
     );
@@ -21,10 +14,8 @@ const usePhotoUploaderContext = () => {
 };
 
 const PhotoUploaderProvider = ({ children, onImageUpload, width }) => {
-  const [image, setImage] = useState(defaultState.image);
-  const [photoPreviewHeight, setPhotoPreviewHeight] = useState(
-    width || defaultState.photoPreviewHeight
-  );
+  const [image, setImage] = useState(null);
+  const [photoPreviewHeight, setPhotoPreviewHeight] = useState(width);
 
   const providerValue = {
     image,
@@ -44,7 +35,7 @@ const PhotoUploaderProvider = ({ children, onImageUpload, width }) => {
 
 PhotoUploaderProvider.defaultProps = {
   onImageUpload: () => {},
-  width: null
+  width: "100px"
 };
 
 PhotoUploaderProvider.propTypes = {
@@ -53,5 +44,4 @@ PhotoUploaderProvider.propTypes = {
   width: PropTypes.string
 };
 
-export default PhotoUploaderProvider;
 export { PhotoUploaderProvider, usePhotoUploaderContext };

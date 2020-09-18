@@ -3,21 +3,11 @@ import PropTypes from "prop-types";
 import useForm from "../../hooks/useForm";
 import validate from "./validate";
 
-const defaultState = {
-  values: {},
-  changeFieldValue: () => {},
-  validations: null,
-  addFieldValidation: () => {},
-  setFormValidations: () => {},
-  errors: null,
-  setErrors: () => {}
-};
-
-const FormContext = createContext(defaultState);
+const FormContext = createContext();
 
 const useFormContext = () => {
   const context = useContext(FormContext);
-  if (context.changeFieldValue === defaultState.changeFieldValue) {
+  if (!context) {
     throw new Error(
       "useFormContext can only be used within a FormContextProvider, check if you placed this node on the right place!"
     );
@@ -30,7 +20,7 @@ const useFormErrors = () => {
   return { errors, fieldHasErrors, setErrors };
 };
 
-const FormContextProvider = ({ children }) => {
+const FormProvider = ({ children }) => {
   const [values, changeFieldValue] = useForm();
   const [validations, setValidations] = useState(null);
   const [errors, setErrors] = useState(null);
@@ -81,15 +71,10 @@ const FormContextProvider = ({ children }) => {
   );
 };
 
-FormContextProvider.propTypes = {
+FormProvider.propTypes = {
   children: PropTypes.node.isRequired
 };
 
-const FormContextConsumer = FormContext.Consumer;
+const FormConsumer = FormContext.Consumer;
 
-export {
-  FormContextProvider,
-  useFormContext,
-  FormContextConsumer,
-  useFormErrors
-};
+export { FormProvider, useFormContext, FormConsumer, useFormErrors };

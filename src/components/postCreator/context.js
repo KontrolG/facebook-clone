@@ -2,17 +2,7 @@ import React, { createContext, useContext, useState } from "react";
 import getUniqueId from "uuid/v4";
 import PropTypes from "prop-types";
 
-const defaultState = {
-  text: "",
-  setText: () => {},
-  mediaFiles: [],
-  addMediaFiles: () => {},
-  removeMediaFile: () => {},
-  clearPostCreator: () => {},
-  clearPostCreator: () => {}
-};
-
-const PostCreatorContext = createContext(defaultState);
+const PostCreatorContext = createContext();
 
 const usePostCreatorContext = () => {
   const context = useContext(PostCreatorContext);
@@ -25,6 +15,11 @@ const usePostCreatorContext = () => {
 };
 
 const toFilesWithId = file => Object.assign(file, { id: getUniqueId() });
+
+const defaultState = {
+  text: "",
+  mediaFiles: []
+};
 
 const PostCreatorProvider = ({ children }) => {
   const [text, setText] = useState(defaultState.text);
@@ -67,11 +62,6 @@ PostCreatorProvider.propTypes = {
   children: PropTypes.node.isRequired
 };
 
-const { Consumer } = PostCreatorContext;
+const PostCreatorConsumer = PostCreatorContext.Consumer;
 
-export default PostCreatorContext;
-export {
-  usePostCreatorContext,
-  PostCreatorProvider,
-  Consumer as PostCreatorConsumer
-};
+export { usePostCreatorContext, PostCreatorProvider, PostCreatorConsumer };

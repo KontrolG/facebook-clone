@@ -1,6 +1,6 @@
 import React, { forwardRef, useEffect } from "react";
 import PropTypes from "prop-types";
-import { FormContextProvider, FormContextConsumer } from "./context";
+import { FormProvider, FormConsumer } from "./context";
 
 const Form = forwardRef(
   ({ className, children, onSubmit, validate, context }, ref) => {
@@ -35,8 +35,8 @@ const Form = forwardRef(
 const FormWrapper = forwardRef(
   ({ children, className, onSubmit, validate }, ref) => {
     return (
-      <FormContextProvider>
-        <FormContextConsumer>
+      <FormProvider>
+        <FormConsumer>
           {context => (
             <Form
               ref={ref}
@@ -47,8 +47,8 @@ const FormWrapper = forwardRef(
               children={children}
             />
           )}
-        </FormContextConsumer>
-      </FormContextProvider>
+        </FormConsumer>
+      </FormProvider>
     );
   }
 );
