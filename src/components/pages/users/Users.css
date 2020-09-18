@@ -15,12 +15,14 @@ a[href] {
 }
 
 .users-title {
+  color: rgb(12, 128, 229);
+  font-family: Tahoma;
   text-align: center;
-  margin-bottom: 1.25rem;
+  font-size: 1.25rem;
 }
 
 .users-title h2 {
-  font-size: 2rem;
+  font-size: 2em;
 }
 
 .users-box {

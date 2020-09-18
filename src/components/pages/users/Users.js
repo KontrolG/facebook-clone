@@ -22,7 +22,8 @@ const Users = ({ match }) => {
   return (
     <div className="centered-container">
       <header className="users-title">
-        <h2>Bienvenido</h2>
+        <h1>facebook</h1>
+        <h2>clone</h2>
       </header>
       <main className="users-main">
         <Card className="users-box">
