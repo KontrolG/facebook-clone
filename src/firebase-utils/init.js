@@ -1,7 +1,9 @@
-import * as firebase from "firebase/app";
-
+import firebase from "firebase/app";
 import config from "./config";
 
-firebase.initializeApp(config);
+if (firebase.apps.length <= 0) {
+  firebase.initializeApp(config);
+}
+
 
 export default firebase;

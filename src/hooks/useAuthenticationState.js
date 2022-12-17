@@ -15,7 +15,7 @@ const useAuthenticationState = firebase => {
   const [authenticator, setAuthenticator] = useState(undefined);
 
   useEffect(() => {
-    setAuthenticator(firebase.auth());
+    setAuthenticator(firebase?.auth?.());
   }, [firebase]);
 
   const setSignedUser = user => {

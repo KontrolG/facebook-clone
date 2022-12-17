@@ -7,10 +7,8 @@ const byCreationDate = ([, lastPost], [, nextPost]) =>
 
 const toPostsCards = ([id, post]) => <PostCard {...post} key={id} id={id} />;
 
-const getCardsFromPosts = posts =>
-  Object.entries(posts)
-    .sort(byCreationDate)
-    .map(toPostsCards);
+const getCardsFromPosts = (posts) =>
+  Object.entries(posts).sort(byCreationDate).map(toPostsCards);
 
 const loadingMessage = (
   <p style={{ textAlign: "center", marginTop: "1rem" }}>Cargando...</p>
@@ -19,6 +17,8 @@ const loadingMessage = (
 const PostsCards = () => {
   const { isLoading, posts } = usePostsContext();
   const cards = getCardsFromPosts(posts);
+
+  console.log({ isLoading, posts });
 
   return isLoading ? loadingMessage : cards;
 };

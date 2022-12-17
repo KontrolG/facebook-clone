@@ -1,12 +1,6 @@
-const {
-  REACT_APP_FIREBASE_API_KEY,
-  REACT_APP_FIREBASE_APP_ID,
-  REACT_APP_FIREBASE_PROJECT_ID
-} = process.env;
-
-const apiKey = REACT_APP_FIREBASE_API_KEY;
-const appId = REACT_APP_FIREBASE_APP_ID;
-const projectId = REACT_APP_FIREBASE_PROJECT_ID;
+const apiKey = import.meta.env.VITE_FIREBASE_API_KEY;
+const appId = import.meta.env.VITE_FIREBASE_APP_ID;
+const projectId = import.meta.env.VITE_FIREBASE_PROJECT_ID;
 
 const config = {
   apiKey,

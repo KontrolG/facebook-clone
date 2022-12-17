@@ -19,7 +19,17 @@ const PostsProvider = ({ children }) => {
 
   const fetchPost = async () => {
     setIsLoading(true);
-    const newPosts = (await Post.getAll()) || {};
+
+    try {
+      const newPostsPromise = Post.getAll();
+      console.log({ newPostsPromise });
+      const newPosts = (await newPostsPromise) || {};
+      console.log("Terminó");
+      setPosts(newPosts);
+      setIsLoading(false);
+    } catch (error) {
+      console.log({ error });
+    }
     // const newPosts = {
     //   "-MGbuKmeEg5a7eQSR51s": {
     //     creationDate: 1599471181316,
@@ -33,17 +43,15 @@ const PostsProvider = ({ children }) => {
     //     }
     //   }
     // };
-    setPosts(newPosts);
-    setIsLoading(false);
   };
 
   useEffect(() => {
     fetchPost();
   }, []);
 
-  const deletePost = async postId => {
+  const deletePost = async (postId) => {
     await Post.deleteItem(postId);
-    setPosts(posts => {
+    setPosts((posts) => {
       const newPosts = { ...posts };
       delete newPosts[postId];
       return newPosts;

@@ -8,6 +8,6 @@ const errorMessage = (
   </p>
 );
 
-const PostsCardswithErrorBoundary = withErrorBoundary(PostsCards, errorMessage);
+const PostsCardswithErrorBoundary = PostsCards;
 
 export default PostsCardswithErrorBoundary;
