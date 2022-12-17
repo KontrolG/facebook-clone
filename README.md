@@ -3,7 +3,7 @@
 Clon de Facebook creado con ReactJS y Firebase aplicando todos los conceptos principales de la librería más usada en la creación de interfaces de usuario.
 
 [Demostración en vivo
-](https://facebook-clone-reactjs.herokuapp.com/)
+](https://facebook-clone-reactjs.vercel.app/)
 
 ## Funcionalidades
 
